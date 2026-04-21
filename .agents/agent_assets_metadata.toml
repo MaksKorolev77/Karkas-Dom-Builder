@@ -1,0 +1,44 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "XckMxTl8So23CecUdEGYD"
+uri = "file://artifacts/ultrakarkas/public/images/hero.png"
+type = "image"
+title = "Scandinavian timber frame house in winter"
+
+[[generated]]
+id = "-as-yZ7nUF1R5rQgLODps"
+uri = "file://artifacts/ultrakarkas/public/images/project-1.png"
+type = "image"
+title = "Modern timber house Ujut"
+
+[[generated]]
+id = "S-BsMjIcsZ2N_7EzRBjH4"
+uri = "file://artifacts/ultrakarkas/public/images/project-2.png"
+type = "image"
+title = "Modern timber house Comfort"
+
+[[generated]]
+id = "Yaw9J-HigONRHFe-WcJ8Y"
+uri = "file://artifacts/ultrakarkas/public/images/project-3.png"
+type = "image"
+title = "Modern timber house Family"
+
+[[generated]]
+id = "M-NvzBUT6nDOJ0BAfvdBT"
+uri = "file://artifacts/ultrakarkas/public/images/project-4.png"
+type = "image"
+title = "Large timber house Spacious"
+
+[[generated]]
+id = "iGZSgBF7Gj5q6yP8Qn4Yf"
+uri = "file://artifacts/ultrakarkas/public/images/project-5.png"
+type = "image"
+title = "Large timber house Country"
+
+[[generated]]
+id = "kO0k9A2iHUQopBTSfb2lQ"
+uri = "file://artifacts/ultrakarkas/public/images/project-6.png"
+type = "image"
+title = "Small timber house Forest"
