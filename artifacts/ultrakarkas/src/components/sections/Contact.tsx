@@ -2,7 +2,7 @@ import { LeadForm } from "@/components/LeadForm";
 
 export function Contact() {
   return (
-    <section className="py-20 md:py-24 bg-muted relative overflow-hidden">
+    <section className="py-14 md:py-20 bg-muted relative overflow-hidden">
       <div className="absolute inset-0 z-0 opacity-10">
         <img 
           src="/images/hero.png" 

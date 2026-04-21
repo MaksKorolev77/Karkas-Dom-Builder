@@ -30,9 +30,9 @@ const steps = [
 
 export function Process() {
   return (
-    <section className="py-24 bg-background overflow-hidden relative">
+    <section className="py-14 md:py-20 bg-muted/40 overflow-hidden relative">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6">
             Как мы строим
           </h2>

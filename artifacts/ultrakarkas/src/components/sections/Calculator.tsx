@@ -18,7 +18,7 @@ export function Calculator() {
   const formattedPrice = new Intl.NumberFormat('ru-RU').format(price);
 
   return (
-    <section id="calculator" className="py-20 md:py-24 bg-background">
+    <section id="calculator" className="py-14 md:py-20 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="bg-card rounded-3xl border border-border shadow-xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
           
@@ -71,18 +71,18 @@ export function Calculator() {
             </div>
           </div>
 
-          <div className="bg-primary p-8 md:p-12 w-full md:w-2/5 flex flex-col justify-center text-primary-foreground">
-            <div className="text-primary-foreground/85 mb-2 font-medium text-sm md:text-base">Примерная стоимость:</div>
-            <div className="text-3xl md:text-5xl font-bold font-serif mb-2 text-white">
+          <div className="bg-muted/40 border-l border-border p-8 md:p-12 w-full md:w-2/5 flex flex-col justify-center">
+            <div className="text-muted-foreground mb-2 font-medium text-sm md:text-base">Примерная стоимость:</div>
+            <div className="text-4xl md:text-5xl font-bold font-serif mb-2 text-primary leading-none">
               ~ {formattedPrice} ₽
             </div>
-            <div className="text-sm text-primary-foreground/75 mb-8">
+            <div className="text-sm text-muted-foreground mb-8">
               {prices[pkg].toLocaleString('ru-RU')} ₽ за квадратный метр
             </div>
 
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" className="w-full text-base md:text-lg h-14 bg-white text-primary hover:bg-white/90">
+                <Button size="lg" className="w-full text-base md:text-lg h-14">
                   Получить точный расчёт
                 </Button>
               </DialogTrigger>
@@ -99,7 +99,7 @@ export function Calculator() {
                 />
               </DialogContent>
             </Dialog>
-            <p className="text-xs text-primary-foreground/70 mt-4 text-center">
+            <p className="text-xs text-muted-foreground mt-4 text-center">
               Не является публичной офертой. Итоговая стоимость зависит от особенностей проекта и участка.
             </p>
           </div>

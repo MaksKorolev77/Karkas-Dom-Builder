@@ -30,7 +30,7 @@ const stats = [
 
 export function TrustStats() {
   return (
-    <section className="py-16 md:py-20 bg-background border-y border-border">
+    <section className="py-12 md:py-16 bg-muted/40 border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, index) => {

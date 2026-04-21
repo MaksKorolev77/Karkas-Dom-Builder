@@ -111,13 +111,22 @@ export function Navbar() {
               </Dialog>
             </div>
 
-            <button
-              className="lg:hidden p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Меню"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="lg:hidden flex items-center gap-1">
+              <a
+                href="tel:+74993909789"
+                aria-label="Позвонить"
+                className="p-2.5 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+              </a>
+              <button
+                className="p-2 text-foreground"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Меню"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -174,24 +183,6 @@ export function Navbar() {
         </div>
       )}
 
-      <div className="md:hidden fixed bottom-6 right-6 z-40">
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button size="lg" className="rounded-full shadow-lg h-14 px-6 text-base font-semibold border-2 border-background">
-              Получить расчёт
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[600px] w-[95vw]">
-            <DialogHeader>
-              <DialogTitle className="font-serif text-2xl">Оставить заявку</DialogTitle>
-              <DialogDescription>
-                Заполните форму, и мы свяжемся с вами.
-              </DialogDescription>
-            </DialogHeader>
-            <LeadForm />
-          </DialogContent>
-        </Dialog>
-      </div>
     </>
   );
 }

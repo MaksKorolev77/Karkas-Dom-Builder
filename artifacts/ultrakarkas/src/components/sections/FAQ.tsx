@@ -21,7 +21,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-14 md:py-20 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row gap-12 lg:gap-24 max-w-6xl mx-auto">
           <div className="w-full md:w-1/3">
