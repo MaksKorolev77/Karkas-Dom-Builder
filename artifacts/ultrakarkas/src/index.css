@@ -79,58 +79,58 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* Warm cream background */
-  --background: 40 33% 97%; 
+  /* Pure white background */
+  --background: 0 0% 100%;
   
-  /* Charcoal text */
-  --foreground: 220 10% 20%; 
+  /* Near-black text */
+  --foreground: 0 0% 8%;
 
-  /* Soft border */
-  --border: 40 20% 85%;
+  /* Light gray border */
+  --border: 0 0% 90%;
 
-  /* White-ish cards for contrast */
+  /* Cards - white with subtle separation */
   --card: 0 0% 100%;
-  --card-foreground: 220 10% 20%;
-  --card-border: 40 20% 85%;
+  --card-foreground: 0 0% 8%;
+  --card-border: 0 0% 90%;
 
   --sidebar: 0 0% 100%;
-  --sidebar-foreground: 220 10% 20%;
-  --sidebar-border: 40 20% 85%;
-  --sidebar-primary: 155 30% 20%;
-  --sidebar-primary-foreground: 40 33% 97%;
-  --sidebar-accent: 40 30% 92%;
-  --sidebar-accent-foreground: 220 10% 20%;
-  --sidebar-ring: 155 30% 20%;
+  --sidebar-foreground: 0 0% 8%;
+  --sidebar-border: 0 0% 90%;
+  --sidebar-primary: 28 100% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 0 0% 96%;
+  --sidebar-accent-foreground: 0 0% 8%;
+  --sidebar-ring: 28 100% 48%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 220 10% 20%;
-  --popover-border: 40 20% 85%;
+  --popover-foreground: 0 0% 8%;
+  --popover-border: 0 0% 90%;
 
-  /* Deep forest green */
-  --primary: 155 30% 20%;
-  --primary-foreground: 40 33% 97%;
+  /* Brand orange #f57a00 */
+  --primary: 28 100% 48%;
+  --primary-foreground: 0 0% 100%;
 
-  /* Amber/wood tones */
-  --secondary: 35 60% 50%;
+  /* Black secondary */
+  --secondary: 0 0% 8%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 40 30% 92%;
-  --muted-foreground: 220 10% 40%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
 
-  --accent: 40 40% 85%;
-  --accent-foreground: 155 30% 20%;
+  --accent: 28 100% 95%;
+  --accent-foreground: 28 100% 35%;
 
-  --destructive: 0 84% 60%;
+  --destructive: 0 84% 55%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 40 20% 80%;
-  --ring: 155 30% 20%;
+  --input: 0 0% 88%;
+  --ring: 28 100% 48%;
   
-  --chart-1: 155 30% 20%;
-  --chart-2: 35 60% 50%;
-  --chart-3: 40 40% 40%;
-  --chart-4: 220 10% 20%;
-  --chart-5: 40 30% 70%;
+  --chart-1: 28 100% 48%;
+  --chart-2: 0 0% 8%;
+  --chart-3: 28 100% 65%;
+  --chart-4: 0 0% 40%;
+  --chart-5: 28 60% 80%;
 
   --app-font-sans: 'Golos Text', sans-serif;
   --app-font-serif: 'Playfair Display', serif;
