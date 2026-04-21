@@ -71,18 +71,18 @@ export function Calculator() {
             </div>
           </div>
 
-          <div className="bg-foreground p-8 md:p-12 w-full md:w-2/5 flex flex-col justify-center text-background">
-            <div className="text-background/70 mb-2 font-medium text-sm md:text-base">Примерная стоимость:</div>
-            <div className="text-3xl md:text-5xl font-bold font-serif mb-2 text-primary">
+          <div className="bg-primary p-8 md:p-12 w-full md:w-2/5 flex flex-col justify-center text-primary-foreground">
+            <div className="text-primary-foreground/85 mb-2 font-medium text-sm md:text-base">Примерная стоимость:</div>
+            <div className="text-3xl md:text-5xl font-bold font-serif mb-2 text-white">
               ~ {formattedPrice} ₽
             </div>
-            <div className="text-sm text-background/60 mb-8">
+            <div className="text-sm text-primary-foreground/75 mb-8">
               {prices[pkg].toLocaleString('ru-RU')} ₽ за квадратный метр
             </div>
 
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" className="w-full text-base md:text-lg h-14">
+                <Button size="lg" className="w-full text-base md:text-lg h-14 bg-white text-primary hover:bg-white/90">
                   Получить точный расчёт
                 </Button>
               </DialogTrigger>
@@ -99,7 +99,7 @@ export function Calculator() {
                 />
               </DialogContent>
             </Dialog>
-            <p className="text-xs text-background/50 mt-4 text-center">
+            <p className="text-xs text-primary-foreground/70 mt-4 text-center">
               Не является публичной офертой. Итоговая стоимость зависит от особенностей проекта и участка.
             </p>
           </div>

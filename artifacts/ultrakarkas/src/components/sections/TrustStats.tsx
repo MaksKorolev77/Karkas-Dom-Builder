@@ -30,7 +30,7 @@ const stats = [
 
 export function TrustStats() {
   return (
-    <section className="py-16 md:py-20 bg-foreground text-background">
+    <section className="py-16 md:py-20 bg-background border-y border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, index) => {
@@ -42,22 +42,22 @@ export function TrustStats() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-background/5 border border-background/10 rounded-2xl p-5 md:p-8 hover:bg-background/10 transition-colors"
+                className="bg-card border border-border rounded-2xl p-5 md:p-8 hover:shadow-lg hover:-translate-y-1 transition-all"
               >
-                <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mb-4 md:mb-5">
+                <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 md:mb-5">
                   <Icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div className="flex items-baseline gap-1.5 mb-1.5 md:mb-2">
-                  <span className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-background">
+                  <span className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary">
                     {stat.number}
                   </span>
                   {stat.suffix && (
-                    <span className="text-base md:text-xl font-medium text-background/70">
+                    <span className="text-base md:text-xl font-medium text-foreground/70">
                       {stat.suffix}
                     </span>
                   )}
                 </div>
-                <span className="text-sm md:text-base text-background/70 leading-snug block">
+                <span className="text-sm md:text-base text-muted-foreground leading-snug block">
                   {stat.label}
                 </span>
               </motion.div>

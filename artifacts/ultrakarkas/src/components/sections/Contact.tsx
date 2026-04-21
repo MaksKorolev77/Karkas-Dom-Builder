@@ -2,14 +2,13 @@ import { LeadForm } from "@/components/LeadForm";
 
 export function Contact() {
   return (
-    <section className="py-20 md:py-24 bg-foreground text-background relative overflow-hidden">
-      <div className="absolute inset-0 z-0 opacity-15">
+    <section className="py-20 md:py-24 bg-muted relative overflow-hidden">
+      <div className="absolute inset-0 z-0 opacity-10">
         <img 
           src="/images/hero.png" 
           alt="" 
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-foreground/80"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
