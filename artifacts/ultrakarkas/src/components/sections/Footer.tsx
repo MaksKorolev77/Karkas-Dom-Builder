@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Link } from "wouter";
 
 export function Footer() {
   return (
@@ -25,10 +26,10 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6 text-lg">Навигация</h4>
             <ul className="space-y-4">
-              <li><button onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })} className="text-muted-foreground hover:text-primary transition-colors">Проекты домов</button></li>
-              <li><button onClick={() => document.getElementById("packages")?.scrollIntoView({ behavior: "smooth" })} className="text-muted-foreground hover:text-primary transition-colors">Комплектации и цены</button></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Индивидуальное проектирование</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">О компании</a></li>
+              <li><Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">Проекты домов</Link></li>
+              <li><a href="/#packages" className="text-muted-foreground hover:text-primary transition-colors">Комплектации и цены</a></li>
+              <li><a href="/#calculator" className="text-muted-foreground hover:text-primary transition-colors">Калькулятор стоимости</a></li>
+              <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Политика конфиденциальности</Link></li>
             </ul>
           </div>
 
@@ -82,9 +83,9 @@ export function Footer() {
           <div className="text-muted-foreground text-sm text-center md:text-left">
             © {new Date().getFullYear()} ООО «УльтраКаркас». Все права защищены. <br className="md:hidden"/>Не является публичной офертой.
           </div>
-          <a href="https://ultrakarkas.ru/privacy" target="_blank" rel="noreferrer" className="text-sm text-muted-foreground hover:text-primary underline underline-offset-4">
+          <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary underline underline-offset-4">
             Политика конфиденциальности
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

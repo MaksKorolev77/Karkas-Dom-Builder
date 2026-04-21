@@ -29,7 +29,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary border border-secondary/20 font-medium text-sm mb-6 tracking-wide uppercase">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary border border-primary/20 font-semibold text-xs md:text-sm mb-6 tracking-wide uppercase">
               Надёжно. Тепло. На века.
             </span>
           </motion.div>
@@ -38,7 +38,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-[1.1] mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground leading-[1.1] mb-5 md:mb-6"
           >
             Строительство каркасных домов <span className="text-primary italic">под ключ</span>
           </motion.h1>
@@ -47,7 +47,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-2xl leading-relaxed"
+            className="text-base sm:text-lg md:text-2xl text-foreground/80 mb-8 md:mb-10 max-w-2xl leading-relaxed"
           >
             Готовые проекты, любые комплектации от базовой до чистовой. Строим в Москве и Московской области.
           </motion.p>

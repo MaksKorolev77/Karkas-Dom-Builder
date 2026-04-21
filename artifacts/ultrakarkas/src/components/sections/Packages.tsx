@@ -32,7 +32,7 @@ export function Packages() {
   const [showTable, setShowTable] = useState(false);
 
   return (
-    <section id="packages" className="py-24 bg-muted/30">
+    <section id="packages" className="py-20 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6">
@@ -45,14 +45,14 @@ export function Packages() {
 
         <Tabs defaultValue="optimum" className="w-full max-w-4xl mx-auto mb-12">
           <TabsList className="grid w-full grid-cols-3 h-auto p-1 bg-card border border-border shadow-sm rounded-xl">
-            <TabsTrigger value="econom" className="py-3 text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Эконом</TabsTrigger>
-            <TabsTrigger value="optimum" className="py-3 text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Оптимум</TabsTrigger>
-            <TabsTrigger value="max" className="py-3 text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Максимум</TabsTrigger>
+            <TabsTrigger value="econom" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Эконом</TabsTrigger>
+            <TabsTrigger value="optimum" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Оптимум</TabsTrigger>
+            <TabsTrigger value="max" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Максимум</TabsTrigger>
           </TabsList>
           
           <div className="mt-8 bg-card rounded-2xl border border-border shadow-md overflow-hidden">
             <TabsContent value="econom" className="p-0 m-0">
-              <div className="p-8 md:p-10 border-b border-border">
+              <div className="p-6 sm:p-8 md:p-10 border-b border-border">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-2xl font-serif font-bold mb-2">Эконом</h3>
@@ -64,7 +64,7 @@ export function Packages() {
                   </div>
                 </div>
               </div>
-              <div className="bg-muted/30 p-8 md:p-10">
+              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
                 <h4 className="font-semibold mb-4">Ключевые особенности:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -88,8 +88,8 @@ export function Packages() {
             </TabsContent>
 
             <TabsContent value="optimum" className="p-0 m-0">
-              <div className="p-8 md:p-10 border-b border-border relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-bold px-4 py-1 rounded-bl-lg">
+              <div className="p-6 sm:p-8 md:p-10 border-b border-border relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-bl-lg">
                   ХИТ ПРОДАЖ
                 </div>
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
@@ -103,7 +103,7 @@ export function Packages() {
                   </div>
                 </div>
               </div>
-              <div className="bg-muted/30 p-8 md:p-10">
+              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
                 <h4 className="font-semibold mb-4">Отличия от комплектации Эконом:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -127,7 +127,7 @@ export function Packages() {
             </TabsContent>
 
             <TabsContent value="max" className="p-0 m-0">
-              <div className="p-8 md:p-10 border-b border-border">
+              <div className="p-6 sm:p-8 md:p-10 border-b border-border">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-2xl font-serif font-bold mb-2">Максимум</h3>
@@ -139,7 +139,7 @@ export function Packages() {
                   </div>
                 </div>
               </div>
-              <div className="bg-muted/30 p-8 md:p-10">
+              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
                 <h4 className="font-semibold mb-4">Отличия от комплектации Оптимум:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -172,7 +172,7 @@ export function Packages() {
             {showTable ? "Скрыть подробное сравнение" : "Показать подробную таблицу сравнения"}
             <motion.svg 
               animate={{ rotate: showTable ? 180 : 0 }} 
-              width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinelinejoin="round"
+              width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             >
               <path d="m6 9 6 6 6-6"/>
             </motion.svg>

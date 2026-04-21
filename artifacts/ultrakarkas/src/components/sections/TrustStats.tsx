@@ -1,22 +1,27 @@
 import { motion } from "framer-motion";
+import { Award, Home, ShieldCheck, Snowflake } from "lucide-react";
 
 const stats = [
   {
+    icon: Award,
     number: "18",
     suffix: "лет",
     label: "опыта в строительстве",
   },
   {
+    icon: Home,
     number: "147+",
     suffix: "",
     label: "домов успешно сдано",
   },
   {
+    icon: ShieldCheck,
     number: "10",
     suffix: "лет",
     label: "официальной гарантии",
   },
   {
+    icon: Snowflake,
     number: "4",
     suffix: "сезона",
     label: "строим круглый год",
@@ -25,42 +30,39 @@ const stats = [
 
 export function TrustStats() {
   return (
-    <section className="py-16 md:py-24 bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Decorative background element */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 opacity-10 pointer-events-none">
-        <svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="400" cy="400" r="399" stroke="currentColor" strokeWidth="2" strokeDasharray="10 10"/>
-          <circle cx="400" cy="400" r="299" stroke="currentColor" strokeWidth="2" strokeDasharray="10 10"/>
-          <circle cx="400" cy="400" r="199" stroke="currentColor" strokeWidth="2" strokeDasharray="10 10"/>
-        </svg>
-      </div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 divide-x divide-primary-foreground/10">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`flex flex-col ${index !== 0 ? 'pl-8 md:pl-12' : ''}`}
-            >
-              <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-secondary">
-                  {stat.number}
-                </span>
-                {stat.suffix && (
-                  <span className="text-xl md:text-2xl font-medium text-primary-foreground/90">
-                    {stat.suffix}
+    <section className="py-16 md:py-20 bg-foreground text-background">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-background/5 border border-background/10 rounded-2xl p-5 md:p-8 hover:bg-background/10 transition-colors"
+              >
+                <div className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center mb-4 md:mb-5">
+                  <Icon className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <div className="flex items-baseline gap-1.5 mb-1.5 md:mb-2">
+                  <span className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-background">
+                    {stat.number}
                   </span>
-                )}
-              </div>
-              <span className="text-sm md:text-base text-primary-foreground/80 leading-snug">
-                {stat.label}
-              </span>
-            </motion.div>
-          ))}
+                  {stat.suffix && (
+                    <span className="text-base md:text-xl font-medium text-background/70">
+                      {stat.suffix}
+                    </span>
+                  )}
+                </div>
+                <span className="text-sm md:text-base text-background/70 leading-snug block">
+                  {stat.label}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

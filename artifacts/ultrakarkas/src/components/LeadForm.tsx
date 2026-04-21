@@ -195,7 +195,7 @@ export function LeadForm({ defaultPackage, defaultComment, onSuccess }: LeadForm
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-sm font-normal text-muted-foreground">
                   Отправляя форму, даю согласие на обработку моих персональных данных.{" "}
-                  <a href="https://ultrakarkas.ru/privacy" target="_blank" rel="noreferrer" className="underline hover:text-primary transition-colors">
+                  <a href="/privacy" target="_blank" rel="noreferrer" className="underline hover:text-primary transition-colors">
                     Политика конфиденциальности
                   </a>
                 </FormLabel>
