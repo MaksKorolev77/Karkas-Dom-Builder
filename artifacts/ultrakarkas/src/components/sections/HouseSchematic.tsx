@@ -2,6 +2,40 @@ import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
 type ZoneId = "roof" | "ceiling" | "walls" | "floor" | "foundation";
+type FoundType = "piles" | "strip" | "slab";
+
+const FOUNDATION_VARIANTS: Record<FoundType, { label: string; specs: { k: string; v: string }[]; description: string }> = {
+  piles: {
+    label: "Ж/б забивные сваи",
+    specs: [
+      { k: "Тип свай", v: "Ж/б забивные 150×150 мм" },
+      { k: "Глубина", v: "3–5 м до несущего слоя" },
+      { k: "Несущая", v: "до 10 т / свая" },
+      { k: "Монтаж", v: "1 день, без земляных работ" },
+    ],
+    description: "Забивные ж/б сваи — наш стандарт. Работают на любых грунтах: пучинистых, водонасыщенных, торфяных. Ростверк связывает сваи в единый ригель. Нагрузка передаётся прямо на несущий слой — дом не осядет.",
+  },
+  strip: {
+    label: "Ростверк ленточный",
+    specs: [
+      { k: "Тип", v: "Монолитный МЗЛФ" },
+      { k: "Глубина", v: "0.4–0.8 м" },
+      { k: "Арматура", v: "Ø12 мм, 4 нитки" },
+      { k: "Грунт", v: "Непучинистый, стабильный" },
+    ],
+    description: "Мелкозаглублённый ленточный ростверк — монолитная железобетонная лента по периметру и осям дома. Применяется на стабильных грунтах без высокого УГВ. Требует 28 дней выдержки бетона.",
+  },
+  slab: {
+    label: "Монолитная плита",
+    specs: [
+      { k: "Тип", v: "УШП — утеплённая плита" },
+      { k: "Толщина", v: "300–350 мм" },
+      { k: "Арматура", v: "Ø12 мм, сетка 200×200 мм" },
+      { k: "Подушка", v: "Щебень + песок 200 мм" },
+    ],
+    description: "Монолитная утеплённая плита — максимально жёсткое основание. Готовый черновой пол, идеальна под тёплый пол (трубы заливаются в плиту). Применяется на слабых грунтах и при высоком УГВ.",
+  },
+};
 
 const ZONES: Record<ZoneId, {
   label: string;
@@ -78,11 +112,15 @@ const ZONES: Record<ZoneId, {
   },
 };
 
-function ZoneCard({ zone }: { zone: ZoneId }) {
+function ZoneCard({ zone, foundType, setFoundType }: { zone: ZoneId; foundType?: FoundType; setFoundType?: (t: FoundType) => void }) {
   const z = ZONES[zone];
+  const fv = zone === "foundation" && foundType ? FOUNDATION_VARIANTS[foundType] : null;
+  const specs = fv ? fv.specs : z.specs;
+  const description = fv ? fv.description : z.description;
+
   return (
     <motion.div
-      key={zone}
+      key={zone + (foundType ?? "")}
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
@@ -92,24 +130,44 @@ function ZoneCard({ zone }: { zone: ZoneId }) {
       <div className="flex flex-wrap items-start gap-4 mb-4">
         <div>
           <h3 className="text-lg md:text-xl font-bold text-white mb-0.5">{z.label}</h3>
-          <p className="text-sm text-slate-400">{z.sublabel}</p>
+          <p className="text-sm text-slate-400">{fv ? fv.label : z.sublabel}</p>
         </div>
       </div>
+
+      {zone === "foundation" && setFoundType && (
+        <div className="flex gap-2 flex-wrap mb-4">
+          {(["piles", "strip", "slab"] as FoundType[]).map((ft) => (
+            <button
+              key={ft}
+              onClick={() => setFoundType(ft)}
+              className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
+                foundType === ft
+                  ? "bg-primary text-white border-primary"
+                  : "bg-slate-700/60 text-slate-300 border-slate-600 hover:border-primary/50"
+              }`}
+            >
+              {FOUNDATION_VARIANTS[ft].label}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
-        {z.specs.map((s) => (
+        {specs.map((s) => (
           <div key={s.k} className="bg-slate-900/60 rounded-xl p-3">
             <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide mb-1">{s.k}</div>
             <div className="text-xs font-medium text-slate-200 leading-snug">{s.v}</div>
           </div>
         ))}
       </div>
-      <p className="text-sm text-slate-400 leading-relaxed">{z.description}</p>
+      <p className="text-sm text-slate-400 leading-relaxed">{description}</p>
     </motion.div>
   );
 }
 
 export function HouseSchematic() {
   const [activeZone, setActiveZone] = useState<ZoneId | null>(null);
+  const [foundationType, setFoundationType] = useState<FoundType>("piles");
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -215,37 +273,104 @@ export function HouseSchematic() {
             {/* Ground line */}
             <line x1="0" y1="444" x2="900" y2="444" stroke="#a07038" strokeWidth="1.5" strokeDasharray="6,4"/>
 
-            {/* ── FOUNDATION PILES ── */}
-            {[252, 444, 636].map((px, i) => (
-              <g key={i} onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
-                {/* Pile in soil */}
-                <rect x={px} y={424} width={18} height={106}
+            {/* ── FOUNDATION — conditional by type ── */}
+
+            {/* TYPE: PILES (сваи + ростверк) */}
+            {foundationType === "piles" && <>
+              {[252, 444, 636].map((px, i) => (
+                <g key={i} onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                  <rect x={px} y={424} width={18} height={106}
+                    fill="url(#concrete-pat)"
+                    opacity={zoneOpacity("foundation", 0.9)}
+                    stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
+                    strokeWidth={isActive("foundation") ? 1.5 : 0.5}
+                  />
+                  <line x1={px + 5} y1={430} x2={px + 5} y2={520} stroke="#e11d48" strokeWidth="1" strokeDasharray="4,5" opacity={zoneOpacity("foundation", 0.4)}/>
+                  <line x1={px + 13} y1={430} x2={px + 13} y2={520} stroke="#e11d48" strokeWidth="1" strokeDasharray="4,5" opacity={zoneOpacity("foundation", 0.4)}/>
+                </g>
+              ))}
+              <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                <rect x={130} y={424} width={640} height={20}
                   fill="url(#concrete-pat)"
-                  opacity={zoneOpacity("foundation", 0.9)}
+                  opacity={zoneOpacity("foundation", 0.95)}
                   stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
                   strokeWidth={isActive("foundation") ? 1.5 : 0.5}
                 />
-                {/* Rebar lines */}
-                <line x1={px + 5} y1={430} x2={px + 5} y2={520} stroke="#e11d48" strokeWidth="1" strokeDasharray="4,5" opacity={zoneOpacity("foundation", 0.4)}/>
-                <line x1={px + 13} y1={430} x2={px + 13} y2={520} stroke="#e11d48" strokeWidth="1" strokeDasharray="4,5" opacity={zoneOpacity("foundation", 0.4)}/>
+                {[155, 220, 285, 350, 415, 480, 545, 610, 680, 720].map((rx) => (
+                  <circle key={rx} cx={rx} cy={434} r={2.5} fill="#e11d48" opacity={zoneOpacity("foundation", 0.5)}/>
+                ))}
+                <polygon points="130,424 770,424 776,418 136,418" fill="#94a3b8" opacity={zoneOpacity("foundation", 0.6)}/>
               </g>
-            ))}
+            </>}
 
-            {/* ── GRILLAGE BEAM ── */}
-            <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
-              <rect x={130} y={424} width={640} height={20}
-                fill="url(#concrete-pat)"
-                opacity={zoneOpacity("foundation", 0.95)}
-                stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
-                strokeWidth={isActive("foundation") ? 1.5 : 0.5}
+            {/* TYPE: STRIP / РОСТВЕРК */}
+            {foundationType === "strip" && <>
+              {/* Left strip */}
+              <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                <rect x={130} y={384} width={80} height={60}
+                  fill="url(#concrete-pat)"
+                  opacity={zoneOpacity("foundation", 0.95)}
+                  stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
+                  strokeWidth={isActive("foundation") ? 1.5 : 0.5}
+                />
+                {[396, 410, 424, 436].map((y) => (
+                  <line key={y} x1={135} y1={y} x2={205} y2={y} stroke="#e11d48" strokeWidth="1.2" strokeDasharray="6,5" opacity={zoneOpacity("foundation", 0.5)}/>
+                ))}
+                <polygon points="130,384 210,384 216,378 136,378" fill="#94a3b8" opacity={zoneOpacity("foundation", 0.6)}/>
+                {/* Sand cushion */}
+                <rect x={132} y={444} width={76} height={14} fill="#c8a870" opacity={zoneOpacity("foundation", 0.5)} rx="1"/>
+              </g>
+              {/* Right strip */}
+              <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                <rect x={690} y={384} width={80} height={60}
+                  fill="url(#concrete-pat)"
+                  opacity={zoneOpacity("foundation", 0.95)}
+                  stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
+                  strokeWidth={isActive("foundation") ? 1.5 : 0.5}
+                />
+                {[396, 410, 424, 436].map((y) => (
+                  <line key={y} x1={695} y1={y} x2={765} y2={y} stroke="#e11d48" strokeWidth="1.2" strokeDasharray="6,5" opacity={zoneOpacity("foundation", 0.5)}/>
+                ))}
+                <polygon points="690,384 770,384 776,378 696,378" fill="#94a3b8" opacity={zoneOpacity("foundation", 0.6)}/>
+                <rect x={692} y={444} width={76} height={14} fill="#c8a870" opacity={zoneOpacity("foundation", 0.5)} rx="1"/>
+              </g>
+              {/* Floor beam between strips */}
+              <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                <rect x={208} y={414} width={484} height={14} fill="#7a5830" opacity={zoneOpacity("foundation", 0.6)} rx="2"/>
+              </g>
+            </>}
+
+            {/* TYPE: SLAB / МОНОЛИТНАЯ ПЛИТА */}
+            {foundationType === "slab" && <>
+              {/* Insulation layer */}
+              <rect x={90} y={396} width={720} height={12}
+                fill="#f5c87a"
+                opacity={zoneOpacity("foundation", 0.85)}
+                onClick={() => handleZone("foundation")}
+                style={{ cursor: "pointer" }}
               />
-              {/* Rebar suggestion */}
-              {[155, 220, 285, 350, 415, 480, 545, 610, 680, 720].map((rx) => (
-                <circle key={rx} cx={rx} cy={434} r={2.5} fill="#e11d48" opacity={zoneOpacity("foundation", 0.5)}/>
-              ))}
-              {/* 3D top of grillage */}
-              <polygon points="130,424 770,424 776,418 136,418" fill="#94a3b8" opacity={zoneOpacity("foundation", 0.6)}/>
-            </g>
+              {/* Full slab */}
+              <g onClick={() => handleZone("foundation")} style={{ cursor: "pointer" }}>
+                <rect x={90} y={408} width={720} height={36}
+                  fill="url(#concrete-pat)"
+                  opacity={zoneOpacity("foundation", 0.95)}
+                  stroke={isActive("foundation") ? "#f57a00" : "rgba(148,163,184,0.3)"}
+                  strokeWidth={isActive("foundation") ? 1.5 : 0.5}
+                />
+                {/* Rebar grid horizontal */}
+                {[417, 428, 438].map((y) => (
+                  <line key={y} x1={96} y1={y} x2={804} y2={y} stroke="#e11d48" strokeWidth="1.3" strokeDasharray="10,8" opacity={zoneOpacity("foundation", 0.5)}/>
+                ))}
+                {/* Rebar grid vertical */}
+                {[150, 230, 310, 390, 450, 520, 600, 680, 750].map((x) => (
+                  <line key={x} x1={x} y1={410} x2={x} y2={442} stroke="#e11d48" strokeWidth="0.8" strokeDasharray="4,5" opacity={zoneOpacity("foundation", 0.3)}/>
+                ))}
+                {/* 3D top */}
+                <polygon points="90,408 810,408 816,402 96,402" fill="#94a3b8" opacity={zoneOpacity("foundation", 0.6)}/>
+                {/* Sand cushion in soil */}
+                <rect x={90} y={444} width={720} height={18} fill="#c8a870" opacity={zoneOpacity("foundation", 0.45)} rx="1"/>
+              </g>
+            </>}
 
             {/* ── FLOOR INSULATION ── */}
             <g onClick={() => handleZone("floor")} style={{ cursor: "pointer" }}>
@@ -445,11 +570,15 @@ export function HouseSchematic() {
             <circle cx={828} cy={434} r={3} fill={isActive("foundation") ? "#f57a00" : "#94a3b8"} opacity={zoneOpacity("foundation")}/>
             <text x={832} y={438} fontSize="10" fontWeight="600" fill={isActive("foundation") ? "#f57a00" : "#94a3b8"} opacity={zoneOpacity("foundation")}>Ростверк (обвязка)</text>
 
-            {/* Foundation piles label */}
+            {/* Foundation label (dynamic) */}
             <line x1={252} y1={480} x2={60} y2={480} stroke="#64748b" strokeWidth="1" strokeDasharray="3,2" opacity={zoneOpacity("foundation")}/>
             <circle cx={60} cy={480} r={3} fill={isActive("foundation") ? "#f57a00" : "#94a3b8"} opacity={zoneOpacity("foundation")}/>
-            <text x={56} y={476} textAnchor="end" fontSize="10" fontWeight="600" fill={isActive("foundation") ? "#f57a00" : "#94a3b8"} opacity={zoneOpacity("foundation")}>Ж/б сваи 150×150 мм</text>
-            <text x={56} y={488} textAnchor="end" fontSize="9" fill="#64748b" opacity={zoneOpacity("foundation")}>Глубина 3–5 м</text>
+            <text x={56} y={476} textAnchor="end" fontSize="10" fontWeight="600" fill={isActive("foundation") ? "#f57a00" : "#94a3b8"} opacity={zoneOpacity("foundation")}>
+              {foundationType === "piles" ? "Ж/б сваи 150×150 мм" : foundationType === "strip" ? "Ростверк монолитный" : "Монолитная плита"}
+            </text>
+            <text x={56} y={488} textAnchor="end" fontSize="9" fill="#64748b" opacity={zoneOpacity("foundation")}>
+              {foundationType === "piles" ? "Глубина 3–5 м" : foundationType === "strip" ? "Глубина 0.4–0.8 м" : "Толщина 300–350 мм"}
+            </text>
 
             {/* Vapor barrier label */}
             <line x1={226} y1={200} x2={80} y2={258} stroke="#60a5fa" strokeWidth="0.8" strokeDasharray="2,2" opacity={isDimmed("walls") ? 0.1 : 0.6}/>
@@ -479,7 +608,12 @@ export function HouseSchematic() {
         <div className="min-h-[180px]">
           <AnimatePresence mode="wait">
             {activeZone ? (
-              <ZoneCard key={activeZone} zone={activeZone} />
+              <ZoneCard
+                key={activeZone}
+                zone={activeZone}
+                foundType={activeZone === "foundation" ? foundationType : undefined}
+                setFoundType={activeZone === "foundation" ? setFoundationType : undefined}
+              />
             ) : (
               <motion.p
                 key="hint"
