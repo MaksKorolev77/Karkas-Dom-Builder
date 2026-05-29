@@ -3,6 +3,8 @@ import { Hero } from "@/components/sections/Hero";
 import { TrustStats } from "@/components/sections/TrustStats";
 import { Projects } from "@/components/sections/Projects";
 import { Packages } from "@/components/sections/Packages";
+import { WallSection } from "@/components/sections/WallSection";
+import { FoundationSection } from "@/components/sections/FoundationSection";
 import { Process } from "@/components/sections/Process";
 import { Services } from "@/components/sections/Services";
 import { WhyUs } from "@/components/sections/WhyUs";
@@ -20,6 +22,8 @@ export default function Home() {
         <TrustStats />
         <Projects />
         <Packages />
+        <WallSection />
+        <FoundationSection />
         <Process />
         <Services />
         <WhyUs />
