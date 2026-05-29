@@ -68,7 +68,7 @@ const options = [
 
 export function ProjectOptions() {
   return (
-    <section className="py-14 md:py-20 bg-muted/20 overflow-hidden">
+    <section className="py-10 md:py-14 bg-muted/20 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
           <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">

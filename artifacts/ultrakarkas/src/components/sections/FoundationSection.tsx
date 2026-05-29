@@ -17,6 +17,59 @@ interface FoundationType {
 
 /* ── SVG illustrations ──────────────────────────────── */
 
+const SVGPilesOnly = (
+  <svg viewBox="0 0 280 230" className="w-full max-w-[280px]">
+    <defs>
+      <pattern id="soil1o" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+        <rect width="10" height="10" fill="#8B6914"/>
+        <circle cx="2.5" cy="2.5" r="1" fill="rgba(0,0,0,0.12)"/>
+        <circle cx="7" cy="6.5" r="0.7" fill="rgba(255,255,255,0.06)"/>
+      </pattern>
+      <pattern id="soil2o" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+        <rect width="10" height="10" fill="#6B4F10"/>
+        <line x1="0" y1="5" x2="5" y2="0" stroke="rgba(0,0,0,0.15)" strokeWidth="1"/>
+        <line x1="5" y1="10" x2="10" y2="5" stroke="rgba(0,0,0,0.15)" strokeWidth="1"/>
+      </pattern>
+      <linearGradient id="pile-grado" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stopColor="#90A4AE"/>
+        <stop offset="100%" stopColor="#546E7A"/>
+      </linearGradient>
+    </defs>
+
+    {/* Ground levels */}
+    <rect x="10" y="100" width="260" height="10" fill="#A0784A" rx="1"/>
+    <rect x="10" y="110" width="260" height="28" fill="url(#soil1o)"/>
+    <rect x="10" y="138" width="260" height="30" fill="url(#soil2o)"/>
+    <rect x="10" y="168" width="260" height="20" fill="#4A3010"/>
+    <rect x="10" y="188" width="260" height="32" fill="#3A2008"/>
+    <line x1="10" y1="188" x2="270" y2="188" stroke="#5A4020" strokeWidth="1.5" strokeDasharray="6,3"/>
+    <text x="140" y="207" textAnchor="middle" fontSize="8" fill="#9A7A50">несущий грунт</text>
+
+    {[55, 140, 225].map((cx, i) => (
+      <g key={i}>
+        <rect x={cx - 9} y="62" width="18" height="133" rx="2" fill="url(#pile-grado)" stroke="#455A64" strokeWidth="1"/>
+        <line x1={cx - 5} y1="66" x2={cx - 5} y2="192" stroke="#ef4444" strokeWidth="1" strokeDasharray="5,5" opacity="0.7"/>
+        <line x1={cx + 5} y1="66" x2={cx + 5} y2="192" stroke="#ef4444" strokeWidth="1" strokeDasharray="5,5" opacity="0.7"/>
+        {[84, 114, 144, 174].map((y) => (
+          <line key={y} x1={cx - 8} y1={y} x2={cx + 8} y2={y} stroke="#ef4444" strokeWidth="0.8" opacity="0.5"/>
+        ))}
+        <rect x={cx - 13} y="56" width="26" height="10" rx="2" fill="#607D8B" stroke="#455A64" strokeWidth="0.8"/>
+        <line x1={cx - 5} y1="56" x2={cx - 5} y2="44" stroke="#ef4444" strokeWidth="1.5" opacity="0.85"/>
+        <line x1={cx + 5} y1="56" x2={cx + 5} y2="44" stroke="#ef4444" strokeWidth="1.5" opacity="0.85"/>
+        <polygon points={`${cx - 9},195 ${cx + 9},195 ${cx},204`} fill="#455A64"/>
+      </g>
+    ))}
+
+    <text x="15" y="97" fontSize="9" fontWeight="700" fill="#A0784A">±0.000</text>
+    <line x1="258" y1="100" x2="258" y2="195" stroke="#78909C" strokeWidth="1" strokeDasharray="3,2"/>
+    <line x1="253" y1="100" x2="263" y2="100" stroke="#78909C" strokeWidth="1"/>
+    <line x1="253" y1="195" x2="263" y2="195" stroke="#78909C" strokeWidth="1"/>
+    <text x="268" y="152" fontSize="8" fill="#78909C">3–5 м</text>
+    <text x="140" y="42" textAnchor="middle" fontSize="8" fill="#90A4AE">↑ выпуски арматуры для ростверка</text>
+    <text x="140" y="222" textAnchor="middle" fontSize="10" fontWeight="700" fill="#546E7A">Ж/б забивные сваи 150×150 мм</text>
+  </svg>
+);
+
 const SVGPiles = (
   <svg viewBox="0 0 280 230" className="w-full max-w-[280px]">
     <defs>
@@ -234,6 +287,25 @@ const SVGSlab = (
 
 const foundations: FoundationType[] = [
   {
+    id: "piles-only",
+    name: "Ж/б забивные сваи",
+    subtitle: "Сваи 150×150 мм без ростверка",
+    badge: "Базовый элемент",
+    badgeColor: "bg-muted text-foreground border border-border",
+    depth: "3–5 м",
+    load: "до 10 т / свая",
+    pros: [
+      "Монтаж за несколько часов",
+      "Забиваются без земляных работ",
+      "Глубина до несущего слоя грунта",
+      "Рабочие выпуски арматуры для последующего ростверка",
+      "Подходит для любого типа грунта",
+      "Минимальная стоимость из всех вариантов",
+    ],
+    when: "Используется как начальный этап — забиваем сваи, затем монтируем ростверк поверх. Демонстрирует сам элемент конструктива без обвязки.",
+    svgContent: SVGPilesOnly,
+  },
+  {
     id: "piles",
     name: "Сваи + Ростверк",
     subtitle: "Ж/б забивные сваи 150×150 мм",
@@ -251,24 +323,6 @@ const foundations: FoundationType[] = [
     ],
     when: "Применяем во всех проектах как основной фундамент. Оптимален для Подмосковья — пучинистые грунты, высокий УГВ, торф.",
     svgContent: SVGPiles,
-  },
-  {
-    id: "strip",
-    name: "Ростверк ленточный",
-    subtitle: "Монолитный мелкозаглублённый",
-    badge: "Под заказ",
-    badgeColor: "bg-muted text-foreground border border-border",
-    depth: "0.4–0.8 м",
-    load: "по контуру стен",
-    pros: [
-      "Надёжная опора по периметру и осям",
-      "Монолитный бетон — долговечность 100+ лет",
-      "Равномерное распределение нагрузки",
-      "Подходит для плотных, непучинистых грунтов",
-      "Хорошо сочетается с подпольем",
-    ],
-    when: "Применяется на непучинистых и слабопучинистых грунтах без высокого УГВ. Требует выдержки бетона 28 дней.",
-    svgContent: SVGRostwerk,
   },
   {
     id: "slab",
@@ -295,9 +349,9 @@ export function FoundationSection() {
   const found = foundations.find((f) => f.id === active)!;
 
   return (
-    <section className="py-14 md:py-20 bg-muted/40 overflow-hidden">
+    <section className="py-10 md:py-14 bg-muted/40 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-7 md:mb-10">
           <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">
             Основание дома
           </span>

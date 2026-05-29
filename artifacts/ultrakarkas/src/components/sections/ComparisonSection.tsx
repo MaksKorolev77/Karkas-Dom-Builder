@@ -204,7 +204,7 @@ const scenarios = [
 
 export function ComparisonSection() {
   return (
-    <section className="py-14 md:py-20 bg-slate-950 text-white overflow-hidden relative">
+    <section className="py-10 md:py-14 bg-slate-950 text-white overflow-hidden relative">
       {/* Subtle grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"

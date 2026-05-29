@@ -197,9 +197,9 @@ export function WallSection() {
   const hoveredLayer = hoveredId ? layers.find(l => l.id === hoveredId) : null;
 
   return (
-    <section className="py-14 md:py-20 bg-muted/30 overflow-hidden">
+    <section className="py-10 md:py-14 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-7 md:mb-10">
           <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">
             Конструктив
           </span>

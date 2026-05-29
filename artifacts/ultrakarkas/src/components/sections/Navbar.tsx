@@ -11,6 +11,7 @@ const navLinks: NavLink[] = [
   { name: "Проекты", href: "/projects" },
   { name: "Комплектации", href: "/#packages", sectionId: "packages" },
   { name: "О нас", href: "/#about", sectionId: "about" },
+  { name: "Вакансии", href: "/vacancies" },
   { name: "Контакты", href: "/#contact", sectionId: "contact" },
 ];
 

@@ -178,13 +178,13 @@ export function HouseSchematic() {
   const zoneOpacity = (z: ZoneId, base = 1) => isDimmed(z) ? base * 0.3 : isActive(z) ? 1 : base;
 
   return (
-    <section ref={ref} className="py-14 md:py-20 bg-slate-950 overflow-hidden">
+    <section ref={ref} className="py-10 md:py-14 bg-slate-950 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-10 md:mb-12"
+          className="text-center max-w-3xl mx-auto mb-7 md:mb-10"
         >
           <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">
             Технология строительства
@@ -193,17 +193,18 @@ export function HouseSchematic() {
             Разрез каркасного дома
           </h2>
           <p className="text-base md:text-lg text-slate-400">
-            Нажмите на любую зону, чтобы узнать подробности конструктива
+            Нажмите на оранжевую точку или кнопку справа — узнайте состав каждого узла
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="max-w-5xl mx-auto"
-        >
-          <svg viewBox="0 0 900 560" className="w-full drop-shadow-2xl" style={{ maxHeight: 520 }}>
+        <div className="grid lg:grid-cols-5 gap-6 mt-4 items-start">
+          <div className="lg:col-span-3">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+          <svg viewBox="0 0 900 560" className="w-full drop-shadow-2xl rounded-xl overflow-hidden">
             <defs>
               {/* Blueprint grid */}
               <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
@@ -584,48 +585,93 @@ export function HouseSchematic() {
             <line x1={226} y1={200} x2={80} y2={258} stroke="#60a5fa" strokeWidth="0.8" strokeDasharray="2,2" opacity={isDimmed("walls") ? 0.1 : 0.6}/>
             <text x={76} y={258} textAnchor="end" fontSize="9" fill="#60a5fa" opacity={isDimmed("walls") ? 0.1 : 0.5}>Паро-</text>
             <text x={76} y={268} textAnchor="end" fontSize="9" fill="#60a5fa" opacity={isDimmed("walls") ? 0.1 : 0.5}>изоляция</text>
+
+            {/* ── PULSING CLICKABLE ZONE INDICATORS ── */}
+            {([
+              { zone: "roof" as ZoneId, cx: 450, cy: 62 },
+              { zone: "ceiling" as ZoneId, cx: 290, cy: 74 },
+              { zone: "walls" as ZoneId, cx: 188, cy: 225 },
+              { zone: "floor" as ZoneId, cx: 450, cy: 388 },
+              { zone: "foundation" as ZoneId, cx: 270, cy: 452 },
+            ]).map(({ zone, cx, cy }, i) => (
+              <g key={zone} onClick={() => handleZone(zone)} style={{ cursor: "pointer" }}>
+                {activeZone === null && (
+                  <>
+                    <circle cx={cx} cy={cy} r="10" fill="#f57a00" opacity="0.18">
+                      <animate attributeName="r" values="10;22;10" dur="2.4s" repeatCount="indefinite" begin={`${i * 0.5}s`}/>
+                      <animate attributeName="opacity" values="0.18;0.02;0.18" dur="2.4s" repeatCount="indefinite" begin={`${i * 0.5}s`}/>
+                    </circle>
+                    <circle cx={cx} cy={cy} r="7" fill="#f57a00" opacity="0.88">
+                      <animate attributeName="opacity" values="0.88;0.55;0.88" dur="2.4s" repeatCount="indefinite" begin={`${i * 0.5}s`}/>
+                    </circle>
+                    <circle cx={cx} cy={cy} r="3" fill="white" opacity="0.95"/>
+                  </>
+                )}
+                {isActive(zone) && (
+                  <>
+                    <circle cx={cx} cy={cy} r="11" fill="#f57a00" opacity="0.35"/>
+                    <circle cx={cx} cy={cy} r="7" fill="#f57a00" opacity="0.95"/>
+                    <circle cx={cx} cy={cy} r="3" fill="white" opacity="1"/>
+                  </>
+                )}
+              </g>
+            ))}
           </svg>
-        </motion.div>
+          </motion.div>
+          </div>
 
-        {/* Zone buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mt-6 mb-6">
-          {(Object.entries(ZONES) as [ZoneId, typeof ZONES[ZoneId]][]).map(([id, zone]) => (
-            <button
-              key={id}
-              onClick={() => handleZone(id)}
-              className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium border transition-all ${
-                isActive(id)
-                  ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/30"
-                  : "bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500 hover:text-white"
-              }`}
-            >
-              {zone.label}
-            </button>
-          ))}
-        </div>
+          <div className="lg:col-span-2">
+            <div className="lg:sticky lg:top-24 space-y-3">
+              <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4">
+                <p className="text-slate-400 text-[11px] uppercase tracking-wider font-semibold mb-3">
+                  Выберите зону конструктива
+                </p>
+                <div className="space-y-1.5">
+                  {(Object.entries(ZONES) as [ZoneId, typeof ZONES[ZoneId]][]).map(([id, zone]) => (
+                    <button
+                      key={id}
+                      onClick={() => handleZone(id)}
+                      className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium border transition-all flex items-center gap-3 ${
+                        isActive(id)
+                          ? "bg-primary/15 text-primary border-primary/40 shadow-sm"
+                          : "bg-slate-900/50 text-slate-300 border-slate-700/60 hover:border-slate-500 hover:text-white"
+                      }`}
+                    >
+                      <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: zone.color }}/>
+                      <span className="flex-1">{zone.label}</span>
+                      {isActive(id) && <span className="text-primary font-bold">›</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-        {/* Detail card */}
-        <div className="min-h-[180px]">
-          <AnimatePresence mode="wait">
-            {activeZone ? (
-              <ZoneCard
-                key={activeZone}
-                zone={activeZone}
-                foundType={activeZone === "foundation" ? foundationType : undefined}
-                setFoundType={activeZone === "foundation" ? setFoundationType : undefined}
-              />
-            ) : (
-              <motion.p
-                key="hint"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center text-slate-500 text-sm mt-8"
-              >
-                Кликните на зону на схеме или выберите кнопку выше
-              </motion.p>
-            )}
-          </AnimatePresence>
+              <AnimatePresence mode="wait">
+                {activeZone ? (
+                  <ZoneCard
+                    key={activeZone}
+                    zone={activeZone}
+                    foundType={activeZone === "foundation" ? foundationType : undefined}
+                    setFoundType={activeZone === "foundation" ? setFoundationType : undefined}
+                  />
+                ) : (
+                  <motion.div
+                    key="hint"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="bg-slate-800/30 border border-slate-700/30 rounded-2xl p-5 text-center"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-3">
+                      <span className="text-primary text-xl font-bold">↑</span>
+                    </div>
+                    <p className="text-slate-400 text-sm leading-relaxed">
+                      Нажмите на оранжевую точку или кнопку выше, чтобы узнать детали конструктива
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </div>
     </section>
