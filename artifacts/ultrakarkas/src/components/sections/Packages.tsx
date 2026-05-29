@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Check, Minus } from "lucide-react";
-import { motion } from "framer-motion";
+import { Check, Minus, Thermometer, Layers, Star, Zap } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
   { name: "Фундамент", econom: "Ж/б забивные сваи 150x150x3000", optimum: "Ж/б забивные сваи 150x150x3000", max: "Ж/б забивные сваи 150x150x3000" },
@@ -28,150 +28,330 @@ const features = [
   { name: "Подшив свесов", econom: false, optimum: "Пластиковые софиты", max: "Пластиковые софиты", highlight: "optimum" },
 ];
 
+interface PackageConfig {
+  id: string;
+  name: string;
+  price: string;
+  tagline: string;
+  description: string;
+  badge?: string;
+  energyClass: string;
+  energyColor: string;
+  wallR: number;
+  roofR: number;
+  floorR: number;
+  wallMm: number;
+  roofMm: number;
+  floorMm: number;
+  highlights: { icon: React.ReactNode; label: string; value: string }[];
+  exterior: string;
+  interior: string;
+  accentColor: string;
+}
+
+const packages: PackageConfig[] = [
+  {
+    id: "econom",
+    name: "Эконом",
+    price: "от 40 000 ₽/м²",
+    tagline: "Базовый тёплый контур",
+    description: "Полностью герметичный дом с утеплением 150 мм. Идеален для тех, кто хочет завершить внутреннюю отделку самостоятельно или поэтапно.",
+    energyClass: "C",
+    energyColor: "#f59e0b",
+    wallR: 3.75,
+    roofR: 5.0,
+    floorR: 5.0,
+    wallMm: 150,
+    roofMm: 200,
+    floorMm: 200,
+    exterior: "OSB 12 мм",
+    interior: "Без отделки",
+    accentColor: "#f59e0b",
+    highlights: [
+      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "150 мм ваты" },
+      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "3.75 м²·К/Вт" },
+      { icon: <Layers className="w-4 h-4"/>, label: "Кровля", value: "200 мм ваты" },
+      { icon: <Zap className="w-4 h-4"/>, label: "Каркас стен", value: "45×145 мм" },
+    ],
+  },
+  {
+    id: "optimum",
+    name: "Оптимум",
+    price: "от 50 000 ₽/м²",
+    tagline: "Золотой стандарт",
+    description: "Готовый дом с фасадом и внутренней отделкой. Перекрёстное утепление 200 мм, деревянный интерьер. Самый популярный выбор клиентов.",
+    badge: "ХИТ ПРОДАЖ",
+    energyClass: "B",
+    energyColor: "#22c55e",
+    wallR: 5.0,
+    roofR: 5.0,
+    floorR: 5.0,
+    wallMm: 200,
+    roofMm: 200,
+    floorMm: 200,
+    exterior: "Имитация бруса",
+    interior: "Имитация бруса",
+    accentColor: "#22c55e",
+    highlights: [
+      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "200 мм ваты" },
+      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "5.0 м²·К/Вт" },
+      { icon: <Star className="w-4 h-4"/>, label: "Фасад", value: "Имитация бруса" },
+      { icon: <Check className="w-4 h-4"/>, label: "Водостоки", value: "В комплекте" },
+    ],
+  },
+  {
+    id: "max",
+    name: "Максимум",
+    price: "от 60 000 ₽/м²",
+    tagline: "Премиум энергоэффективность",
+    description: "Высший уровень — 250 мм утеплителя, фиброцементный фасад, каркас из доски 45×190 мм. Минимальные потери тепла. Подходит для постоянного проживания.",
+    energyClass: "A+",
+    energyColor: "#10b981",
+    wallR: 6.25,
+    roofR: 6.25,
+    floorR: 6.25,
+    wallMm: 250,
+    roofMm: 250,
+    floorMm: 250,
+    exterior: "Фиброцемент. сайдинг",
+    interior: "OSB + Гипсокартон",
+    accentColor: "#10b981",
+    highlights: [
+      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "250 мм ваты" },
+      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "6.25 м²·К/Вт" },
+      { icon: <Star className="w-4 h-4"/>, label: "Фасад", value: "Фиброцемент НГ" },
+      { icon: <Zap className="w-4 h-4"/>, label: "Каркас стен", value: "45×190 мм" },
+    ],
+  },
+];
+
+function RValueBar({ label, value, max = 7 }: { label: string; value: number; max?: number }) {
+  const pct = Math.min((value / max) * 100, 100);
+  return (
+    <div className="flex items-center gap-3">
+      <div className="text-xs text-muted-foreground w-16 shrink-0">{label}</div>
+      <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+        <motion.div
+          className="h-full rounded-full bg-primary"
+          initial={{ width: 0 }}
+          animate={{ width: `${pct}%` }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        />
+      </div>
+      <div className="text-xs font-bold text-primary w-12 text-right">{value}</div>
+    </div>
+  );
+}
+
+function WallVisualizer({ mm, color }: { mm: number; color: string }) {
+  const layers = [
+    { label: "Отделка", w: 14, c: "#9a6830" },
+    { label: "OSB", w: 8, c: "#c9a076" },
+    { label: "Утеплитель", w: mm * 0.35, c: "#f5c87a" },
+    { label: "Парозащита", w: 3, c: "#8ab4d4" },
+    { label: "Отделка", w: 10, c: "#d4b896" },
+  ];
+  const total = layers.reduce((s, l) => s + l.w, 0);
+  return (
+    <div className="flex items-stretch h-12 rounded-lg overflow-hidden border border-border shadow-sm" style={{ width: "100%" }}>
+      {layers.map((l, i) => (
+        <div
+          key={i}
+          className="flex items-center justify-center text-[8px] font-medium text-black/40"
+          style={{
+            width: `${(l.w / total) * 100}%`,
+            background: l.c,
+            minWidth: l.label === "Утеплитель" ? 40 : undefined,
+          }}
+        >
+          {l.label === "Утеплитель" ? `${mm} мм` : ""}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function Packages() {
   const [showTable, setShowTable] = useState(false);
+  const [activeTab, setActiveTab] = useState("optimum");
+
+  const pkg = packages.find(p => p.id === activeTab)!;
 
   return (
     <section id="packages" className="py-14 md:py-20 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6">
+          <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">
             Комплектации
+          </span>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-4">
+            Выберите свой уровень
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Три тщательно продуманных варианта. От базового теплого контура до премиального дома, готового к финишной отделке.
+          <p className="text-base md:text-lg text-muted-foreground">
+            Три тщательно продуманных варианта — от базового тёплого контура до премиального энергоэффективного дома.
           </p>
         </div>
 
-        <Tabs defaultValue="optimum" className="w-full max-w-4xl mx-auto mb-12">
-          <TabsList className="grid w-full grid-cols-3 h-auto p-1 bg-card border border-border shadow-sm rounded-xl">
-            <TabsTrigger value="econom" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Эконом</TabsTrigger>
-            <TabsTrigger value="optimum" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Оптимум</TabsTrigger>
-            <TabsTrigger value="max" className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Максимум</TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-5xl mx-auto mb-12">
+          <TabsList className="grid w-full grid-cols-3 h-auto p-1 bg-card border border-border shadow-sm rounded-xl mb-0">
+            {packages.map(p => (
+              <TabsTrigger
+                key={p.id}
+                value={p.id}
+                className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground relative"
+              >
+                {p.name}
+                {p.badge && (
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold bg-primary text-white px-2 py-0.5 rounded-full whitespace-nowrap shadow">
+                    {p.badge}
+                  </span>
+                )}
+              </TabsTrigger>
+            ))}
           </TabsList>
-          
-          <div className="mt-8 bg-card rounded-2xl border border-border shadow-md overflow-hidden">
-            <TabsContent value="econom" className="p-0 m-0">
-              <div className="p-6 sm:p-8 md:p-10 border-b border-border">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-serif font-bold mb-2">Эконом</h3>
-                    <p className="text-muted-foreground">Базовый тёплый контур. Идеально для тех, кто хочет завершить отделку самостоятельно.</p>
-                  </div>
-                  <div className="text-left md:text-right">
-                    <div className="text-sm text-muted-foreground mb-1">Стоимость</div>
-                    <div className="text-3xl font-bold text-primary">от 40 000 ₽/м²</div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
-                <h4 className="font-semibold mb-4">Ключевые особенности:</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Наружная отделка: <strong>OSB 12 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Утепление стен: <strong>150 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Каркас: <strong>45x145 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3 text-muted-foreground">
-                    <Minus className="w-5 h-5 shrink-0 mt-0.5" />
-                    <span>Без внутренней отделки и покрытия пола</span>
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
 
-            <TabsContent value="optimum" className="p-0 m-0">
-              <div className="p-6 sm:p-8 md:p-10 border-b border-border relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-bl-lg">
-                  ХИТ ПРОДАЖ
-                </div>
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-serif font-bold mb-2">Оптимум</h3>
-                    <p className="text-muted-foreground">Золотая середина цены и набора опций. Улучшенное утепление и готовый фасад.</p>
+          {packages.map(p => (
+            <TabsContent key={p.id} value={p.id} className="mt-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={p.id}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="bg-card rounded-2xl border border-border shadow-md overflow-hidden mt-4"
+                >
+                  {/* Header */}
+                  <div className="p-6 md:p-8 border-b border-border">
+                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-3">
+                          <h3 className="text-2xl md:text-3xl font-serif font-bold">{p.name}</h3>
+                          {/* Energy class badge */}
+                          <div
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-bold"
+                            style={{ background: p.energyColor }}
+                          >
+                            <Thermometer className="w-3.5 h-3.5"/>
+                            Класс {p.energyClass}
+                          </div>
+                        </div>
+                        <p className="text-sm font-semibold text-primary mb-1">{p.tagline}</p>
+                        <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">{p.description}</p>
+                      </div>
+                      <div className="md:text-right shrink-0">
+                        <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Стоимость строительства</div>
+                        <div className="text-3xl md:text-4xl font-bold text-primary">{p.price}</div>
+                        <div className="text-xs text-muted-foreground mt-1">под ключ, включая все работы</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-left md:text-right">
-                    <div className="text-sm text-muted-foreground mb-1">Стоимость</div>
-                    <div className="text-3xl font-bold text-primary">от 50 000 ₽/м²</div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
-                <h4 className="font-semibold mb-4">Отличия от комплектации Эконом:</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Готовый фасад: <strong>Имитация бруса</strong> (карельский профиль)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Внутренняя отделка: <strong>Имитация бруса</strong> + пол <strong>Фанера 18 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Усиленное утепление: <strong>Перекрестное 150+50=200 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Дополнительно: <strong>Водостоки, снегозадержатели, софиты</strong></span>
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
 
-            <TabsContent value="max" className="p-0 m-0">
-              <div className="p-6 sm:p-8 md:p-10 border-b border-border">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
-                  <div>
-                    <h3 className="text-2xl font-serif font-bold mb-2">Максимум</h3>
-                    <p className="text-muted-foreground">Премиальные материалы и усиленный каркас. Максимальная энергоэффективность.</p>
+                  {/* Body */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    {/* Left: specs */}
+                    <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-border">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-5">Характеристики</h4>
+
+                      {/* Highlights grid */}
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {p.highlights.map((h, i) => (
+                          <div key={i} className="bg-muted/50 rounded-xl p-3">
+                            <div className="flex items-center gap-1.5 text-primary mb-1">{h.icon}<span className="text-xs text-muted-foreground">{h.label}</span></div>
+                            <div className="text-sm font-bold text-foreground">{h.value}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Wall visualizer */}
+                      <div className="mb-4">
+                        <div className="text-xs text-muted-foreground mb-2 font-medium">Пирог стены — схема в масштабе</div>
+                        <WallVisualizer mm={p.wallMm} color={p.accentColor}/>
+                      </div>
+
+                      {/* Materials */}
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between items-center py-1.5 border-b border-border/50">
+                          <span className="text-muted-foreground">Наружная отделка</span>
+                          <span className="font-semibold text-foreground">{p.exterior}</span>
+                        </div>
+                        <div className="flex justify-between items-center py-1.5 border-b border-border/50">
+                          <span className="text-muted-foreground">Внутренняя отделка</span>
+                          <span className="font-semibold text-foreground">{p.interior}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: R-value bars */}
+                    <div className="p-6 md:p-8">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-5">Тепловые показатели (R, м²·°С/Вт)</h4>
+
+                      <div className="space-y-4 mb-6">
+                        <RValueBar label="Стены" value={p.wallR}/>
+                        <RValueBar label="Кровля" value={p.roofR}/>
+                        <RValueBar label="Пол" value={p.floorR}/>
+                      </div>
+
+                      {/* Comparison note */}
+                      <div className="bg-muted/50 rounded-xl p-4 mb-4">
+                        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Требования норм</div>
+                        <div className="space-y-2">
+                          {[
+                            { label: "СНиП Москва (стены)", norm: 3.13 },
+                            { label: "СНиП Москва (кровля)", norm: 4.68 },
+                          ].map(({ label, norm }) => (
+                            <div key={label} className="flex items-center gap-2 text-xs">
+                              <div className="w-2 h-2 rounded-full bg-muted-foreground/40 shrink-0"/>
+                              <span className="text-muted-foreground">{label}:</span>
+                              <span className="font-semibold">{norm}</span>
+                              <span className="text-primary font-bold ml-auto">
+                                +{((p.wallR / norm - 1) * 100).toFixed(0)}% к норме
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Energy class visual */}
+                      <div className="bg-muted/30 rounded-xl p-4">
+                        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Энергетический класс</div>
+                        <div className="flex gap-1.5">
+                          {["D", "C", "B", "A+"].map((cls, i) => {
+                            const isActive = cls === p.energyClass;
+                            const colors = ["#ef4444", "#f59e0b", "#22c55e", "#10b981"];
+                            return (
+                              <div
+                                key={cls}
+                                className="flex-1 rounded-lg py-2 text-center text-xs font-bold transition-all"
+                                style={{
+                                  background: isActive ? colors[i] : "transparent",
+                                  color: isActive ? "white" : "#94a3b8",
+                                  border: `1.5px solid ${isActive ? colors[i] : "#e2e8f0"}`,
+                                  transform: isActive ? "scale(1.08)" : "scale(1)",
+                                }}
+                              >
+                                {cls}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-left md:text-right">
-                    <div className="text-sm text-muted-foreground mb-1">Стоимость</div>
-                    <div className="text-3xl font-bold text-primary">от 60 000 ₽/м²</div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-muted/40 p-6 sm:p-8 md:p-10">
-                <h4 className="font-semibold mb-4">Отличия от комплектации Оптимум:</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Премиум фасад: <strong>Фиброцементный сайдинг</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Отделка под чистовую: <strong>OSB + Гипсокартон</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Максимальное утепление: Стены <strong>250 мм</strong>, пол/кровля <strong>250 мм</strong></span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <span>Усиленный каркас стен: <strong>Доска 45x190 мм</strong></span>
-                  </li>
-                </ul>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </TabsContent>
-          </div>
+          ))}
         </Tabs>
 
         <div className="text-center">
-          <button 
+          <button
             onClick={() => setShowTable(!showTable)}
             className="text-primary font-medium hover:underline inline-flex items-center gap-2"
           >
             {showTable ? "Скрыть подробное сравнение" : "Показать подробную таблицу сравнения"}
-            <motion.svg 
-              animate={{ rotate: showTable ? 180 : 0 }} 
+            <motion.svg
+              animate={{ rotate: showTable ? 180 : 0 }}
               width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
             >
               <path d="m6 9 6 6 6-6"/>
@@ -180,7 +360,7 @@ export function Packages() {
         </div>
 
         {showTable && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             className="mt-8 overflow-x-auto"
@@ -199,23 +379,17 @@ export function Packages() {
                   {features.map((f, i) => (
                     <TableRow key={i} className="hover:bg-muted/30">
                       <TableCell className="font-medium">{f.name}</TableCell>
-                      
-                      <TableCell className={`text-center text-sm ${f.econom === false ? 'text-muted-foreground' : ''}`}>
-                        {f.econom === false ? <Minus className="w-4 h-4 mx-auto opacity-50" /> : 
-                         f.econom === true ? <Check className="w-4 h-4 mx-auto text-primary" /> : 
-                         f.econom}
+                      <TableCell className={`text-center text-sm ${f.econom === false ? "text-muted-foreground" : ""}`}>
+                        {f.econom === false ? <Minus className="w-4 h-4 mx-auto opacity-50"/> :
+                         f.econom === true ? <Check className="w-4 h-4 mx-auto text-primary"/> : f.econom}
                       </TableCell>
-                      
-                      <TableCell className={`text-center text-sm bg-primary/5 ${f.highlight === 'optimum' || f.highlight === 'all' ? 'font-medium text-primary' : ''}`}>
-                        {f.optimum === false ? <Minus className="w-4 h-4 mx-auto opacity-50" /> : 
-                         f.optimum === true ? <Check className="w-4 h-4 mx-auto text-primary" /> : 
-                         f.optimum}
+                      <TableCell className={`text-center text-sm bg-primary/5 ${f.highlight === "optimum" || f.highlight === "all" ? "font-medium text-primary" : ""}`}>
+                        {f.optimum === false ? <Minus className="w-4 h-4 mx-auto opacity-50"/> :
+                         f.optimum === true ? <Check className="w-4 h-4 mx-auto text-primary"/> : f.optimum}
                       </TableCell>
-                      
-                      <TableCell className={`text-center text-sm ${f.highlight === 'max' || f.highlight === 'all' ? 'font-medium text-primary' : ''}`}>
-                        {f.max === false ? <Minus className="w-4 h-4 mx-auto opacity-50" /> : 
-                         f.max === true ? <Check className="w-4 h-4 mx-auto text-primary" /> : 
-                         f.max}
+                      <TableCell className={`text-center text-sm ${f.highlight === "max" || f.highlight === "all" ? "font-medium text-primary" : ""}`}>
+                        {f.max === false ? <Minus className="w-4 h-4 mx-auto opacity-50"/> :
+                         f.max === true ? <Check className="w-4 h-4 mx-auto text-primary"/> : f.max}
                       </TableCell>
                     </TableRow>
                   ))}

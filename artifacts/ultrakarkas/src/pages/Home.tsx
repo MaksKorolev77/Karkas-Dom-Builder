@@ -2,8 +2,10 @@ import { Navbar } from "@/components/sections/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { TrustStats } from "@/components/sections/TrustStats";
 import { Projects } from "@/components/sections/Projects";
+import { HouseSchematic } from "@/components/sections/HouseSchematic";
 import { Packages } from "@/components/sections/Packages";
 import { WallSection } from "@/components/sections/WallSection";
+import { RoofSection } from "@/components/sections/RoofSection";
 import { FoundationSection } from "@/components/sections/FoundationSection";
 import { Process } from "@/components/sections/Process";
 import { Services } from "@/components/sections/Services";
@@ -21,8 +23,10 @@ export default function Home() {
         <Hero />
         <TrustStats />
         <Projects />
+        <HouseSchematic />
         <Packages />
         <WallSection />
+        <RoofSection />
         <FoundationSection />
         <Process />
         <Services />
