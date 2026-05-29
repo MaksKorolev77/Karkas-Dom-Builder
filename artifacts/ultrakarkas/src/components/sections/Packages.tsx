@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Check, Minus, Thermometer, Layers, Star, Zap } from "lucide-react";
+import { Check, Minus, Layers, Star, Droplets, Flame, Wind, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const features = [
@@ -18,7 +18,7 @@ const features = [
   { name: "Наружная отделка", econom: "OSB 12 мм", optimum: "Имитация бруса", max: "Фиброцементный сайдинг", highlight: "all" },
   { name: "Отделка потолка", econom: false, optimum: "OSB 9 мм", max: "OSB 9 мм", highlight: "optimum" },
   { name: "Утепление потолка", econom: "Каменная вата 200 мм", optimum: "Каменная вата 200 мм", max: "Каменная вата 250 мм", highlight: "max" },
-  { name: "Окна", econom: "Пластиковые ПВХ 70 Рехау", optimum: "Пластиковые ПВХ 70 Рехау", max: "Пластиковые ПВХ 70 Рехау" },
+  { name: "Окна", econom: "ПВХ 70 Рехау", optimum: "ПВХ 70 Рехау", max: "ПВХ 70 Рехау" },
   { name: "Дверь", econom: "Металлическая с терморазрывом 100 мм", optimum: "Металлическая с терморазрывом 100 мм", max: "Металлическая с терморазрывом 100 мм" },
   { name: "Стропило", econom: "Сухая доска 45×190 мм", optimum: "Сухая доска 45×190 мм", max: "Сухая доска 45×190 мм" },
   { name: "Кровля", econom: "Металлочерепица 0.5 мм", optimum: "Металлочерепица 0.5 мм", max: "Металлочерепица 0.5 мм" },
@@ -28,154 +28,129 @@ const features = [
   { name: "Подшив свесов", econom: false, optimum: "Пластиковые софиты", max: "Пластиковые софиты", highlight: "optimum" },
 ];
 
-interface PackageConfig {
-  id: string;
-  name: string;
-  price: string;
-  tagline: string;
-  description: string;
-  badge?: string;
-  energyClass: string;
-  energyColor: string;
-  wallR: number;
-  roofR: number;
-  floorR: number;
-  wallMm: number;
-  roofMm: number;
-  floorMm: number;
-  highlights: { icon: React.ReactNode; label: string; value: string }[];
-  exterior: string;
-  interior: string;
-  accentColor: string;
-}
+interface WallLayer { label: string; w: number; color: string; }
 
-const packages: PackageConfig[] = [
-  {
-    id: "econom",
-    name: "Эконом",
-    price: "от 40 000 ₽/м²",
-    tagline: "Базовый тёплый контур",
-    description: "Полностью герметичный дом с утеплением 150 мм. Идеален для тех, кто хочет завершить внутреннюю отделку самостоятельно или поэтапно.",
-    energyClass: "C",
-    energyColor: "#f59e0b",
-    wallR: 3.75,
-    roofR: 5.0,
-    floorR: 5.0,
-    wallMm: 150,
-    roofMm: 200,
-    floorMm: 200,
-    exterior: "OSB 12 мм",
-    interior: "Без отделки",
-    accentColor: "#f59e0b",
-    highlights: [
-      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "150 мм ваты" },
-      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "3.75 м²·К/Вт" },
-      { icon: <Layers className="w-4 h-4"/>, label: "Кровля", value: "200 мм ваты" },
-      { icon: <Zap className="w-4 h-4"/>, label: "Каркас стен", value: "45×145 мм" },
-    ],
-  },
-  {
-    id: "optimum",
-    name: "Оптимум",
-    price: "от 50 000 ₽/м²",
-    tagline: "Золотой стандарт",
-    description: "Готовый дом с фасадом и внутренней отделкой. Перекрёстное утепление 200 мм, деревянный интерьер. Самый популярный выбор клиентов.",
-    badge: "ХИТ ПРОДАЖ",
-    energyClass: "B",
-    energyColor: "#22c55e",
-    wallR: 5.0,
-    roofR: 5.0,
-    floorR: 5.0,
-    wallMm: 200,
-    roofMm: 200,
-    floorMm: 200,
-    exterior: "Имитация бруса",
-    interior: "Имитация бруса",
-    accentColor: "#22c55e",
-    highlights: [
-      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "200 мм ваты" },
-      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "5.0 м²·К/Вт" },
-      { icon: <Star className="w-4 h-4"/>, label: "Фасад", value: "Имитация бруса" },
-      { icon: <Check className="w-4 h-4"/>, label: "Водостоки", value: "В комплекте" },
-    ],
-  },
-  {
-    id: "max",
-    name: "Максимум",
-    price: "от 60 000 ₽/м²",
-    tagline: "Премиум энергоэффективность",
-    description: "Высший уровень — 250 мм утеплителя, фиброцементный фасад, каркас из доски 45×190 мм. Минимальные потери тепла. Подходит для постоянного проживания.",
-    energyClass: "A+",
-    energyColor: "#10b981",
-    wallR: 6.25,
-    roofR: 6.25,
-    floorR: 6.25,
-    wallMm: 250,
-    roofMm: 250,
-    floorMm: 250,
-    exterior: "Фиброцемент. сайдинг",
-    interior: "OSB + Гипсокартон",
-    accentColor: "#10b981",
-    highlights: [
-      { icon: <Layers className="w-4 h-4"/>, label: "Стены", value: "250 мм ваты" },
-      { icon: <Thermometer className="w-4 h-4"/>, label: "R стен", value: "6.25 м²·К/Вт" },
-      { icon: <Star className="w-4 h-4"/>, label: "Фасад", value: "Фиброцемент НГ" },
-      { icon: <Zap className="w-4 h-4"/>, label: "Каркас стен", value: "45×190 мм" },
-    ],
-  },
-];
-
-function RValueBar({ label, value, max = 7 }: { label: string; value: number; max?: number }) {
-  const pct = Math.min((value / max) * 100, 100);
-  return (
-    <div className="flex items-center gap-3">
-      <div className="text-xs text-muted-foreground w-16 shrink-0">{label}</div>
-      <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
-        <motion.div
-          className="h-full rounded-full bg-primary"
-          initial={{ width: 0 }}
-          animate={{ width: `${pct}%` }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        />
-      </div>
-      <div className="text-xs font-bold text-primary w-12 text-right">{value}</div>
-    </div>
-  );
-}
-
-function WallVisualizer({ mm, color }: { mm: number; color: string }) {
-  const layers = [
-    { label: "Отделка", w: 14, c: "#9a6830" },
-    { label: "OSB", w: 8, c: "#c9a076" },
-    { label: "Утеплитель", w: mm * 0.35, c: "#f5c87a" },
-    { label: "Парозащита", w: 3, c: "#8ab4d4" },
-    { label: "Отделка", w: 10, c: "#d4b896" },
-  ];
+function MiniWallPie({ layers }: { layers: WallLayer[] }) {
   const total = layers.reduce((s, l) => s + l.w, 0);
   return (
-    <div className="flex items-stretch h-12 rounded-lg overflow-hidden border border-border shadow-sm" style={{ width: "100%" }}>
+    <div className="flex items-stretch h-10 rounded-lg overflow-hidden border border-border/60 w-full">
       {layers.map((l, i) => (
         <div
           key={i}
-          className="flex items-center justify-center text-[8px] font-medium text-black/40"
-          style={{
-            width: `${(l.w / total) * 100}%`,
-            background: l.c,
-            minWidth: l.label === "Утеплитель" ? 40 : undefined,
-          }}
+          className="flex items-center justify-center text-[7px] font-bold text-black/30 relative group"
+          style={{ width: `${(l.w / total) * 100}%`, background: l.color, minWidth: 6 }}
+          title={`${l.label} ${l.w}мм`}
         >
-          {l.label === "Утеплитель" ? `${mm} мм` : ""}
+          {l.w >= 50 && <span className="absolute inset-0 flex items-center justify-center text-[8px] text-black/40">{l.w}</span>}
         </div>
       ))}
     </div>
   );
 }
 
+const packageData = {
+  econom: {
+    id: "econom",
+    name: "Эконом",
+    price: "от 40 000 ₽/м²",
+    tagline: "Базовый тёплый контур",
+    description: "Полностью герметичный дом с утеплением 150 мм — готов к самостоятельной финишной отделке. Экономия на старте, завершение по собственному графику.",
+    badge: null as string | null,
+    wallMm: 150,
+    wallLayers: [
+      { label: "OSB", w: 12, color: "#d4b896" },
+      { label: "Мембрана", w: 6, color: "#8ab4d4" },
+      { label: "Вата", w: 150, color: "#f5c87a" },
+      { label: "Пароизоляция", w: 4, color: "#60a5fa" },
+      { label: "OSB", w: 9, color: "#dcc898" },
+    ] as WallLayer[],
+    perks: [
+      { icon: Layers, text: "Каркас 45×145 мм — несущая конструкция дома" },
+      { icon: Wind, text: "Ветрозащита Tyvek — без продувания снаружи" },
+      { icon: Flame, text: "Каменная вата 150 мм — не горит, не гниёт" },
+      { icon: Droplets, text: "Пароизоляция — стены не намокают изнутри" },
+    ],
+    materials: [
+      { label: "Фасад", value: "OSB-3 12 мм (под отделку)" },
+      { label: "Утепление стен", value: "Каменная вата 150 мм" },
+      { label: "Утепление пола", value: "Каменная вата 200 мм" },
+      { label: "Утепление кровли", value: "Каменная вата 200 мм" },
+      { label: "Интерьер", value: "Без отделки" },
+    ],
+  },
+  optimum: {
+    id: "optimum",
+    name: "Оптимум",
+    price: "от 50 000 ₽/м²",
+    tagline: "Готов к жизни сразу",
+    description: "Полностью отделанный дом — заезжай и живи. Деревянный фасад, деревянный интерьер, перекрёстное утепление 200 мм. Самый популярный выбор клиентов.",
+    badge: "ХИТ ПРОДАЖ",
+    wallMm: 200,
+    wallLayers: [
+      { label: "Имит. бруса", w: 20, color: "#a0784a" },
+      { label: "Вент. зазор", w: 8, color: "#e8e0d4" },
+      { label: "Мембрана", w: 4, color: "#8ab4d4" },
+      { label: "OSB", w: 9, color: "#d4b896" },
+      { label: "Вата", w: 200, color: "#f5c87a" },
+      { label: "Паро", w: 4, color: "#60a5fa" },
+      { label: "Зазор", w: 40, color: "#f0ece4" },
+      { label: "Дерево", w: 15, color: "#c9a876" },
+    ] as WallLayer[],
+    perks: [
+      { icon: Star, text: "Имитация бруса снаружи — готовый фасад" },
+      { icon: Layers, text: "Перекрёстный каркас — нет мостиков холода" },
+      { icon: Flame, text: "Каменная вата 200 мм — вдвое теплее Эконом" },
+      { icon: Check, text: "Водостоки и снегозадержатели в комплекте" },
+    ],
+    materials: [
+      { label: "Фасад", value: "Имитация бруса (карельский профиль)" },
+      { label: "Утепление стен", value: "Каменная вата 200 мм (перекрёстный)" },
+      { label: "Утепление пола", value: "Каменная вата 200 мм" },
+      { label: "Утепление кровли", value: "Каменная вата 200 мм" },
+      { label: "Интерьер", value: "Имитация бруса + пол фанера 18 мм" },
+    ],
+  },
+  max: {
+    id: "max",
+    name: "Максимум",
+    price: "от 60 000 ₽/м²",
+    tagline: "Премиум материалы",
+    description: "Максимальное утепление 250 мм, негорючий фиброцементный фасад, усиленный каркас 45×190 мм. Минимальные теплопотери, максимальный ресурс.",
+    badge: null as string | null,
+    wallMm: 250,
+    wallLayers: [
+      { label: "Фиброцемент", w: 8, color: "#7a8898" },
+      { label: "Вент. зазор", w: 8, color: "#e8e0d4" },
+      { label: "Мембрана", w: 4, color: "#8ab4d4" },
+      { label: "OSB", w: 12, color: "#d4b896" },
+      { label: "Вата", w: 250, color: "#f5c87a" },
+      { label: "Паро", w: 4, color: "#60a5fa" },
+      { label: "Зазор", w: 50, color: "#f0ece4" },
+      { label: "ГКЛ", w: 21, color: "#e8e8e8" },
+    ] as WallLayer[],
+    perks: [
+      { icon: Flame, text: "Фиброцемент НГ — негорючий, 50+ лет службы" },
+      { icon: Layers, text: "Каркас 45×190 мм — усиленная конструкция" },
+      { icon: Zap, text: "Каменная вата 250 мм — рекордное утепление" },
+      { icon: Star, text: "OSB + ГКЛ — идеально под любую отделку" },
+    ],
+    materials: [
+      { label: "Фасад", value: "Фиброцементный сайдинг (НГ)" },
+      { label: "Утепление стен", value: "Каменная вата 250 мм (перекрёстный)" },
+      { label: "Утепление пола", value: "Каменная вата 250 мм" },
+      { label: "Утепление кровли", value: "Каменная вата 250 мм" },
+      { label: "Интерьер", value: "OSB + Гипсокартон (под чистовую)" },
+    ],
+  },
+};
+
+type PkgId = "econom" | "optimum" | "max";
+
 export function Packages() {
   const [showTable, setShowTable] = useState(false);
-  const [activeTab, setActiveTab] = useState("optimum");
+  const [activeTab, setActiveTab] = useState<PkgId>("optimum");
 
-  const pkg = packages.find(p => p.id === activeTab)!;
+  const pkg = packageData[activeTab];
 
   return (
     <section id="packages" className="py-14 md:py-20 bg-background">
@@ -188,157 +163,136 @@ export function Packages() {
             Выберите свой уровень
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Три тщательно продуманных варианта — от базового тёплого контура до премиального энергоэффективного дома.
+            Три варианта — от базового тёплого контура до премиального дома под ключ.
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-5xl mx-auto mb-12">
-          <TabsList className="grid w-full grid-cols-3 h-auto p-1 bg-card border border-border shadow-sm rounded-xl mb-0">
-            {packages.map(p => (
-              <TabsTrigger
-                key={p.id}
-                value={p.id}
-                className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground relative"
-              >
-                {p.name}
-                {p.badge && (
-                  <span className="absolute -top-2 left-1/2 -translate-x-1/2 text-[9px] font-bold bg-primary text-white px-2 py-0.5 rounded-full whitespace-nowrap shadow">
-                    {p.badge}
-                  </span>
-                )}
-              </TabsTrigger>
-            ))}
+        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as PkgId)} className="w-full max-w-5xl mx-auto mb-12">
+          <TabsList className="grid w-full grid-cols-3 h-auto p-1 bg-card border border-border shadow-sm rounded-xl">
+            {(["econom", "optimum", "max"] as PkgId[]).map((id) => {
+              const p = packageData[id];
+              return (
+                <TabsTrigger
+                  key={id}
+                  value={id}
+                  className="py-3 text-sm sm:text-base md:text-lg rounded-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground relative"
+                >
+                  {p.name}
+                  {p.badge && (
+                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-bold bg-primary text-white px-2 py-0.5 rounded-full shadow whitespace-nowrap">
+                      {p.badge}
+                    </span>
+                  )}
+                </TabsTrigger>
+              );
+            })}
           </TabsList>
 
-          {packages.map(p => (
-            <TabsContent key={p.id} value={p.id} className="mt-0">
+          {(["econom", "optimum", "max"] as PkgId[]).map((id) => (
+            <TabsContent key={id} value={id} className="mt-4">
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={p.id}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="bg-card rounded-2xl border border-border shadow-md overflow-hidden mt-4"
-                >
-                  {/* Header */}
-                  <div className="p-6 md:p-8 border-b border-border">
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <h3 className="text-2xl md:text-3xl font-serif font-bold">{p.name}</h3>
-                          {/* Energy class badge */}
-                          <div
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-sm font-bold"
-                            style={{ background: p.energyColor }}
-                          >
-                            <Thermometer className="w-3.5 h-3.5"/>
-                            Класс {p.energyClass}
-                          </div>
+                {activeTab === id && (
+                  <motion.div
+                    key={id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="bg-card rounded-2xl border border-border shadow-md overflow-hidden"
+                  >
+                    {/* Header */}
+                    <div className="p-6 md:p-8 border-b border-border bg-gradient-to-r from-muted/30 to-transparent">
+                      <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                        <div className="flex-1">
+                          <h3 className="text-2xl md:text-3xl font-serif font-bold mb-1">{pkg.name}</h3>
+                          <p className="text-sm font-bold text-primary mb-2">{pkg.tagline}</p>
+                          <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">{pkg.description}</p>
                         </div>
-                        <p className="text-sm font-semibold text-primary mb-1">{p.tagline}</p>
-                        <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">{p.description}</p>
-                      </div>
-                      <div className="md:text-right shrink-0">
-                        <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Стоимость строительства</div>
-                        <div className="text-3xl md:text-4xl font-bold text-primary">{p.price}</div>
-                        <div className="text-xs text-muted-foreground mt-1">под ключ, включая все работы</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Body */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                    {/* Left: specs */}
-                    <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-border">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-5">Характеристики</h4>
-
-                      {/* Highlights grid */}
-                      <div className="grid grid-cols-2 gap-3 mb-6">
-                        {p.highlights.map((h, i) => (
-                          <div key={i} className="bg-muted/50 rounded-xl p-3">
-                            <div className="flex items-center gap-1.5 text-primary mb-1">{h.icon}<span className="text-xs text-muted-foreground">{h.label}</span></div>
-                            <div className="text-sm font-bold text-foreground">{h.value}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Wall visualizer */}
-                      <div className="mb-4">
-                        <div className="text-xs text-muted-foreground mb-2 font-medium">Пирог стены — схема в масштабе</div>
-                        <WallVisualizer mm={p.wallMm} color={p.accentColor}/>
-                      </div>
-
-                      {/* Materials */}
-                      <div className="space-y-2 text-sm">
-                        <div className="flex justify-between items-center py-1.5 border-b border-border/50">
-                          <span className="text-muted-foreground">Наружная отделка</span>
-                          <span className="font-semibold text-foreground">{p.exterior}</span>
-                        </div>
-                        <div className="flex justify-between items-center py-1.5 border-b border-border/50">
-                          <span className="text-muted-foreground">Внутренняя отделка</span>
-                          <span className="font-semibold text-foreground">{p.interior}</span>
+                        <div className="md:text-right shrink-0">
+                          <div className="text-xs text-muted-foreground mb-1 uppercase tracking-wider">Стоимость</div>
+                          <div className="text-3xl md:text-4xl font-bold text-primary">{pkg.price}</div>
+                          <div className="text-xs text-muted-foreground mt-1">под ключ, включая все работы</div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Right: R-value bars */}
-                    <div className="p-6 md:p-8">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-5">Тепловые показатели (R, м²·°С/Вт)</h4>
+                    {/* Body */}
+                    <div className="grid grid-cols-1 md:grid-cols-2">
+                      {/* Left: wall visualizer + materials */}
+                      <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-border">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">Пирог стены в масштабе</h4>
+                        <MiniWallPie layers={pkg.wallLayers}/>
 
-                      <div className="space-y-4 mb-6">
-                        <RValueBar label="Стены" value={p.wallR}/>
-                        <RValueBar label="Кровля" value={p.roofR}/>
-                        <RValueBar label="Пол" value={p.floorR}/>
-                      </div>
+                        <div className="flex items-center justify-between mt-2 mb-5 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-blue-400 inline-block"/>Улица</span>
+                          <span className="font-bold text-foreground">{pkg.wallMm} мм утеплителя</span>
+                          <span className="flex items-center gap-1">Жильё<span className="w-2 h-2 rounded-full bg-orange-400 inline-block"/></span>
+                        </div>
 
-                      {/* Comparison note */}
-                      <div className="bg-muted/50 rounded-xl p-4 mb-4">
-                        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">Требования норм</div>
-                        <div className="space-y-2">
-                          {[
-                            { label: "СНиП Москва (стены)", norm: 3.13 },
-                            { label: "СНиП Москва (кровля)", norm: 4.68 },
-                          ].map(({ label, norm }) => (
-                            <div key={label} className="flex items-center gap-2 text-xs">
-                              <div className="w-2 h-2 rounded-full bg-muted-foreground/40 shrink-0"/>
-                              <span className="text-muted-foreground">{label}:</span>
-                              <span className="font-semibold">{norm}</span>
-                              <span className="text-primary font-bold ml-auto">
-                                +{((p.wallR / norm - 1) * 100).toFixed(0)}% к норме
-                              </span>
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Материалы</h4>
+                        <div className="space-y-1.5">
+                          {pkg.materials.map((m) => (
+                            <div key={m.label} className="flex items-center justify-between py-1.5 border-b border-border/40 last:border-0">
+                              <span className="text-xs text-muted-foreground">{m.label}</span>
+                              <span className="text-xs font-semibold text-foreground text-right ml-4">{m.value}</span>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      {/* Energy class visual */}
-                      <div className="bg-muted/30 rounded-xl p-4">
-                        <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-3">Энергетический класс</div>
-                        <div className="flex gap-1.5">
-                          {["D", "C", "B", "A+"].map((cls, i) => {
-                            const isActive = cls === p.energyClass;
-                            const colors = ["#ef4444", "#f59e0b", "#22c55e", "#10b981"];
+                      {/* Right: perks */}
+                      <div className="p-6 md:p-8">
+                        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">Что получаете</h4>
+                        <div className="space-y-3">
+                          {pkg.perks.map((perk, i) => {
+                            const Icon = perk.icon;
                             return (
-                              <div
-                                key={cls}
-                                className="flex-1 rounded-lg py-2 text-center text-xs font-bold transition-all"
-                                style={{
-                                  background: isActive ? colors[i] : "transparent",
-                                  color: isActive ? "white" : "#94a3b8",
-                                  border: `1.5px solid ${isActive ? colors[i] : "#e2e8f0"}`,
-                                  transform: isActive ? "scale(1.08)" : "scale(1)",
-                                }}
-                              >
-                                {cls}
+                              <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-muted/40 hover:bg-muted/70 transition-colors">
+                                <div className="p-1.5 rounded-lg bg-primary/10 shrink-0">
+                                  <Icon className="w-4 h-4 text-primary"/>
+                                </div>
+                                <span className="text-sm text-foreground leading-snug">{perk.text}</span>
                               </div>
                             );
                           })}
                         </div>
+
+                        {/* Insulation thickness visual comparison */}
+                        <div className="mt-5 bg-muted/30 rounded-xl p-4">
+                          <div className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-3">
+                            Толщина утеплителя стен
+                          </div>
+                          <div className="flex items-end gap-2 h-16">
+                            {[
+                              { label: "Эконом", mm: 150, active: id === "econom" },
+                              { label: "Оптимум", mm: 200, active: id === "optimum" },
+                              { label: "Максимум", mm: 250, active: id === "max" },
+                            ].map((bar) => {
+                              const pct = (bar.mm / 250) * 100;
+                              return (
+                                <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
+                                  <div className="text-[10px] font-bold text-foreground">{bar.mm} мм</div>
+                                  <motion.div
+                                    className="w-full rounded-t-md"
+                                    style={{
+                                      height: `${pct * 0.52}px`,
+                                      background: bar.active ? "#f57a00" : "#e2e8f0",
+                                      opacity: bar.active ? 1 : 0.5,
+                                    }}
+                                    layoutId={`bar-${bar.label}`}
+                                  />
+                                  <div className={`text-[9px] ${bar.active ? "text-primary font-bold" : "text-muted-foreground"}`}>
+                                    {bar.label}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                )}
               </AnimatePresence>
             </TabsContent>
           ))}
@@ -349,7 +303,7 @@ export function Packages() {
             onClick={() => setShowTable(!showTable)}
             className="text-primary font-medium hover:underline inline-flex items-center gap-2"
           >
-            {showTable ? "Скрыть подробное сравнение" : "Показать подробную таблицу сравнения"}
+            {showTable ? "Скрыть подробное сравнение" : "Показать полную таблицу сравнения"}
             <motion.svg
               animate={{ rotate: showTable ? 180 : 0 }}
               width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"

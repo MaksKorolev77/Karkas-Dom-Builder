@@ -11,6 +11,7 @@ interface Layer {
   patternType: "wood" | "insulation" | "osb" | "membrane" | "air" | "cement" | "gypsum";
   color: string;
   topColor: string;
+  thermalK: number;
   description: string;
 }
 
@@ -20,10 +21,11 @@ const wallConfigs: Record<Config, { label: string; subtitle: string; rValue: str
     subtitle: "Утепление 150 мм",
     rValue: "R = 3.75",
     layers: [
-      { id: "e1", name: "Внешняя обшивка", material: "OSB-3 12 мм", thickness: 12, patternType: "osb", color: "#d4b896", topColor: "#b8936e", description: "Ориентированно-стружечная плита. Основа для финального фасадного материала." },
-      { id: "e2", name: "Каркас + Утеплитель", material: "Каменная вата 150 мм", thickness: 150, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", description: "Стойки каркаса 45×145 мм с заполнением из каменной ваты. Теплосопротивление R = 3.75 м²·°С/Вт." },
-      { id: "e3", name: "Пароизоляция", material: "Паробарьер 0.2 мм", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", description: "Изолирует утеплитель от паров жилого помещения. Предотвращает конденсат внутри конструкции." },
-      { id: "e4", name: "Внутренняя обшивка", material: "OSB-3 9 мм", thickness: 9, patternType: "osb", color: "#dcc898", topColor: "#b8a070", description: "Основа под чистовую внутреннюю отделку." },
+      { id: "e1", name: "Внешняя обшивка", material: "OSB-3 12 мм", thickness: 12, patternType: "osb", color: "#d4b896", topColor: "#b8936e", thermalK: 0.13, description: "Ориентированно-стружечная плита 12 мм. Обеспечивает жёсткость каркаса и является основой для финального фасада (штукатурка, краска, облицовка)." },
+      { id: "e2", name: "Ветрозащита", material: "Мембрана Tyvek", thickness: 4, patternType: "membrane", color: "#b8d4e8", topColor: "#8ab0cc", thermalK: 0.17, description: "Диффузионная паропроницаемая мембрана. Защищает утеплитель от продувания и внешней влаги, при этом пар свободно выходит наружу." },
+      { id: "e3", name: "Каркас + Утеплитель", material: "Каменная вата 150 мм", thickness: 150, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", thermalK: 0.035, description: "Стойки каркаса 45×145 мм шаг 600 мм. Между ними — каменная вата без зазоров. Плотность 35–50 кг/м³. Теплосопротивление R = 3.75 м²·°С/Вт." },
+      { id: "e4", name: "Пароизоляция", material: "Паробарьер 0.2 мм", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", thermalK: 0.5, description: "Полиэтиленовая плёнка-паробарьер. Исключает проникновение водяного пара из помещения в толщу стены. Стыки проклеиваются специальной лентой." },
+      { id: "e5", name: "Внутренняя обшивка", material: "OSB-3 9 мм", thickness: 9, patternType: "osb", color: "#dcc898", topColor: "#b8a070", thermalK: 0.13, description: "Внутренний OSB 9 мм — чистовая основа под отделку: шпаклёвку, монтаж ГКЛ или деревянных панелей. Без дополнительных работ." },
     ]
   },
   optimum: {
@@ -31,13 +33,13 @@ const wallConfigs: Record<Config, { label: string; subtitle: string; rValue: str
     subtitle: "Утепление 200 мм",
     rValue: "R = 5.0",
     layers: [
-      { id: "o1", name: "Наружная отделка", material: "Имитация бруса 20 мм", thickness: 20, patternType: "wood", color: "#a0784a", topColor: "#7a5430", description: "Карельский профиль из хвойных пород. Защита фасада + готовая эстетика. Устойчив к погодным воздействиям." },
-      { id: "o2", name: "Ветрозащита", material: "Мембрана Tyvek", thickness: 4, patternType: "membrane", color: "#b8d4e8", topColor: "#8ab0cc", description: "Диффузионная мембрана: пропускает пар наружу, не допускает ветер внутрь. Защищает утеплитель от продувания." },
-      { id: "o3", name: "Жёсткость каркаса", material: "OSB-3 9 мм", thickness: 9, patternType: "osb", color: "#d4b896", topColor: "#b0906a", description: "Обеспечивает пространственную жёсткость несущего каркаса." },
-      { id: "o4", name: "Каркас + Утеплитель", material: "Каменная вата 200 мм", thickness: 195, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", description: "Стойки 45×145 мм + поперечный контркаркас 50 мм = 200 мм каменной ваты. Нет мостиков холода. R = 5.0 м²·°С/Вт." },
-      { id: "o5", name: "Пароизоляция", material: "Паробарьер 0.2 мм", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", description: "Защита всей конструкции от водяного пара изнутри помещения." },
-      { id: "o6", name: "Вент. зазор", material: "Контробрешётка 40 мм", thickness: 40, patternType: "air", color: "#f0ece4", topColor: "#d8d0c0", description: "Вентилируемый зазор между пароизоляцией и отделкой. Выводит остаточную влагу." },
-      { id: "o7", name: "Внутренняя отделка", material: "Имитация бруса 15 мм", thickness: 15, patternType: "wood", color: "#c9a876", topColor: "#a07c50", description: "Чистовая деревянная отделка изнутри. Тёплый эстетичный интерьер без дополнительной отделки." },
+      { id: "o1", name: "Наружная отделка", material: "Имитация бруса 20 мм", thickness: 20, patternType: "wood", color: "#a0784a", topColor: "#7a5430", thermalK: 0.15, description: "Карельский профиль из хвойных пород. Готовый финишный фасад — монтируется с вент. зазором. Легко обновить цвет самостоятельно." },
+      { id: "o2", name: "Ветрозащита", material: "Мембрана Tyvek Soft", thickness: 4, patternType: "membrane", color: "#b8d4e8", topColor: "#8ab0cc", thermalK: 0.17, description: "Диффузионная мембрана Sd = 0.02 м. Пропускает пар наружу, исключает продувание. Долговечность — не менее срока службы дома." },
+      { id: "o3", name: "Жёсткость каркаса", material: "OSB-3 9 мм", thickness: 9, patternType: "osb", color: "#d4b896", topColor: "#b0906a", thermalK: 0.13, description: "Листы OSB по периметру и диагонали рам обеспечивают пространственную жёсткость каркаса без применения укосин." },
+      { id: "o4", name: "Каркас + Утеплитель", material: "Каменная вата 200 мм", thickness: 195, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", thermalK: 0.035, description: "Стойки 45×145 мм + поперечный контркаркас 50 мм. Слои ваты укладываются со смещением швов — мостиков холода через стойки нет. R = 5.0 м²·°С/Вт." },
+      { id: "o5", name: "Пароизоляция", material: "Паробарьер 0.2 мм", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", thermalK: 0.5, description: "Надёжная защита конструкции от пара. Стыки с нахлёстом 100 мм и проклейкой лентой — полная герметизация оболочки." },
+      { id: "o6", name: "Вент. зазор", material: "Контробрешётка 40 мм", thickness: 40, patternType: "air", color: "#f0ece4", topColor: "#d8d0c0", thermalK: 0.025, description: "Вентилируемый зазор 40 мм между пароизоляцией и отделкой. Также удобен для прокладки электрики без перфорации пароизоляции." },
+      { id: "o7", name: "Внутренняя отделка", material: "Имитация бруса 15 мм", thickness: 15, patternType: "wood", color: "#c9a876", topColor: "#a07c50", thermalK: 0.15, description: "Чистовая деревянная отделка — тёплый, эстетичный интерьер без доп. затрат. Монтируется по контробрешётке." },
     ]
   },
   max: {
@@ -45,13 +47,13 @@ const wallConfigs: Record<Config, { label: string; subtitle: string; rValue: str
     subtitle: "Утепление 250 мм",
     rValue: "R = 6.25",
     layers: [
-      { id: "m1", name: "Наружная отделка", material: "Фиброцем. сайдинг 8 мм", thickness: 8, patternType: "cement", color: "#7a8898", topColor: "#5a6878", description: "Фиброцементный сайдинг: класс горючести НГ (негорючий), не гниёт, не боится мороза и влаги. Срок службы 50+ лет." },
-      { id: "m2", name: "Ветрозащита", material: "Мембрана Tyvek SuperRo", thickness: 4, patternType: "membrane", color: "#b8d4e8", topColor: "#8ab0cc", description: "Премиальная диффузионная мембрана с высокой паропропускаемостью и прочностью." },
-      { id: "m3", name: "Жёсткость каркаса", material: "OSB-3 12 мм", thickness: 12, patternType: "osb", color: "#d4b896", topColor: "#b0906a", description: "Усиленный OSB для максимальной жёсткости несущего каркаса." },
-      { id: "m4", name: "Каркас + Утеплитель", material: "Каменная вата 250 мм", thickness: 245, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", description: "Стойки 45×190 мм + контркаркас 50 мм = 250 мм каменной ваты. R = 6.25 м²·°С/Вт — лучший показатель в классе каркасных домов." },
-      { id: "m5", name: "Пароизоляция", material: "Паробарьер 0.2 мм", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", description: "Надёжная многослойная защита от паров." },
-      { id: "m6", name: "Вент. зазор", material: "Контробрешётка 40 мм", thickness: 40, patternType: "air", color: "#f0ece4", topColor: "#d8d0c0", description: "Вентилируемый зазор предотвращает образование конденсата на пароизоляции." },
-      { id: "m7", name: "Внутренняя отделка", material: "OSB + Гипсокартон 12 мм", thickness: 21, patternType: "gypsum", color: "#e8e8e8", topColor: "#c0c0c0", description: "OSB-основа под гипсокартон. Подходит для любой чистовой отделки: обои, краска, декоративная штукатурка, плитка." },
+      { id: "m1", name: "Наружная отделка", material: "Фиброцем. сайдинг 8 мм", thickness: 8, patternType: "cement", color: "#7a8898", topColor: "#5a6878", thermalK: 0.7, description: "Фиброцементный сайдинг НГ (негорючий). Не гниёт, не боится мороза и влаги. Срок службы 50+ лет. Лучший выбор для постоянного проживания." },
+      { id: "m2", name: "Ветрозащита", material: "Мембрана Tyvek SuperRo", thickness: 4, patternType: "membrane", color: "#b8d4e8", topColor: "#8ab0cc", thermalK: 0.17, description: "Премиальная мембрана Tyvek SuperRo: максимальная паропроницаемость и прочность в классе. Полное исключение продувания." },
+      { id: "m3", name: "Жёсткость каркаса", material: "OSB-3 12 мм", thickness: 12, patternType: "osb", color: "#d4b896", topColor: "#b0906a", thermalK: 0.13, description: "Усиленный OSB-3 12 мм для максимальной жёсткости несущего каркаса из досок 45×190 мм." },
+      { id: "m4", name: "Каркас + Утеплитель", material: "Каменная вата 250 мм", thickness: 245, patternType: "insulation", color: "#f5c87a", topColor: "#e0a845", thermalK: 0.035, description: "Стойки 45×190 мм + контркаркас 50 мм = 250 мм. Три слоя со смещением швов. R = 6.25 м²·°С/Вт — лучший показатель в классе каркасных домов." },
+      { id: "m5", name: "Пароизоляция", material: "Паробарьер Изоспан RS", thickness: 4, patternType: "membrane", color: "#8ab4d4", topColor: "#6890b0", thermalK: 0.5, description: "Армированная пароизоляция с двойной проклейкой всех стыков. Полная герметизация тепловой оболочки дома." },
+      { id: "m6", name: "Вент. зазор", material: "Контробрешётка 50 мм", thickness: 50, patternType: "air", color: "#f0ece4", topColor: "#d8d0c0", thermalK: 0.025, description: "Увеличенный зазор 50 мм — удобно для разводки всех электрических и слаботочных коммуникаций без нарушения пароизоляции." },
+      { id: "m7", name: "Внутренняя отделка", material: "OSB + Гипсокартон 12 мм", thickness: 21, patternType: "gypsum", color: "#e8e8e8", topColor: "#c0c0c0", thermalK: 0.35, description: "OSB-9 + ГКЛ 12 мм. Идеальная база под любую чистовую отделку: штукатурка, краска, обои, плитка, декоративный камень." },
     ]
   }
 };
@@ -97,8 +99,22 @@ function PatternDefs() {
         <line x1="0" y1="1" x2="8" y2="1" stroke="#6890b0" strokeWidth="0.5" opacity="0.5"/>
         <line x1="0" y1="3" x2="8" y2="3" stroke="#6890b0" strokeWidth="0.3" opacity="0.4"/>
       </pattern>
+      <linearGradient id="temp-overlay" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.18"/>
+        <stop offset="35%" stopColor="#8b5cf6" stopOpacity="0.06"/>
+        <stop offset="100%" stopColor="#f97316" stopOpacity="0.18"/>
+      </linearGradient>
+      <linearGradient id="temp-bar-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stopColor="#3b82f6"/>
+        <stop offset="50%" stopColor="#a78bfa"/>
+        <stop offset="100%" stopColor="#f97316"/>
+      </linearGradient>
       <filter id="layer-shadow">
         <feDropShadow dx="2" dy="0" stdDeviation="2" floodOpacity="0.15"/>
+      </filter>
+      <filter id="glow-line">
+        <feGaussianBlur stdDeviation="1.5" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
     </defs>
   );
@@ -125,19 +141,21 @@ export function WallSection() {
   const WALL_H = 220;
   const DEPTH = 28;
   const SVG_WIDTH = 900;
-  const LABEL_AREA_TOP = 90;
-  const LABEL_AREA_BOT = 90;
-  const SVG_HEIGHT = WALL_H + LABEL_AREA_TOP + LABEL_AREA_BOT + DEPTH;
+  const LABEL_AREA_TOP = 96;
+  const LABEL_AREA_BOT = 96;
+  const TEMP_SECTION_H = 52;
+  const SVG_HEIGHT = WALL_H + LABEL_AREA_TOP + LABEL_AREA_BOT + DEPTH + TEMP_SECTION_H;
 
   const DRAW_W = SVG_WIDTH - 40;
   const MIN_PX = 5;
-  const totalRaw = layers.reduce((sum, l) => sum + l.thickness, 0);
-  const thinCount = layers.filter(l => l.thickness < 10).length;
-  const thinExtra = thinCount * MIN_PX;
-  const thickScale = (DRAW_W - thinExtra) / (totalRaw - layers.filter(l => l.thickness < 10).reduce((s, l) => s + l.thickness, 0));
+  const thinLayers = layers.filter(l => l.thickness < 12);
+  const thickLayers = layers.filter(l => l.thickness >= 12);
+  const thinTotal = thinLayers.length * MIN_PX;
+  const thickTotal = thickLayers.reduce((s, l) => s + l.thickness, 0);
+  const thickScale = (DRAW_W - thinTotal) / (thickTotal || 1);
 
   const getLayerW = (thickness: number) =>
-    thickness < 10 ? MIN_PX : Math.max(thickness * thickScale, MIN_PX);
+    thickness < 12 ? MIN_PX : Math.max(thickness * thickScale, MIN_PX);
 
   let xCursor = 20;
   const layerBoxes = layers.map((layer) => {
@@ -147,10 +165,39 @@ export function WallSection() {
     return box;
   });
 
+  const totalDrawW = layerBoxes.reduce((s, b) => s + b.w, 0);
+
+  // Temperature profile through wall
+  const T_out = -20;
+  const T_in = 21;
+  const rTotal = layers.reduce((s, l) => s + (l.thickness / 1000) / l.thermalK, 0);
+  let rAccum = 0;
+  const interfaceTemps: number[] = [];
+  for (const l of layers) {
+    rAccum += (l.thickness / 1000) / l.thermalK;
+    interfaceTemps.push(T_out + (T_in - T_out) * (rAccum / rTotal));
+  }
+
+  const TEMP_BAR_Y = LABEL_AREA_TOP + WALL_H + DEPTH + 12;
+  const TEMP_BAR_H = 8;
+  const CURVE_Y = TEMP_BAR_Y - 8;
+
+  // Curve points: x at each layer interface, y = proportional to temperature
+  const curvePoints: { x: number; t: number }[] = [
+    { x: layerBoxes[0].x, t: T_out },
+    ...layerBoxes.map((box, i) => ({ x: box.x + box.w, t: interfaceTemps[i] })),
+  ];
+
+  const tempToY = (t: number) => CURVE_Y - ((t - T_out) / (T_in - T_out)) * 30;
+
+  const curvePath = curvePoints
+    .map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${tempToY(p.t)}`)
+    .join(" ");
+
   const hoveredLayer = hoveredId ? layers.find(l => l.id === hoveredId) : null;
 
   return (
-    <section className="py-14 md:py-20 bg-background overflow-hidden">
+    <section className="py-14 md:py-20 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-12">
           <span className="inline-block text-primary font-semibold uppercase tracking-wider text-sm mb-4">
@@ -160,11 +207,11 @@ export function WallSection() {
             Пирог стены
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Каждый слой выполняет свою функцию. Вместе они создают тёплый, дышащий и надёжный дом.
+            Каждый слой выполняет свою задачу. Вместе они удерживают тепло при −40°C снаружи.
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-6 mb-8">
+        <div className="flex flex-col items-center gap-4 mb-8">
           <div className="flex items-center gap-2 bg-card border border-border rounded-xl p-1 shadow-sm">
             {(["econom", "optimum", "max"] as Config[]).map((c) => (
               <button
@@ -181,14 +228,22 @@ export function WallSection() {
             ))}
           </div>
 
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <span className="font-medium text-foreground">
-              Толщина стены: <span className="text-primary font-bold">{total} мм</span>
-            </span>
-            <span>·</span>
-            <span className="font-medium text-foreground">
-              Теплосопротивление: <span className="text-primary font-bold">{config.rValue} м²·°С/Вт</span>
-            </span>
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-blue-400"/>
+              <span className="text-muted-foreground">Снаружи</span>
+              <span className="font-bold text-blue-500">−20°C</span>
+            </div>
+            <div className="text-muted-foreground">
+              Толщина: <span className="font-bold text-foreground">{total} мм</span>
+              {" · "}
+              <span className="font-bold text-primary">{config.rValue} м²·К/Вт</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-orange-400"/>
+              <span className="text-muted-foreground">Внутри</span>
+              <span className="font-bold text-orange-500">+21°C</span>
+            </div>
           </div>
         </div>
 
@@ -202,12 +257,17 @@ export function WallSection() {
             className="w-full overflow-x-auto"
           >
             <div className="min-w-[640px]">
-              <svg
-                viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`}
-                className="w-full"
-                style={{ maxHeight: 480 }}
-              >
+              <svg viewBox={`0 0 ${SVG_WIDTH} ${SVG_HEIGHT}`} className="w-full" style={{ maxHeight: 520 }}>
                 <PatternDefs />
+
+                {/* Temperature gradient overlay on whole wall */}
+                <rect
+                  x={layerBoxes[0]?.x ?? 20}
+                  y={LABEL_AREA_TOP}
+                  width={totalDrawW}
+                  height={WALL_H}
+                  fill="url(#temp-overlay)"
+                />
 
                 {layerBoxes.map((layer, i) => {
                   const isHovered = hoveredId === layer.id;
@@ -226,12 +286,7 @@ export function WallSection() {
                     >
                       {/* 3D top face */}
                       <polygon
-                        points={`
-                          ${layer.x},${LABEL_AREA_TOP}
-                          ${layer.x + layer.w},${LABEL_AREA_TOP}
-                          ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5}
-                          ${layer.x + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5}
-                        `}
+                        points={`${layer.x},${LABEL_AREA_TOP} ${layer.x + layer.w},${LABEL_AREA_TOP} ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5} ${layer.x + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5}`}
                         fill={layer.topColor}
                         opacity={isOtherHovered ? 0.4 : isHovered ? 1 : 0.85}
                         stroke={isHovered ? "#f57a00" : "white"}
@@ -239,12 +294,7 @@ export function WallSection() {
                       />
                       {/* 3D right face */}
                       <polygon
-                        points={`
-                          ${layer.x + layer.w},${LABEL_AREA_TOP}
-                          ${layer.x + layer.w},${LABEL_AREA_TOP + WALL_H}
-                          ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP + WALL_H - DEPTH * 0.5}
-                          ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5}
-                        `}
+                        points={`${layer.x + layer.w},${LABEL_AREA_TOP} ${layer.x + layer.w},${LABEL_AREA_TOP + WALL_H} ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP + WALL_H - DEPTH * 0.5} ${layer.x + layer.w + DEPTH * 0.6},${LABEL_AREA_TOP - DEPTH * 0.5}`}
                         fill={layer.topColor}
                         opacity={isOtherHovered ? 0.3 : isHovered ? 0.9 : 0.7}
                         stroke={isHovered ? "#f57a00" : "white"}
@@ -252,80 +302,62 @@ export function WallSection() {
                       />
                       {/* Front face */}
                       <rect
-                        x={layer.x}
-                        y={LABEL_AREA_TOP}
-                        width={layer.w}
-                        height={WALL_H}
+                        x={layer.x} y={LABEL_AREA_TOP}
+                        width={layer.w} height={WALL_H}
                         fill={`url(#${patternIds[layer.patternType]})`}
                         opacity={isOtherHovered ? 0.35 : isHovered ? 1 : 0.92}
                         stroke={isHovered ? "#f57a00" : "rgba(0,0,0,0.08)"}
                         strokeWidth={isHovered ? 2 : 0.5}
                       />
-                      {/* Highlight overlay */}
                       {isHovered && (
-                        <rect
-                          x={layer.x}
-                          y={LABEL_AREA_TOP}
-                          width={layer.w}
-                          height={WALL_H}
+                        <rect x={layer.x} y={LABEL_AREA_TOP} width={layer.w} height={WALL_H}
                           fill="rgba(245,122,0,0.08)"
                         />
                       )}
 
                       {/* Leader line */}
                       <line
-                        x1={labelAnchorX}
-                        y1={lineY1}
-                        x2={labelAnchorX}
-                        y2={lineY2}
+                        x1={labelAnchorX} y1={lineY1}
+                        x2={labelAnchorX} y2={lineY2}
                         stroke={isHovered ? "#f57a00" : "#94a3b8"}
                         strokeWidth={isHovered ? 1.5 : 1}
-                        strokeDasharray={i % 2 === 0 ? "none" : "3,2"}
+                        strokeDasharray={i % 2 !== 0 ? "3,2" : undefined}
                         opacity={isOtherHovered ? 0.3 : 1}
                       />
 
                       {/* Label box */}
                       <g transform={`translate(${labelAnchorX}, ${labelY})`}>
                         <rect
-                          x={-50} y={i % 2 === 0 ? -42 : 2}
-                          width={100} height={36}
-                          rx={6}
+                          x={-52} y={i % 2 === 0 ? -42 : 2}
+                          width={104} height={36} rx={6}
                           fill={isHovered ? "#f57a00" : "white"}
                           stroke={isHovered ? "#f57a00" : "#e2e8f0"}
                           strokeWidth={isHovered ? 0 : 1}
                           filter="url(#layer-shadow)"
                           opacity={isOtherHovered ? 0.3 : 1}
                         />
-                        <text
-                          x={0} y={i % 2 === 0 ? -26 : 16}
-                          textAnchor="middle"
-                          fontSize={10}
-                          fontWeight="600"
+                        <text x={0} y={i % 2 === 0 ? -26 : 16}
+                          textAnchor="middle" fontSize={9.5} fontWeight="600"
                           fill={isHovered ? "white" : "#1a1a1a"}
                           opacity={isOtherHovered ? 0.3 : 1}
                         >
                           {layer.material.length > 18 ? layer.material.slice(0, 17) + "…" : layer.material}
                         </text>
-                        <text
-                          x={0} y={i % 2 === 0 ? -14 : 28}
-                          textAnchor="middle"
-                          fontSize={9}
+                        <text x={0} y={i % 2 === 0 ? -14 : 28}
+                          textAnchor="middle" fontSize={8.5}
                           fill={isHovered ? "rgba(255,255,255,0.85)" : "#64748b"}
                           opacity={isOtherHovered ? 0.3 : 1}
                         >
-                          {layer.thickness < 10 ? `${layer.thickness} мм` : `${layer.thickness} мм`}
+                          {`${layer.thickness} мм`}
                         </text>
                       </g>
 
-                      {/* Thickness badge on front face for wide layers */}
-                      {layer.w > 40 && (
+                      {layer.w > 50 && (
                         <text
-                          x={layer.x + layer.w / 2}
-                          y={LABEL_AREA_TOP + WALL_H / 2 + 5}
-                          textAnchor="middle"
-                          fontSize={layer.w > 80 ? 13 : 10}
+                          x={layer.x + layer.w / 2} y={LABEL_AREA_TOP + WALL_H / 2 + 5}
+                          textAnchor="middle" fontSize={layer.w > 80 ? 13 : 10}
                           fontWeight="bold"
-                          fill={isHovered ? "#f57a00" : "rgba(0,0,0,0.35)"}
+                          fill={isHovered ? "#f57a00" : "rgba(0,0,0,0.3)"}
                           opacity={isOtherHovered ? 0.3 : 1}
                         >
                           {layer.thickness} мм
@@ -335,23 +367,57 @@ export function WallSection() {
                   );
                 })}
 
-                {/* Outside / Inside labels */}
-                <text x={18} y={LABEL_AREA_TOP + WALL_H / 2 + 5} textAnchor="start" fontSize={11} fontWeight="700" fill="#94a3b8" transform={`rotate(-90, 18, ${LABEL_AREA_TOP + WALL_H / 2 + 5})`}>УЛИЦА</text>
-                <text x={SVG_WIDTH - 18} y={LABEL_AREA_TOP + WALL_H / 2 + 5} textAnchor="start" fontSize={11} fontWeight="700" fill="#94a3b8" transform={`rotate(-90, ${SVG_WIDTH - 18}, ${LABEL_AREA_TOP + WALL_H / 2 + 5})`}>ЖИЛЬЁ</text>
+                {/* OUTSIDE / INSIDE labels */}
+                <text x={18} y={LABEL_AREA_TOP + WALL_H / 2 + 5} textAnchor="middle" fontSize={10} fontWeight="700" fill="#3b82f6" transform={`rotate(-90,18,${LABEL_AREA_TOP + WALL_H / 2 + 5})`}>УЛИЦА</text>
+                <text x={SVG_WIDTH - 18} y={LABEL_AREA_TOP + WALL_H / 2 + 5} textAnchor="middle" fontSize={10} fontWeight="700" fill="#f97316" transform={`rotate(-90,${SVG_WIDTH - 18},${LABEL_AREA_TOP + WALL_H / 2 + 5})`}>ЖИЛЬЁ</text>
+
+                {/* Temperature gradient bar */}
+                <rect
+                  x={layerBoxes[0]?.x ?? 20} y={TEMP_BAR_Y}
+                  width={totalDrawW} height={TEMP_BAR_H} rx={4}
+                  fill="url(#temp-bar-grad)" opacity={0.85}
+                />
+
+                {/* Temperature curve */}
+                <path
+                  d={curvePath}
+                  fill="none"
+                  stroke="white"
+                  strokeWidth={2.5}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity={0.9}
+                  filter="url(#glow-line)"
+                />
+                {/* Dots at key temperature transitions */}
+                {curvePoints.map((p, i) => (
+                  <circle
+                    key={i}
+                    cx={p.x} cy={tempToY(p.t)}
+                    r={i === 0 || i === curvePoints.length - 1 ? 4 : 3}
+                    fill={i === 0 ? "#3b82f6" : i === curvePoints.length - 1 ? "#f97316" : "white"}
+                    stroke="white" strokeWidth={1.5}
+                    opacity={0.9}
+                  />
+                ))}
+                {/* Temperature labels on bar */}
+                <text x={(layerBoxes[0]?.x ?? 20) - 4} y={TEMP_BAR_Y + TEMP_BAR_H / 2 + 4}
+                  textAnchor="end" fontSize={9} fontWeight="700" fill="#3b82f6">−20°C</text>
+                <text x={(layerBoxes[0]?.x ?? 20) + totalDrawW + 4} y={TEMP_BAR_Y + TEMP_BAR_H / 2 + 4}
+                  textAnchor="start" fontSize={9} fontWeight="700" fill="#f97316">+21°C</text>
 
                 {/* Total width indicator */}
-                <line x1={20} y1={LABEL_AREA_TOP + WALL_H + DEPTH + 52} x2={SVG_WIDTH - 20} y2={LABEL_AREA_TOP + WALL_H + DEPTH + 52} stroke="#e2e8f0" strokeWidth="1"/>
-                <line x1={20} y1={LABEL_AREA_TOP + WALL_H + DEPTH + 48} x2={20} y2={LABEL_AREA_TOP + WALL_H + DEPTH + 56} stroke="#e2e8f0" strokeWidth="1.5"/>
-                <line x1={SVG_WIDTH - 20} y1={LABEL_AREA_TOP + WALL_H + DEPTH + 48} x2={SVG_WIDTH - 20} y2={LABEL_AREA_TOP + WALL_H + DEPTH + 56} stroke="#e2e8f0" strokeWidth="1.5"/>
-                <text x={SVG_WIDTH / 2} y={LABEL_AREA_TOP + WALL_H + DEPTH + 48} textAnchor="middle" fontSize={11} fill="#94a3b8">
-                  Общая толщина стены: {total} мм
+                <line x1={20} y1={TEMP_BAR_Y + 28} x2={SVG_WIDTH - 20} y2={TEMP_BAR_Y + 28} stroke="#e2e8f0" strokeWidth="1"/>
+                <line x1={20} y1={TEMP_BAR_Y + 24} x2={20} y2={TEMP_BAR_Y + 32} stroke="#e2e8f0" strokeWidth="1.5"/>
+                <line x1={SVG_WIDTH - 20} y1={TEMP_BAR_Y + 24} x2={SVG_WIDTH - 20} y2={TEMP_BAR_Y + 32} stroke="#e2e8f0" strokeWidth="1.5"/>
+                <text x={SVG_WIDTH / 2} y={TEMP_BAR_Y + 24} textAnchor="middle" fontSize={10} fill="#94a3b8">
+                  Общая толщина стены: {total} мм · Теплосопротивление: {config.rValue} м²·К/Вт
                 </text>
               </svg>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Detail card for hovered layer */}
         <div className="h-24 md:h-20 mt-2">
           <AnimatePresence mode="wait">
             {hoveredLayer ? (
@@ -364,18 +430,11 @@ export function WallSection() {
                 className="max-w-3xl mx-auto bg-primary/5 border border-primary/20 rounded-2xl p-4 md:p-5 flex flex-col sm:flex-row sm:items-center gap-3"
               >
                 <div className="shrink-0">
-                  <div
-                    className="w-10 h-10 rounded-lg border-2 border-primary/20"
-                    style={{ backgroundColor: hoveredLayer.color }}
-                  />
+                  <div className="w-10 h-10 rounded-lg border-2 border-primary/20" style={{ backgroundColor: hoveredLayer.color }}/>
                 </div>
                 <div>
-                  <div className="font-bold text-foreground mb-0.5">
-                    {hoveredLayer.name} — {hoveredLayer.material}
-                  </div>
-                  <div className="text-sm text-muted-foreground leading-snug">
-                    {hoveredLayer.description}
-                  </div>
+                  <div className="font-bold text-foreground mb-0.5">{hoveredLayer.name} — {hoveredLayer.material}</div>
+                  <div className="text-sm text-muted-foreground leading-snug">{hoveredLayer.description}</div>
                 </div>
               </motion.div>
             ) : (
@@ -386,7 +445,7 @@ export function WallSection() {
                 exit={{ opacity: 0 }}
                 className="text-center text-muted-foreground text-sm mt-4"
               >
-                Наведите на слой, чтобы узнать подробности
+                Наведите на слой — узнайте зачем он нужен
               </motion.p>
             )}
           </AnimatePresence>
