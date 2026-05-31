@@ -18,7 +18,7 @@ export function Calculator() {
   const formattedPrice = new Intl.NumberFormat('ru-RU').format(price);
 
   return (
-    <section id="calculator" className="py-10 md:py-14 bg-background">
+    <section id="calculator" className="py-10 md:py-14 bg-muted/40">
       <div className="container mx-auto px-4 md:px-6">
         <div className="bg-card rounded-3xl border border-border shadow-xl overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
           
