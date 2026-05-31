@@ -4,8 +4,6 @@ import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription, D
 import { LeadForm } from "@/components/LeadForm";
 import { MapPin, ArrowRight } from "lucide-react";
 
-const DARK = "#09090f";
-
 const stats = [
   { value: "18", suffix: "лет", label: "опыта" },
   { value: "147+", suffix: "", label: "домов сдано" },
@@ -19,55 +17,70 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col overflow-hidden" style={{ background: DARK }}>
+    <section className="relative min-h-[100svh] flex flex-col overflow-hidden">
 
-      {/* ── Photo panel ─────────────────────────────────────────── */}
-      {/* Desktop: right half. Mobile: full-bleed background */}
-      <div className="absolute inset-0 lg:left-[50%]">
+      {/* ── Background ───────────────────────────────────────────── */}
+      <div className="absolute inset-0">
         <img
           src="/images/hero.png"
           alt="Каркасный дом"
           className="w-full h-full object-cover object-center"
+          style={{ filter: "brightness(0.9) saturate(0.85)" }}
         />
-        {/* Desktop: fade left edge into dark panel */}
+
+        {/* Warm-tinted base veil — softens the whole photo uniformly */}
+        <div className="absolute inset-0" style={{ background: "rgba(18,10,3,0.48)" }}/>
+
+        {/* Directional: warm dark left → almost clear right */}
         <div
-          className="hidden lg:block absolute inset-y-0 left-0 w-48 pointer-events-none"
-          style={{ background: `linear-gradient(to right, ${DARK} 0%, transparent 100%)` }}
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(108deg, rgba(16,9,2,0.78) 0%, rgba(14,8,2,0.58) 35%, rgba(8,4,0,0.22) 65%, rgba(0,0,0,0.05) 100%)",
+          }}
         />
-        {/* Mobile only: heavy dark overlay so text is readable */}
-        <div className="lg:hidden absolute inset-0" style={{ background: "rgba(9,9,15,0.78)" }}/>
-        {/* Both: bottom fade out into page */}
+
+        {/* Top vignette — keeps navbar area dark */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none"
-          style={{ background: `linear-gradient(to top, ${DARK} 0%, transparent 100%)` }}
+          className="absolute top-0 left-0 right-0 h-40"
+          style={{ background: "linear-gradient(to bottom, rgba(14,8,2,0.60) 0%, transparent 100%)" }}
+        />
+
+        {/* Bottom fade to page background */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-56"
+          style={{ background: "linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%)" }}
+        />
+
+        {/* Very subtle warm glow around text zone */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 70% at 28% 55%, rgba(245,122,0,0.055) 0%, transparent 70%)",
+          }}
         />
       </div>
-
-      {/* Desktop: solid dark left-half block */}
-      <div
-        className="hidden lg:block absolute inset-y-0 left-0 w-[50%] pointer-events-none"
-        style={{ background: DARK }}
-      />
 
       {/* ── Content ─────────────────────────────────────────────── */}
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-28 pb-0">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-[520px]">
+          <div className="max-w-[540px]">
 
             {/* Brand line */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="flex items-center gap-3 mb-8"
+              className="flex items-center gap-3 mb-7"
             >
               <span className="block w-7 h-[2px] rounded-full bg-primary"/>
-              <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/45">
+              <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
                 УльтраКаркас
               </span>
-              <span className="text-white/15">·</span>
-              <span className="flex items-center gap-1 text-[11px] text-white/35 tracking-wide">
-                <MapPin className="w-3 h-3 text-primary/50 shrink-0"/>
+              <span className="text-white/20">·</span>
+              <span className="flex items-center gap-1 text-[11px] text-white/38 tracking-wide">
+                <MapPin className="w-3 h-3 text-primary/55 shrink-0"/>
                 Москва и МО · с 2015 года
               </span>
             </motion.div>
@@ -77,19 +90,19 @@ export function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="font-serif font-bold text-white leading-[1.04] mb-5"
-              style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.8rem)" }}
+              className="font-serif font-bold text-white leading-[1.05] mb-5"
+              style={{ fontSize: "clamp(2.6rem, 4.8vw, 4.6rem)" }}
             >
-              Каркасные<br/> дома{" "}
+              Каркасные дома<br/>
               <em className="text-primary not-italic">под ключ</em>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-white/50 leading-relaxed mb-10"
+              className="text-white/52 leading-relaxed mb-10"
               style={{ fontSize: "clamp(0.95rem, 1.3vw, 1.1rem)" }}
             >
               Строим по скандинавской технологии — от фундамента до
@@ -98,7 +111,7 @@ export function Hero() {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-3"
@@ -107,7 +120,8 @@ export function Hero() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-13 px-8 text-base w-full sm:w-auto shadow-2xl shadow-primary/25 hover:shadow-primary/40 transition-all"
+                    className="h-13 px-8 text-base w-full sm:w-auto"
+                    style={{ boxShadow: "0 8px 32px rgba(245,122,0,0.30)" }}
                   >
                     Получить расчёт
                     <ArrowRight className="w-4 h-4 ml-2 shrink-0"/>
@@ -128,7 +142,7 @@ export function Hero() {
                 size="lg"
                 variant="ghost"
                 onClick={scrollToProjects}
-                className="h-13 px-8 text-base w-full sm:w-auto text-white/70 hover:text-white hover:bg-white/8 border border-white/12 hover:border-white/25"
+                className="h-13 px-8 text-base w-full sm:w-auto text-white/72 hover:text-white hover:bg-white/8 border border-white/14 hover:border-white/28"
               >
                 Смотреть проекты
               </Button>
@@ -148,10 +162,10 @@ export function Hero() {
           <div
             className="grid grid-cols-2 sm:grid-cols-4 rounded-t-xl overflow-hidden"
             style={{
-              background: "rgba(255,255,255,0.04)",
-              borderTop: "1px solid rgba(255,255,255,0.07)",
-              borderLeft: "1px solid rgba(255,255,255,0.07)",
-              borderRight: "1px solid rgba(255,255,255,0.07)",
+              background: "rgba(16,9,2,0.72)",
+              backdropFilter: "blur(18px)",
+              border: "1px solid rgba(255,255,255,0.07)",
+              borderBottom: "none",
             }}
           >
             {stats.map((s, i) => (
@@ -160,17 +174,17 @@ export function Hero() {
                 className="relative flex flex-col items-center justify-center py-5 px-4 text-center"
               >
                 {i > 0 && (
-                  <div className="absolute left-0 top-4 bottom-4 w-px bg-white/6"/>
+                  <div className="absolute left-0 top-4 bottom-4 w-px bg-white/7"/>
                 )}
                 <div className="flex items-baseline gap-1 mb-0.5">
                   <span className="text-2xl md:text-[1.75rem] font-serif font-bold text-primary leading-none">
                     {s.value}
                   </span>
                   {s.suffix && (
-                    <span className="text-xs font-semibold text-white/35 leading-none">{s.suffix}</span>
+                    <span className="text-xs font-semibold text-white/38 leading-none">{s.suffix}</span>
                   )}
                 </div>
-                <span className="text-[11px] text-white/35 leading-snug">{s.label}</span>
+                <span className="text-[11px] text-white/38 leading-snug">{s.label}</span>
               </div>
             ))}
           </div>
