@@ -29,13 +29,13 @@ export default function Home() {
         <WhyUs />
         <ProjectOptions />
         <Projects />
-        <HouseSchematic />
         <Packages />
+        <PaymentStages />
+        <HouseSchematic />
         <FoundationSection />
         <WallSection />
         <RoofSection />
         <Process />
-        <PaymentStages />
         <Services />
         <Calculator />
         <FAQ />
