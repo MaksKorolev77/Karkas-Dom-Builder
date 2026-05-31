@@ -64,10 +64,10 @@ export function Hero() {
           alt="Каркасный дом в лесу"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/94 via-background/60 to-background/10"/>
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30"/>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/55 to-black/10"/>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/25"/>
         <div className="absolute left-0 top-1/3 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(245,122,0,0.07) 0%, transparent 70%)" }}/>
+          style={{ background: "radial-gradient(circle, rgba(245,122,0,0.10) 0%, transparent 70%)" }}/>
       </div>
 
       {/* Subtle decorative rings */}
@@ -95,13 +95,25 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="flex flex-wrap items-center gap-3 mb-5"
+              className="flex flex-wrap items-center gap-3 mb-6"
             >
-              <span className="inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full bg-primary/10 text-primary border border-primary/25 font-semibold text-xs tracking-widest uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"/>
-                Надёжно. Тепло. На века.
-              </span>
-              <span className="flex items-center gap-1 text-xs text-foreground/45 font-medium">
+              {/* Three-value segmented tag */}
+              <div className="inline-flex items-stretch rounded-xl overflow-hidden shadow-lg shadow-black/30 text-[11px] font-black tracking-[0.14em] uppercase">
+                <div className="flex items-center gap-1.5 bg-primary text-white px-3.5 py-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0"/>
+                  Надёжно
+                </div>
+                <div className="flex items-center px-3 py-2 text-primary"
+                  style={{ background: "rgba(10,10,22,0.82)", backdropFilter: "blur(8px)", borderLeft: "1px solid rgba(245,122,0,0.25)", borderRight: "1px solid rgba(245,122,0,0.25)" }}>
+                  Тепло
+                </div>
+                <div className="flex items-center px-3 py-2 text-white/75"
+                  style={{ background: "rgba(10,10,22,0.82)", backdropFilter: "blur(8px)" }}>
+                  На века
+                </div>
+              </div>
+
+              <span className="flex items-center gap-1 text-xs text-white/40 font-medium">
                 <MapPin className="w-3 h-3 text-primary/50"/>
                 Москва и МО · с 2015 года
               </span>
@@ -112,7 +124,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.08, ease: "easeOut" }}
-              className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-serif font-bold text-foreground leading-[1.05] mb-4"
+              className="text-[2.6rem] sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-serif font-bold text-white leading-[1.05] mb-4"
             >
               Каркасные дома<br className="hidden sm:block"/>
               <span className="text-primary italic"> под ключ</span>
@@ -123,7 +135,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.18, ease: "easeOut" }}
-              className="text-base sm:text-lg text-foreground/65 mb-7 max-w-lg leading-relaxed"
+              className="text-base sm:text-lg text-white/70 mb-7 max-w-lg leading-relaxed"
             >
               Строим по скандинавской технологии — от фундамента до чистовой отделки.
               Готовые проекты или индивидуальный проект под ваш участок.
@@ -156,7 +168,7 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 sm:h-13 px-7 text-base sm:text-lg w-full sm:w-auto bg-background/25 backdrop-blur-sm border-border/40 hover:bg-background/50"
+                className="h-12 sm:h-13 px-7 text-base sm:text-lg w-full sm:w-auto text-white border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:text-white"
                 onClick={scrollToProjects}
               >
                 Смотреть проекты
@@ -182,9 +194,9 @@ export function Hero() {
                 >
                   <div className="flex items-baseline gap-0.5">
                     <span className="text-2xl font-serif font-bold text-primary leading-none">{s.value}</span>
-                    {s.suffix && <span className="text-xs font-semibold text-foreground/50 ml-0.5">{s.suffix}</span>}
+                    {s.suffix && <span className="text-xs font-semibold text-white/50 ml-0.5">{s.suffix}</span>}
                   </div>
-                  <span className="text-[10px] text-foreground/40 mt-0.5 leading-tight text-center">{s.label}</span>
+                  <span className="text-[10px] text-white/40 mt-0.5 leading-tight text-center">{s.label}</span>
                 </div>
               ))}
               <div
@@ -229,7 +241,7 @@ export function Hero() {
       </div>
 
       {/* Seamless transition into TrustStats */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none z-10"/>
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-10"/>
     </section>
   );
 }
