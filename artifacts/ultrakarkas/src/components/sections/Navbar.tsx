@@ -49,7 +49,7 @@ export function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
           isScrolled || location !== "/"
             ? "bg-background/95 backdrop-blur-md border-border shadow-sm py-3"
-            : "bg-background/80 backdrop-blur-sm border-transparent py-5"
+            : "bg-transparent border-transparent py-5"
         }`}
       >
         <div className="container mx-auto px-4 md:px-6">
@@ -59,39 +59,31 @@ export function Navbar() {
                 <div className="w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center font-serif font-bold text-xl rounded-sm">
                   УК
                 </div>
-                <span className="font-serif font-bold text-xl tracking-tight hidden sm:block text-foreground">
+                <span className={`font-serif font-bold text-xl tracking-tight hidden sm:block transition-colors duration-300 ${isScrolled || location !== "/" ? "text-foreground" : "text-white"}`}>
                   УльтраКаркас
                 </span>
               </div>
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) =>
-                link.sectionId ? (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={(e) => handleSectionClick(e, link)}
-                    className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                  >
+              {navLinks.map((link) => {
+                const cls = `text-sm font-medium transition-colors hover:text-primary ${isScrolled || location !== "/" ? "text-foreground/80" : "text-white/80"}`;
+                return link.sectionId ? (
+                  <a key={link.name} href={link.href} onClick={(e) => handleSectionClick(e, link)} className={cls}>
                     {link.name}
                   </a>
                 ) : (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
-                  >
+                  <Link key={link.name} href={link.href} className={cls}>
                     {link.name}
                   </Link>
-                )
-              )}
+                );
+              })}
             </nav>
 
             <div className="hidden md:flex items-center gap-6">
               <a
                 href="tel:+74993909789"
-                className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors"
+                className={`flex items-center gap-2 font-medium hover:text-primary transition-colors ${isScrolled || location !== "/" ? "text-foreground" : "text-white/90"}`}
               >
                 <Phone className="w-4 h-4 text-primary" />
                 +7 (499) 390-97-89
