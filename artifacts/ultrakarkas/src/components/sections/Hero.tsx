@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription, DialogHeader } from "@/components/ui/dialog";
 import { LeadForm } from "@/components/LeadForm";
-import { Thermometer, Clock, Home, ShieldCheck, MapPin, Star, ChevronDown, Award, Ruler } from "lucide-react";
+import { Thermometer, Clock, Home, ShieldCheck, MapPin, Star, Award, Ruler } from "lucide-react";
 
 const floatingCards = [
   {
@@ -82,27 +82,28 @@ export function Hero() {
           alt="Каркасный дом в лесу"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/97 via-background/70 to-background/20"/>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70"/>
+        {/* Main left-to-right fade — lighter to show more of the photo */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/92 via-background/55 to-transparent"/>
+        {/* Bottom fade */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"/>
+        {/* Top subtle dark */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-transparent" style={{ height: "35%" }}/>
+        {/* Orange atmospheric glow on left edge */}
+        <div className="absolute left-0 top-1/3 w-96 h-96 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(245,122,0,0.08) 0%, transparent 70%)" }}/>
       </div>
 
-      {/* Animated decorative rings */}
-      <div className="absolute right-[-60px] top-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none hidden xl:block">
-        {[1, 2, 3, 4].map((i) => (
+      {/* Animated decorative rings — now centered on right column area */}
+      <div className="absolute right-[15%] top-1/2 -translate-y-1/2 w-[560px] h-[560px] pointer-events-none hidden xl:block opacity-60">
+        {[1, 2, 3].map((i) => (
           <motion.div
             key={i}
-            className="absolute inset-0 rounded-full border border-primary/8"
-            style={{ transform: `scale(${0.35 + i * 0.2})` }}
+            className="absolute inset-0 rounded-full border border-primary/12"
+            style={{ transform: `scale(${0.4 + i * 0.22})` }}
             animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
-            transition={{ duration: 45 + i * 12, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 50 + i * 15, repeat: Infinity, ease: "linear" }}
           />
         ))}
-        <motion.div
-          className="absolute inset-0 m-auto w-3 h-3 rounded-full bg-primary/40"
-          style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
-          animate={{ scale: [1, 1.5, 1], opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
       </div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-6 flex-1 flex items-center">
@@ -252,23 +253,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        onClick={scrollDown}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 text-foreground/30 hover:text-foreground/60 transition-colors group"
-      >
-        <span className="text-[10px] uppercase tracking-widest font-medium">Листать</span>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ChevronDown className="w-5 h-5"/>
-        </motion.div>
-      </motion.button>
 
       {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"/>
