@@ -60,3 +60,25 @@ registered and every inline `onclick` fails with "X is not defined" → looks li
 JS vanished. Null-guard every top-level `getElementById` use in that IIFE.
 Note: пирог (`ukLyrTab`) toggles are INLINE in html.html, so they keep working even
 when js.js dies — a useful tell that the failure is in js.js, not the markup.
+
+## Mobile defect pattern: fixed multi-column grid "tables"
+The .uk-cmp comparison "table" and several blocks are CSS grids with hardcoded
+column counts (e.g. `grid-template-columns:1.1fr 1fr 1fr`) and NO mobile breakpoint —
+on phones the last column gets clipped off the right edge (no horizontal scroll, it
+just overflows hidden). Fix = add a `@media (max-width:640px)` that restacks: make
+the row label full-width (`grid-column:1 / -1`) and drop to fewer columns. Check
+every grid-based "table" for a small-screen breakpoint, not just font size.
+
+## Packages spec table is data the client supplies, NOT in React source
+The full комплектации feature table (with section groups 'Основание и пол',
+'Каркас и отделка', 'Кровля', 'Инженерные системы') was given by the client directly
+for the static site and is NOT present in the React Packages.tsx source — so the
+"React is source of truth" rule does not cover it. Edit the static table in
+tilda/index/html.html. Section rows = `<tr class="uk-pkg-sec"><td colspan="4">`.
+Highlight rule learned from original: h:'all' → highlight Оптимум+Максимум cells
+(NOT Эконом); h:'optimum'/'max' → that one column. Оптимум column always tinted via
+existing `td:nth-child(3)` CSS; per-cell emphasis uses `.uk-highlight`.
+
+## Anchors
+Added `id="uk-compare"` to the dark comparison `<section class="uk-cmp">` so it can be
+deep-linked and screenshotted (it had no id before).

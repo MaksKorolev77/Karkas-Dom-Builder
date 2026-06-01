@@ -429,6 +429,9 @@
 .uk-pkg-table .uk-check { color: var(--uk-primary); }
 .uk-pkg-table .uk-minus { color: var(--uk-muted-fg); opacity: .5; }
 .uk-pkg-table .uk-highlight { color: var(--uk-primary); font-weight: 600; }
+.uk-pkg-table thead th:nth-child(n+2), .uk-pkg-table td:nth-child(n+2) { text-align: center; }
+.uk-pkg-table tr.uk-pkg-sec td { background: rgba(0,0,0,.045); font-weight: 700; font-size: .8125rem; text-transform: uppercase; letter-spacing: .04em; color: var(--uk-fg); text-align: left; }
+.uk-pkg-table tr.uk-pkg-sec:hover td { background: rgba(0,0,0,.045); }
 
 /* ── PAYMENT STAGES ── */
 .uk-pay { background: var(--uk-bg); }
@@ -838,6 +841,18 @@
 .uk-cmp-cta__title { font-weight:700; color:#fff; margin-bottom:.25rem; }
 .uk-cmp-cta__text { font-size:.875rem; color:#94a3b8; line-height:1.6; }
 @media (max-width:480px){ .uk-cmp-scn__body { grid-template-columns:1fr; } .uk-cmp-col--them { border-right:0; border-bottom:1px solid rgba(51,65,85,.5); } }
+@media (max-width:640px){
+  .uk-cmp-table__head { grid-template-columns:1fr 1fr; }
+  .uk-cmp-table__head .uk-cmp-th:first-child { display:none; }
+  .uk-cmp-th--them { border-left:0; }
+  .uk-cmp-th { padding:.6rem .9rem; }
+  .uk-cmp-table__row { grid-template-columns:1fr 1fr; }
+  .uk-cmp-td--aspect { grid-column:1 / -1; padding:.75rem .9rem .25rem; }
+  .uk-cmp-td--them { border-left:0; }
+  .uk-cmp-td--them, .uk-cmp-td--us { padding:.5rem .9rem .75rem; }
+  .uk-cmp-td--them span, .uk-cmp-td--us span, .uk-cmp-th span { font-size:.6875rem; }
+  .uk-cmp-td--aspect span { font-size:.875rem; }
+}
 
 /* ── PROJECT OPTIONS (muted/20) ── */
 .uk-popt { background:#fafafa; padding:2.5rem 0; overflow:hidden; }
