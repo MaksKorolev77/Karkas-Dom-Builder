@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Контакты — УльтраКаркас</title>
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" href="contacts.css">
+</head>
+<body>
+<div class="uk" id="uk-contacts">
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="uk-navbar uk-inner" id="uk-navbar">
+  <div class="uk-wrap"><div class="uk-navbar__inner">
+    <a href="index.html" class="uk-navbar__logo">
+      <div class="uk-navbar__badge">УК</div>
+      <span class="uk-navbar__name">УльтраКаркас</span>
+    </a>
+    <nav class="uk-navbar__nav">
+      <a href="projects.html" class="uk-navbar__link">Проекты</a>
+      <a href="#uk-packages" class="uk-navbar__link" onclick="ukSmoothTo('uk-packages',event)">Комплектации</a>
+      <a href="#uk-why" class="uk-navbar__link" onclick="ukSmoothTo('uk-why',event)">О нас</a>
+      <a href="vacancies.html" class="uk-navbar__link">Вакансии</a>
+      <a href="#uk-contact" class="uk-navbar__link" onclick="ukSmoothTo('uk-contact',event)">Контакты</a>
+    </nav>
+    <div class="uk-navbar__right">
+      <a href="tel:+74993909789" class="uk-navbar__phone">
+        <svg class="uk-navbar__phone-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +7 (499) 390-97-89
+      </a>
+      <button class="uk-btn uk-btn--primary" onclick="ukOpenModal()">Получить расчёт</button>
+    </div>
+    <div class="uk-navbar__mobile-right">
+      <a href="tel:+74993909789" class="uk-navbar__call-btn" aria-label="Позвонить">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button class="uk-navbar__menu-btn" id="uk-menu-btn" aria-label="Меню" onclick="ukToggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div></div>
+</header>
+
+<!-- Mobile nav -->
+<div class="uk-mobile-nav" id="uk-mobile-nav">
+  <nav class="uk-mobile-nav__links">
+    <a href="projects.html" class="uk-mobile-nav__link">Проекты</a>
+    <a href="#uk-packages" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-packages',event);ukCloseMenu()">Комплектации</a>
+    <a href="#uk-why" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-why',event);ukCloseMenu()">О нас</a>
+    <a href="vacancies.html" class="uk-mobile-nav__link">Вакансии</a>
+    <a href="#uk-contact" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-contact',event);ukCloseMenu()">Контакты</a>
+  </nav>
+  <div class="uk-mobile-nav__bottom">
+    <a href="tel:+74993909789" class="uk-mobile-nav__phone-big">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +7 (499) 390-97-89
+    </a>
+    <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center" onclick="ukOpenModal();ukCloseMenu()">Получить расчёт</button>
+  </div>
+</div>
+
+
+<div class="uk-pt-nav">
+<!--
+  УльтраКаркас — Блок «Контакты»
+  Tilda Zero Block → вставить в поле HTML
+-->
+<section id="contacts" class="section contacts-block">
+  <div class="container">
+
+    <div class="contacts-grid">
+
+      <!-- Левая колонка: реквизиты -->
+      <div class="contacts-info">
+        <h2>Контакты</h2>
+        <p class="sub">Свяжитесь с нами любым удобным способом — ответим быстро.</p>
+
+        <div class="contacts-list">
+
+          <!-- Телефон -->
+          <a href="tel:+74993909789" class="ci">
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">Телефон</div>
+              <div class="val">+7 (499) 390-97-89</div>
+              <div class="val small">Звонок бесплатный</div>
+            </div>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:info@ultrakarkas.ru" class="ci">
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">Email</div>
+              <div class="val">info@ultrakarkas.ru</div>
+              <div class="val small">Написать письмо</div>
+            </div>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/79269935818" target="_blank" rel="noopener" class="ci">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.122 1.533 5.858L0 24l6.335-1.612A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.366l-.36-.214-3.735.981.998-3.645-.235-.374A9.818 9.818 0 1 1 12 21.818z"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">WhatsApp</div>
+              <div class="val">+7 (926) 993-58-18</div>
+              <div class="val small">Написать в WhatsApp</div>
+            </div>
+          </a>
+
+          <!-- Telegram -->
+          <a href="https://t.me/+79269935818" target="_blank" rel="noopener" class="ci">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">Telegram</div>
+              <div class="val">+7 (926) 993-58-18</div>
+              <div class="val small">Написать в Telegram</div>
+            </div>
+          </a>
+
+          <!-- MAX -->
+          <a href="https://maxln.ru/ve73F0" target="_blank" rel="noopener" class="ci">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">MAX</div>
+              <div class="val">+7 (926) 993-58-18</div>
+              <div class="val small">Написать в MAX</div>
+            </div>
+          </a>
+
+          <!-- Офис -->
+          <a href="https://yandex.ru/maps/-/CPCOQC3w" target="_blank" rel="noopener" class="ci">
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">Офис продаж</div>
+              <div class="val">Московская обл., г. Одинцово</div>
+              <div class="val small">р.п. Заречье, ул. Торговая, 2С</div>
+              <div class="val small" style="color:var(--primary);margin-top:.25rem">Построить маршрут →</div>
+            </div>
+          </a>
+
+          <!-- Режим работы -->
+          <div class="ci">
+            <div class="ci-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="ci-body">
+              <div class="lbl">Режим работы</div>
+              <div class="val">Ежедневно: 10:00 – 18:00</div>
+              <div class="val small">Без выходных</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Правая колонка: карта -->
+      <div class="contacts-map">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?z=14&ol=biz&oid=162576044910"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          allowfullscreen
+          loading="lazy"
+          style="border-radius:1rem;min-height:480px"
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="uk-footer">
+  <div class="uk-wrap">
+    <div class="uk-footer__grid">
+      <div>
+        <div class="uk-footer__logo-row"><div class="uk-footer__badge">УК</div><span class="uk-footer__name">УльтраКаркас</span></div>
+        <p class="uk-footer__desc">Строительство надежных и энергоэффективных каркасных домов в Москве и Московской области.</p>
+      </div>
+      <div>
+        <div class="uk-footer__col-title">Навигация</div>
+        <ul class="uk-footer__links">
+          <li><a href="projects.html">Проекты домов</a></li>
+          <li><a href="#uk-packages" onclick="ukSmoothTo('uk-packages',event)">Комплектации и цены</a></li>
+          <li><a href="vacancies.html">Вакансии</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div style="grid-column:span 2">
+        <div class="uk-footer__col-title">Контакты</div>
+        <div class="uk-footer__contacts">
+          <a href="tel:+74993909789" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="uk-footer__contact-title">+7 (499) 390-97-89</div><div class="uk-footer__contact-sub">Звонок бесплатный</div></div></a>
+          <a href="mailto:info@ultrakarkas.ru" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="uk-footer__contact-title">info@ultrakarkas.ru</div></div></a>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Офис продаж:</div><div class="uk-footer__contact-sub">Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С</div></div></div>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Режим работы:</div><div class="uk-footer__contact-sub">Ежедневно: 10:00 – 18:00</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-footer__bottom">
+      <div class="uk-footer__copy">© 2026 ООО «УльтраКаркас». Все права защищены. Не является публичной офертой.</div>
+      <a href="privacy.html" class="uk-footer__privacy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════ MODAL ══════════ -->
+<div id="uk-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:600px;width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="ukCloseModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;padding:.25rem;color:#666">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Оставить заявку на расчёт</h2>
+    <p style="color:#666;margin-bottom:1.5rem;font-size:.9375rem">Заполните форму — подготовим предварительный расчёт стоимости.</p>
+    <div id="uk-modal-form-wrap">
+      <form id="uk-modal-form" onsubmit="ukSubmitModal(event)">
+        <div class="uk-form-row">
+          <div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div>
+          <div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-field"><label class="uk-form-label">Площадь дома *</label><select class="uk-form-select" name="area" required><option value="" disabled selected>Выберите</option><option>До 80 м²</option><option>80–120 м²</option><option>120–160 м²</option><option>160–200 м²</option><option>Более 200 м²</option></select></div>
+          <div class="uk-form-field"><label class="uk-form-label">Комплектация</label><select class="uk-form-select" name="package"><option value="">Не выбрана</option><option>Эконом</option><option>Оптимум</option><option>Максимум</option></select></div>
+        </div>
+        <div class="uk-form-field"><label class="uk-form-label">Комментарий</label><textarea class="uk-form-textarea" id="uk-modal-comment" name="comment" placeholder="Расскажите о вашем участке, пожеланиях..."></textarea></div>
+        <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-modal-consent" required><label class="uk-form-consent-label" for="uk-modal-consent">Я согласен с <a href="privacy.html">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+        <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </form>
+      <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-modal-success">
+        <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Заявка отправлена!</div>
+        <p style="color:#666">Наш менеджер свяжется с вами в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="contacts.js"></script>
+</body>
+</html>

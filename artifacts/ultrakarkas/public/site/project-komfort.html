@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <title>Проект «Комфорт» — 113 м² — УльтраКаркас</title>
+  <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+<div class="uk" id="uk-project">
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="uk-navbar uk-inner" id="uk-navbar">
+  <div class="uk-wrap"><div class="uk-navbar__inner">
+    <a href="index.html" class="uk-navbar__logo">
+      <div class="uk-navbar__badge">УК</div>
+      <span class="uk-navbar__name">УльтраКаркас</span>
+    </a>
+    <nav class="uk-navbar__nav">
+      <a href="projects.html" class="uk-navbar__link">Проекты</a>
+      <a href="#uk-packages" class="uk-navbar__link" onclick="ukSmoothTo('uk-packages',event)">Комплектации</a>
+      <a href="#uk-why" class="uk-navbar__link" onclick="ukSmoothTo('uk-why',event)">О нас</a>
+      <a href="vacancies.html" class="uk-navbar__link">Вакансии</a>
+      <a href="#uk-contact" class="uk-navbar__link" onclick="ukSmoothTo('uk-contact',event)">Контакты</a>
+    </nav>
+    <div class="uk-navbar__right">
+      <a href="tel:+74993909789" class="uk-navbar__phone">
+        <svg class="uk-navbar__phone-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +7 (499) 390-97-89
+      </a>
+      <button class="uk-btn uk-btn--primary" onclick="ukOpenModal()">Получить расчёт</button>
+    </div>
+    <div class="uk-navbar__mobile-right">
+      <a href="tel:+74993909789" class="uk-navbar__call-btn" aria-label="Позвонить">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button class="uk-navbar__menu-btn" id="uk-menu-btn" aria-label="Меню" onclick="ukToggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div></div>
+</header>
+
+<!-- Mobile nav -->
+<div class="uk-mobile-nav" id="uk-mobile-nav">
+  <nav class="uk-mobile-nav__links">
+    <a href="projects.html" class="uk-mobile-nav__link">Проекты</a>
+    <a href="#uk-packages" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-packages',event);ukCloseMenu()">Комплектации</a>
+    <a href="#uk-why" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-why',event);ukCloseMenu()">О нас</a>
+    <a href="vacancies.html" class="uk-mobile-nav__link">Вакансии</a>
+    <a href="#uk-contact" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-contact',event);ukCloseMenu()">Контакты</a>
+  </nav>
+  <div class="uk-mobile-nav__bottom">
+    <a href="tel:+74993909789" class="uk-mobile-nav__phone-big">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +7 (499) 390-97-89
+    </a>
+    <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center" onclick="ukOpenModal();ukCloseMenu()">Получить расчёт</button>
+  </div>
+</div>
+
+
+<!-- ══════════ BREADCRUMB ══════════ -->
+<div class="uk-pt-nav uk-wrap">
+  <nav class="uk-breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Главная</a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    <a href="projects.html">Проекты</a>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    <span style="color:var(--uk-fg)">Проект «Комфорт»</span>
+  </nav>
+</div>
+
+<!-- ══════════ HEADER + GALLERY ══════════ -->
+<section class="uk-wrap uk-section">
+  <div class="uk-pd-top">
+    <div>
+      <button class="uk-pd-main-img" onclick="ukOpenLightbox(0)">
+        <img src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png" alt="Проект «Комфорт» — фото 1">
+        <div class="uk-pd-img-badge">Скандинавский · 2 этажа</div>
+        <div class="uk-pd-img-open">Открыть фото</div>
+      </button>
+      <div class="uk-pd-thumbs">
+            <button class="uk-pd-thumb" onclick="ukOpenLightbox(0)"><img src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png" alt="фото 1" loading="lazy"></button>
+            <button class="uk-pd-thumb" onclick="ukOpenLightbox(1)"><img src="https://static.tildacdn.com/tild3732-3032-4230-b064-396662643335/dky113_11.jpg" alt="фото 2" loading="lazy"></button>
+            <button class="uk-pd-thumb" onclick="ukOpenLightbox(2)"><img src="https://static.tildacdn.com/tild3438-6637-4161-b530-663231323061/dky133_12.jpg" alt="фото 3" loading="lazy"></button>
+            <button class="uk-pd-thumb" onclick="ukOpenLightbox(3)"><img src="https://static.tildacdn.com/tild3134-3337-4264-b332-383138356535/dky113_32_08.jpg" alt="фото 4" loading="lazy"></button>
+            <button class="uk-pd-thumb" onclick="ukOpenLightbox(4)"><img src="https://static.tildacdn.com/tild3338-6538-4031-a261-386338636638/dky113_34_08.jpg" alt="фото 5" loading="lazy"><div class="uk-pd-thumb-more">+2</div></button>
+      </div>
+    </div>
+    <div>
+      <div class="uk-pd-price">от 4 520 000 ₽</div>
+      <h1 class="uk-pd-title">Проект «Комфорт»</h1>
+      <div class="uk-pd-specs">
+        <div class="uk-pd-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span class="uk-pd-spec__val">113</span><span class="uk-pd-spec__label">м²</span></div>
+        <div class="uk-pd-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-pd-spec__val">4</span><span class="uk-pd-spec__label">спальни</span></div>
+        <div class="uk-pd-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-pd-spec__val">2</span><span class="uk-pd-spec__label">санузел</span></div>
+      </div>
+      <p class="uk-pd-desc">Уютный и функциональный дом для семьи, где каждому найдётся своё пространство. Четыре полноценные спальни и два санузла делают планировку особенно удобной для постоянного проживания, а большая гостиная 22,6 м² станет центром семейной жизни, отдыха и встреч с близкими.</p>
+      <ul class="uk-pd-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>4 полноценные спальни</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Большая гостиная 22.6 м²</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Крыльцо с навесом</span></li>
+      </ul>
+      <div class="uk-pd-cta-row">
+        <button class="uk-btn uk-btn--primary uk-pd-cta-btn--main" onclick="ukOpenModal('Интересует проект «Комфорт» (113 м²).')">Получить расчёт проекта</button>
+        <a href="tel:+74993909789" class="uk-btn uk-btn--outline" style="width:100%"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Позвонить</a>
+      </div>
+      <div class="uk-pd-gift">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        <div>
+          <div class="uk-pd-gift__title">При заключении договора — проект в подарок!</div>
+          <div class="uk-pd-gift__sub">Заключите договор на основные работы и получите проект бесплатно.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uk-pd-trust">
+            <div class="uk-pd-trust__item"><div class="uk-pd-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9"/><path d="M17.64 15 22 10.64"/><path d="m20.91 11.7-1.25-1.25c-.6-.6-.93-1.4-.93-2.25v-.86L16.01 4.6a5.56 5.56 0 0 0-3.94-1.64H9l.92.82A6.18 6.18 0 0 1 12 8.4v1.56l2 2h2.47l2.26 1.91"/></svg></div><span class="uk-pd-trust__label">Прочный несущий каркас</span></div>
+            <div class="uk-pd-trust__item"><div class="uk-pd-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="uk-pd-trust__label">10 лет гарантии</span></div>
+            <div class="uk-pd-trust__item"><div class="uk-pd-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9a4 4 0 0 0-2 7.5"/><path d="M12 3v2"/><path d="m6.6 18.4-1.4 1.4"/><path d="M20 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M4 13H2"/><path d="M6.34 7.34 4.93 5.93"/></svg></div><span class="uk-pd-trust__label">Энергосберегающий дом</span></div>
+            <div class="uk-pd-trust__item"><div class="uk-pd-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span class="uk-pd-trust__label">Контроль качества на каждом этапе</span></div>
+  </div>
+</section>
+
+<!-- ══════════ PACKAGES ══════════ -->
+<section class="uk-section uk-section--muted">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <span class="uk-eyebrow">Комплектации</span>
+      <h2 class="uk-h2">Выберите комплектацию</h2>
+      <p class="uk-lead" style="margin-top:1rem">Нажмите на нужную комплектацию — ниже откроется подробный состав.</p>
+    </div>
+    <div class="uk-pd-pkg-wrap">
+      <div class="uk-pd-pkg-tabs">
+              <button class="uk-pd-pkg-tab" aria-selected="false" onclick="ukPdSetPkg('econom', this)"><span class="uk-pd-pkg-tab__name">Эконом</span><span class="uk-pd-pkg-tab__price">от 4 520 000 ₽</span></button>
+              <button class="uk-pd-pkg-tab" aria-selected="true" onclick="ukPdSetPkg('optimum', this)"><span class="uk-pd-pkg-tab__name">Оптимум</span><span class="uk-pd-pkg-tab__price">от 5 650 000 ₽</span></button>
+              <button class="uk-pd-pkg-tab" aria-selected="false" onclick="ukPdSetPkg('maximum', this)"><span class="uk-pd-pkg-tab__name">Максимум</span><span class="uk-pd-pkg-tab__price">от 6 780 000 ₽</span></button>
+      </div>
+            <div class="uk-pd-pkg-panel" id="uk-pd-pkg-econom">
+              <div class="uk-pd-pkg-card">
+                <div class="uk-pd-pkg-head">
+                  <div>
+                    <div class="uk-pd-pkg-name">Эконом</div>
+                    <div class="uk-pd-pkg-tagline">Базовый тёплый контур</div>
+                  </div>
+                  <div class="uk-pd-pkg-price">от 4 520 000 ₽</div>
+                </div>
+                <div class="uk-pd-acc uk-open">
+                  <button class="uk-pd-acc-trigger" onclick="ukPdToggleAcc(this)">Полный состав комплектации <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  <div class="uk-pd-acc-content">
+                    <div class="uk-pd-acc-list">
+                  <div class="uk-pd-spec-section">Основание</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Фундамент</div><div class="uk-pd-spec-row__val">Ж/б забивные сваи 150x150x3000</div></div>
+                  <div class="uk-pd-spec-section">Цокольное перекрытие</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Нижняя обвязка</div><div class="uk-pd-spec-row__val">Сухая строганная доска 150×150 мм</div></div>
+                  <div class="uk-pd-spec-section">Пол</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Лаги пола</div><div class="uk-pd-spec-row__val">Сухая строганная доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление пола</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Черный пол</div><div class="uk-pd-spec-row__val">Обрезная доска 20x100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-section">Каркас</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Каркас внешних стен</div><div class="uk-pd-spec-row__val">Доска 45x145 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление внешних стен</div><div class="uk-pd-spec-row__val">Каменная вата 150 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление перегородок</div><div class="uk-pd-spec-row__val">Каменная вата 100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Внутренняя отделка</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Наружная отделка</div><div class="uk-pd-spec-row__val">OSB 12 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Отделка потолка</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление потолка</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Окна</div><div class="uk-pd-spec-row__val">Пластиковые ПВХ 70 Рехау</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Дверь</div><div class="uk-pd-spec-row__val">Металлическая с терморазрывом 100 мм</div></div>
+                  <div class="uk-pd-spec-section">Кровля</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Стропило</div><div class="uk-pd-spec-row__val">Доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие кровли</div><div class="uk-pd-spec-row__val">Металлочерепица 0.5 мм Grand Line</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водостоки</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Снегозадержатели</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Подшив свесов</div><div class="uk-pd-spec-row__val">—</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление кровли</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Плёнки</div><div class="uk-pd-spec-row__val">Изоспан AM, Ютафол Н 110, Изоспан A</div></div>
+                  <div class="uk-pd-spec-section">Инженерные системы</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Вентиляция</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Электрика</div><div class="uk-pd-spec-row__val">Труба ПНД 32 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водоснабжение</div><div class="uk-pd-spec-row__val">Труба ПНД 50 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Канализация</div><div class="uk-pd-spec-row__val">Труба ПВХ 110 мм</div></div>
+                    </div>
+                    <div class="uk-pd-acc-note">Разводка электрики, водоснабжения, отопления и канализации рассчитывается индивидуально.</div>
+                  </div>
+                </div>
+                <div class="uk-pd-pkg-actions">
+                  <button class="uk-btn uk-btn--primary uk-btn--lg" onclick="ukOpenModal('Проект «Комфорт» (113 м²), комплектация Эконом.')">Заказать «Комфорт» в комплектации Эконом</button>
+                </div>
+              </div>
+            </div>
+            <div class="uk-pd-pkg-panel uk-active" id="uk-pd-pkg-optimum">
+              <div class="uk-pd-pkg-card">
+                <div class="uk-pd-pkg-head">
+                  <div>
+                    <div class="uk-pd-pkg-name">Оптимум</div>
+                    <div class="uk-pd-pkg-tagline">Золотая середина цены и набора опций</div>
+                  </div>
+                  <div class="uk-pd-pkg-price">от 5 650 000 ₽</div>
+                </div>
+                <div class="uk-pd-acc uk-open">
+                  <button class="uk-pd-acc-trigger" onclick="ukPdToggleAcc(this)">Полный состав комплектации <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  <div class="uk-pd-acc-content">
+                    <div class="uk-pd-acc-list">
+                  <div class="uk-pd-spec-section">Основание</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Фундамент</div><div class="uk-pd-spec-row__val">Ж/б забивные сваи 150x150x3000</div></div>
+                  <div class="uk-pd-spec-section">Цокольное перекрытие</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Нижняя обвязка</div><div class="uk-pd-spec-row__val">Сухая строганная доска 150×150 мм</div></div>
+                  <div class="uk-pd-spec-section">Пол</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Лаги пола</div><div class="uk-pd-spec-row__val">Сухая строганная доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление пола</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Черный пол</div><div class="uk-pd-spec-row__val">Обрезная доска 20x100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие</div><div class="uk-pd-spec-row__val">Фанера 18 мм</div></div>
+                  <div class="uk-pd-spec-section">Каркас</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Каркас внешних стен</div><div class="uk-pd-spec-row__val">Доска 45x145 мм + брусок 40x50 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление внешних стен</div><div class="uk-pd-spec-row__val">Каменная вата 150+50=200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление перегородок</div><div class="uk-pd-spec-row__val">Каменная вата 100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Внутренняя отделка</div><div class="uk-pd-spec-row__val">Имитация бруса</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Наружная отделка</div><div class="uk-pd-spec-row__val">Имитация бруса (карельский профиль)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Отделка потолка</div><div class="uk-pd-spec-row__val">OSB 9 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление потолка</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Окна</div><div class="uk-pd-spec-row__val">Пластиковые ПВХ 70 Рехау</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Дверь</div><div class="uk-pd-spec-row__val">Металлическая с терморазрывом 100 мм</div></div>
+                  <div class="uk-pd-spec-section">Кровля</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Стропило</div><div class="uk-pd-spec-row__val">Доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие кровли</div><div class="uk-pd-spec-row__val">Металлочерепица 0.5 мм Grand Line</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водостоки</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Снегозадержатели</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Подшив свесов</div><div class="uk-pd-spec-row__val">Пластиковые софиты с перфорацией</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление кровли</div><div class="uk-pd-spec-row__val">Каменная вата 200 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Плёнки</div><div class="uk-pd-spec-row__val">Изоспан AM, Ютафол Н 110, Изоспан A</div></div>
+                  <div class="uk-pd-spec-section">Инженерные системы</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Вентиляция</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Электрика</div><div class="uk-pd-spec-row__val">Труба ПНД 32 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водоснабжение</div><div class="uk-pd-spec-row__val">Труба ПНД 50 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Канализация</div><div class="uk-pd-spec-row__val">Труба ПВХ 110 мм</div></div>
+                    </div>
+                    <div class="uk-pd-acc-note">Разводка электрики, водоснабжения, отопления и канализации рассчитывается индивидуально.</div>
+                  </div>
+                </div>
+                <div class="uk-pd-pkg-actions">
+                  <button class="uk-btn uk-btn--primary uk-btn--lg" onclick="ukOpenModal('Проект «Комфорт» (113 м²), комплектация Оптимум.')">Заказать «Комфорт» в комплектации Оптимум</button>
+                </div>
+              </div>
+            </div>
+            <div class="uk-pd-pkg-panel" id="uk-pd-pkg-maximum">
+              <div class="uk-pd-pkg-card">
+                <div class="uk-pd-pkg-head">
+                  <div>
+                    <div class="uk-pd-pkg-name">Максимум</div>
+                    <div class="uk-pd-pkg-tagline">Премиальные материалы и усиленный каркас</div>
+                  </div>
+                  <div class="uk-pd-pkg-price">от 6 780 000 ₽</div>
+                </div>
+                <div class="uk-pd-acc uk-open">
+                  <button class="uk-pd-acc-trigger" onclick="ukPdToggleAcc(this)">Полный состав комплектации <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  <div class="uk-pd-acc-content">
+                    <div class="uk-pd-acc-list">
+                  <div class="uk-pd-spec-section">Основание</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Фундамент</div><div class="uk-pd-spec-row__val">Ж/б забивные сваи 150x150x3000</div></div>
+                  <div class="uk-pd-spec-section">Цокольное перекрытие</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Нижняя обвязка</div><div class="uk-pd-spec-row__val">Сухая строганная доска 150×150 мм</div></div>
+                  <div class="uk-pd-spec-section">Пол</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Лаги пола</div><div class="uk-pd-spec-row__val">Сухая строганная доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление пола</div><div class="uk-pd-spec-row__val">Каменная вата 250 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Черный пол</div><div class="uk-pd-spec-row__val">Обрезная доска 20x100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие</div><div class="uk-pd-spec-row__val">Фанера 18 мм</div></div>
+                  <div class="uk-pd-spec-section">Каркас</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Каркас внешних стен</div><div class="uk-pd-spec-row__val">Доска 45x190 мм + брусок 40x50 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление внешних стен</div><div class="uk-pd-spec-row__val">Каменная вата 200+50=250 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление перегородок</div><div class="uk-pd-spec-row__val">Каменная вата 100 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Внутренняя отделка</div><div class="uk-pd-spec-row__val">OSB + Гипсокартон</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Наружная отделка</div><div class="uk-pd-spec-row__val">Фиброцементный сайдинг</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Отделка потолка</div><div class="uk-pd-spec-row__val">OSB 9 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление потолка</div><div class="uk-pd-spec-row__val">Каменная вата 250 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Окна</div><div class="uk-pd-spec-row__val">Пластиковые ПВХ 70 Рехау</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Дверь</div><div class="uk-pd-spec-row__val">Металлическая с терморазрывом 100 мм</div></div>
+                  <div class="uk-pd-spec-section">Кровля</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Стропило</div><div class="uk-pd-spec-row__val">Доска 45×190 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Покрытие кровли</div><div class="uk-pd-spec-row__val">Металлочерепица 0.5 мм Grand Line</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водостоки</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Снегозадержатели</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Подшив свесов</div><div class="uk-pd-spec-row__val">Пластиковые софиты с перфорацией</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Утепление кровли</div><div class="uk-pd-spec-row__val">Каменная вата 250 мм</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Плёнки</div><div class="uk-pd-spec-row__val">Изоспан AM, Ютафол Н 110, Изоспан A</div></div>
+                  <div class="uk-pd-spec-section">Инженерные системы</div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Вентиляция</div><div class="uk-pd-spec-row__val">✓</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Электрика</div><div class="uk-pd-spec-row__val">Труба ПНД 32 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Водоснабжение</div><div class="uk-pd-spec-row__val">Труба ПНД 50 мм (закладная)</div></div>
+                  <div class="uk-pd-spec-row"><div class="uk-pd-spec-row__label">Канализация</div><div class="uk-pd-spec-row__val">Труба ПВХ 110 мм</div></div>
+                    </div>
+                    <div class="uk-pd-acc-note">Разводка электрики, водоснабжения, отопления и канализации рассчитывается индивидуально.</div>
+                  </div>
+                </div>
+                <div class="uk-pd-pkg-actions">
+                  <button class="uk-btn uk-btn--primary uk-btn--lg" onclick="ukOpenModal('Проект «Комфорт» (113 м²), комплектация Максимум.')">Заказать «Комфорт» в комплектации Максимум</button>
+                </div>
+              </div>
+            </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHARACTERISTICS + ROOMS ══════════ -->
+<section class="uk-wrap uk-section">
+  <div class="uk-pd-info">
+    <div>
+      <h2 class="uk-pd-info__h2">Характеристики</h2>
+      <dl class="uk-pd-char">
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Фундамент</dt><dd class="uk-pd-char__val">Ж/б забивные сваи 150x150x3000</dd></div>
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Стены</dt><dd class="uk-pd-char__val">Сухая строганная доска (камерной сушки) 150×50 мм, шаг 600 мм</dd></div>
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Этажность</dt><dd class="uk-pd-char__val">2</dd></div>
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Кровля</dt><dd class="uk-pd-char__val">Двускатная, металлочерепица 0.5 мм Grand Line</dd></div>
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Утепление</dt><dd class="uk-pd-char__val">Базальтовая вата</dd></div>
+              <div class="uk-pd-char__row"><dt class="uk-pd-char__label">Высота потолков</dt><dd class="uk-pd-char__val">2.75 м</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h2 class="uk-pd-info__h2">Состав помещений</h2>
+      <div class="uk-pd-rooms">
+            <div><div class="uk-pd-rooms__floor">1 этаж</div>
+              <div class="uk-pd-rooms__grid">
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Гостиная</div><div class="uk-pd-room__area">22.6 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Кухня</div><div class="uk-pd-room__area">12.4 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Прихожая</div><div class="uk-pd-room__area">8.9 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Санузел</div><div class="uk-pd-room__area">5.2 м²</div></div>
+              </div>
+            </div>
+            <div><div class="uk-pd-rooms__floor">2 этаж</div>
+              <div class="uk-pd-rooms__grid">
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Спальня 1</div><div class="uk-pd-room__area">13.5 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Спальня 2</div><div class="uk-pd-room__area">12 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Спальня 3</div><div class="uk-pd-room__area">10.5 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Спальня 4</div><div class="uk-pd-room__area">10.2 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Санузел</div><div class="uk-pd-room__area">5.4 м²</div></div>
+                <div class="uk-pd-room"><div class="uk-pd-room__name">Холл</div><div class="uk-pd-room__area">8 м²</div></div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OTHER PROJECTS ══════════ -->
+<section class="uk-section uk-section--muted">
+  <div class="uk-wrap">
+    <h2 class="uk-pd-other__h2">Другие дома</h2>
+    <div class="uk-pd-other-grid">
+            <a href="project-uyut.html" class="uk-pd-other-card">
+              <div class="uk-pd-other-card__img"><img src="https://static.tildacdn.com/tild3935-6232-4064-a130-313330313561/dg120.png" alt="Уют" loading="lazy"></div>
+              <div class="uk-pd-other-card__body">
+                <div class="uk-pd-other-card__price">от 4 808 000 ₽</div>
+                <h3 class="uk-pd-other-card__name">Проект «Уют»</h3>
+                <div class="uk-pd-other-card__specs"><span>120.2 м²</span><span>3 спал.</span><span>1 санузл.</span></div>
+              </div>
+            </a>
+            <a href="project-semeynyy.html" class="uk-pd-other-card">
+              <div class="uk-pd-other-card__img"><img src="https://static.tildacdn.com/tild3762-6131-4638-b735-643932663339/dg70.png" alt="Семейный" loading="lazy"></div>
+              <div class="uk-pd-other-card__body">
+                <div class="uk-pd-other-card__price">от 4 328 000 ₽</div>
+                <h3 class="uk-pd-other-card__name">Проект «Семейный»</h3>
+                <div class="uk-pd-other-card__specs"><span>108.2 м²</span><span>3 спал.</span><span>1 санузл.</span></div>
+              </div>
+            </a>
+            <a href="project-prostornyy.html" class="uk-pd-other-card">
+              <div class="uk-pd-other-card__img"><img src="https://static.tildacdn.com/tild6536-3665-4939-a462-623365336535/dg130.png" alt="Просторный" loading="lazy"></div>
+              <div class="uk-pd-other-card__body">
+                <div class="uk-pd-other-card__price">от 7 756 000 ₽</div>
+                <h3 class="uk-pd-other-card__name">Проект «Просторный»</h3>
+                <div class="uk-pd-other-card__specs"><span>193.9 м²</span><span>5 спал.</span><span>2 санузл.</span></div>
+              </div>
+            </a>
+    </div>
+    <div class="uk-pd-other-all">
+      <a href="projects.html" class="uk-btn uk-btn--outline">Все проекты <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LIGHTBOX ══════════ -->
+<div class="uk-pd-lightbox" id="uk-pd-lightbox" data-uk-gallery="[&quot;https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png&quot;,&quot;https://static.tildacdn.com/tild3732-3032-4230-b064-396662643335/dky113_11.jpg&quot;,&quot;https://static.tildacdn.com/tild3438-6637-4161-b530-663231323061/dky133_12.jpg&quot;,&quot;https://static.tildacdn.com/tild3134-3337-4264-b332-383138356535/dky113_32_08.jpg&quot;,&quot;https://static.tildacdn.com/tild3338-6538-4031-a261-386338636638/dky113_34_08.jpg&quot;,&quot;https://static.tildacdn.com/tild3638-6338-4634-b134-653537363732/dky133_31_08.jpg&quot;,&quot;https://static.tildacdn.com/tild3963-6432-4164-a665-363036663137/dky113_33_08.jpg&quot;]">
+  <button class="uk-pd-lb-close" onclick="ukCloseLightbox()" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <button class="uk-pd-lb-nav uk-pd-lb-prev" onclick="ukLightboxPrev(event)" aria-label="Предыдущее">‹</button>
+  <img class="uk-pd-lb-img" id="uk-pd-lb-img" src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png" alt="Проект «Комфорт»">
+  <button class="uk-pd-lb-nav uk-pd-lb-next" onclick="ukLightboxNext(event)" aria-label="Следующее">›</button>
+  <div class="uk-pd-lb-counter" id="uk-pd-lb-counter">1 / 7</div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="uk-footer">
+  <div class="uk-wrap">
+    <div class="uk-footer__grid">
+      <div>
+        <div class="uk-footer__logo-row"><div class="uk-footer__badge">УК</div><span class="uk-footer__name">УльтраКаркас</span></div>
+        <p class="uk-footer__desc">Строительство надежных и энергоэффективных каркасных домов в Москве и Московской области.</p>
+      </div>
+      <div>
+        <div class="uk-footer__col-title">Навигация</div>
+        <ul class="uk-footer__links">
+          <li><a href="projects.html">Проекты домов</a></li>
+          <li><a href="#uk-packages" onclick="ukSmoothTo('uk-packages',event)">Комплектации и цены</a></li>
+          <li><a href="vacancies.html">Вакансии</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div style="grid-column:span 2">
+        <div class="uk-footer__col-title">Контакты</div>
+        <div class="uk-footer__contacts">
+          <a href="tel:+74993909789" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="uk-footer__contact-title">+7 (499) 390-97-89</div><div class="uk-footer__contact-sub">Звонок бесплатный</div></div></a>
+          <a href="mailto:info@ultrakarkas.ru" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="uk-footer__contact-title">info@ultrakarkas.ru</div></div></a>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Офис продаж:</div><div class="uk-footer__contact-sub">Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С</div></div></div>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Режим работы:</div><div class="uk-footer__contact-sub">Ежедневно: 10:00 – 18:00</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="uk-footer__bottom">
+      <div class="uk-footer__copy">© 2026 ООО «УльтраКаркас». Все права защищены. Не является публичной офертой.</div>
+      <a href="privacy.html" class="uk-footer__privacy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════ MODAL ══════════ -->
+<div id="uk-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:600px;width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="ukCloseModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;padding:.25rem;color:#666">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Оставить заявку на расчёт</h2>
+    <p style="color:#666;margin-bottom:1.5rem;font-size:.9375rem">Заполните форму — подготовим предварительный расчёт стоимости.</p>
+    <div id="uk-modal-form-wrap">
+      <form id="uk-modal-form" onsubmit="ukSubmitModal(event)">
+        <div class="uk-form-row">
+          <div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div>
+          <div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
+        </div>
+        <div class="uk-form-row">
+          <div class="uk-form-field"><label class="uk-form-label">Площадь дома *</label><select class="uk-form-select" name="area" required><option value="" disabled selected>Выберите</option><option>До 80 м²</option><option>80–120 м²</option><option>120–160 м²</option><option>160–200 м²</option><option>Более 200 м²</option></select></div>
+          <div class="uk-form-field"><label class="uk-form-label">Комплектация</label><select class="uk-form-select" name="package"><option value="">Не выбрана</option><option>Эконом</option><option>Оптимум</option><option>Максимум</option></select></div>
+        </div>
+        <div class="uk-form-field"><label class="uk-form-label">Комментарий</label><textarea class="uk-form-textarea" id="uk-modal-comment" name="comment" placeholder="Расскажите о вашем участке, пожеланиях..."></textarea></div>
+        <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-modal-consent" required><label class="uk-form-consent-label" for="uk-modal-consent">Я согласен с <a href="privacy.html">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+        <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </form>
+      <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-modal-success">
+        <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Заявка отправлена!</div>
+        <p style="color:#666">Наш менеджер свяжется с вами в ближайшее время.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="project.js"></script>
+</body>
+</html>
