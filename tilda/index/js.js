@@ -5,6 +5,7 @@
   /* ── Navbar scroll ── */
   var nav = document.getElementById('uk-navbar');
   function ukNavScroll() {
+    if (!nav) return;
     if (window.scrollY > 40) nav.classList.add('uk-scrolled');
     else nav.classList.remove('uk-scrolled');
   }
@@ -13,10 +14,12 @@
 
   /* ── Mobile menu ── */
   window.ukToggleMenu = function () {
-    document.getElementById('uk-mobile-nav').classList.toggle('uk-open');
+    var mn = document.getElementById('uk-mobile-nav');
+    if (mn) mn.classList.toggle('uk-open');
   };
   window.ukCloseMenu = function () {
-    document.getElementById('uk-mobile-nav').classList.remove('uk-open');
+    var mn = document.getElementById('uk-mobile-nav');
+    if (mn) mn.classList.remove('uk-open');
   };
 
   /* ── Smooth scroll ── */

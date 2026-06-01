@@ -8,6 +8,10 @@ const OUT = path.join(ROOT, '..', 'artifacts', 'ultrakarkas', 'public', 'site');
 
 const read = (p) => fs.readFileSync(path.join(ROOT, p), 'utf8');
 
+/* cache-busting token — changes every build so browsers never serve a stale
+   custom.css / *.js after a rebuild or republish */
+const VER = Date.now().toString(36);
+
 fs.mkdirSync(OUT, { recursive: true });
 
 /* ---- shared assets ---- */
@@ -44,8 +48,8 @@ function rewriteLinks(html) {
 }
 
 function doc({ title, body, css = ['custom.css'], scripts = [] }) {
-  const links = css.map((c) => `  <link rel="stylesheet" href="${c}">`).join('\n');
-  const scr = scripts.map((s) => `<script src="${s}"></script>`).join('\n');
+  const links = css.map((c) => `  <link rel="stylesheet" href="${c}?v=${VER}">`).join('\n');
+  const scr = scripts.map((s) => `<script src="${s}?v=${VER}"></script>`).join('\n');
   return `<!DOCTYPE html>
 <html lang="ru">
 <head>

@@ -42,3 +42,21 @@ was the "плохо сделаны пироги / переключение не 
 **How to apply:** after regenerating these pre-rendered SVGs, re-run the per-block
 id-scoping pass (suffix all `id="X"` and `url(#X)` within each `.uk-lyr-svg-inner`
 svg), then `node tilda/build-site.js`.
+
+## Stale-asset symptom & cache-busting
+"JS completely missing / switcher dead on the live site" almost always = a STALE
+published `index.js`/`custom.css`, not a code bug (dev serves them `no-cache`, so
+dev is fine while prod serves an old copy). `build-site.js` now appends `?v=<token>`
+(a per-build `Date.now().toString(36)`) to every css/js href via `doc()`, so each
+rebuild/republish busts browser + CDN caches. Vite serves `public/site/*` with the
+query string fine (200). After ANY change, rebuild AND republish — dev passing is
+not enough if the user is looking at the deployed site.
+
+## Home-page JS is one IIFE — guard top-level DOM lookups
+`tilda/index/js.js` registers ALL home handlers (ukSetPkg, ukToggleTable, ukToggleFaq,
+modal…) inside a single IIFE. If a top-level line throws before the assignments
+(e.g. `ukNavScroll()` dereferencing a missing `#uk-navbar`), NONE of the handlers get
+registered and every inline `onclick` fails with "X is not defined" → looks like all
+JS vanished. Null-guard every top-level `getElementById` use in that IIFE.
+Note: пирог (`ukLyrTab`) toggles are INLINE in html.html, so they keep working even
+when js.js dies — a useful tell that the failure is in js.js, not the markup.
