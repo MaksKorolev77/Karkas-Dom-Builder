@@ -82,3 +82,22 @@ existing `td:nth-child(3)` CSS; per-cell emphasis uses `.uk-highlight`.
 ## Anchors
 Added `id="uk-compare"` to the dark comparison `<section class="uk-cmp">` so it can be
 deep-linked and screenshotted (it had no id before).
+
+## Index homepage shows 6 featured projects, not 3
+React Projects.tsx renders `projects.slice(0,6)` — all 6 from lib/projects.ts
+(uyut, komfort, semeynyy, prostornyy, zagorodnyy, lesnoy) in that order. The static
+tilda/index grid had drifted to only 3. Index card "Подробнее" must link to
+`/project/{slug}` (build rewrites → project-{slug}.html), NOT to /projects. The
+section's bottom has TWO CTAs: "Все проекты" (→ /projects) and "Заказать
+индивидуальный проект" (→ ukOpenModal). Keep grid in sync with lib/projects.ts.
+
+## LESSON: explore subagent hallucinated a whole content-diff audit
+Asked explore to diff React sections vs the static index for "missing content". It
+returned ~16 sections of confident but FABRICATED discrepancies (e.g. fake TrustStats
+numbers "5+ лет", a non-existent "Реновация и пристройки" ProjectOptions card, a fake
+5-stage PaymentStages, extra FAQ questions, "Rockwool"/"Tyvek" details). Direct grep of
+the React source disproved every spot-checked claim — the static was already faithful.
+**Why:** LLM explorers invent plausible-sounding specifics for content-comparison tasks.
+**How to apply:** For content-parity audits, verify with grep/counts against the actual
+source before changing anything; never apply an explorer's content-diff list blind.
+Cheap reliable check = compare repeating-item COUNTS (cards/rows/steps) React vs static.
