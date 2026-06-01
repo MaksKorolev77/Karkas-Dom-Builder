@@ -2,25 +2,27 @@
   if (window._ukInitVacancies) return;
   window._ukInitVacancies = true;
 
-  /* Entrance animation for vacancy cards */
-  if (!window.IntersectionObserver) return;
-
-  var items = document.querySelectorAll('#uk-vacancies-page .uk-vacancy');
-  items.forEach(function (el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity .4s ease, transform .4s ease';
-  });
-
-  var obs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'none';
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  items.forEach(function (el) { obs.observe(el); });
+  window.ukVacOpenModal = function (position) {
+    var modal = document.getElementById('uk-vac-modal');
+    if (modal) { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    if (position) {
+      var inp = document.getElementById('uk-vac-position');
+      if (inp) inp.value = position;
+      var sub = document.getElementById('uk-vac-modal-subtitle');
+      if (sub) sub.textContent = position + ' — оставьте заявку для собеседования.';
+    }
+  };
+  window.ukVacCloseModal = function () {
+    var modal = document.getElementById('uk-vac-modal');
+    if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+  };
+  window.ukVacSubmit = function (e) {
+    e.preventDefault();
+    var f = document.getElementById('uk-vac-form');
+    var s = document.getElementById('uk-vac-success');
+    if (f && s) { f.style.display = 'none'; s.style.display = 'block'; }
+  };
+  var modal = document.getElementById('uk-vac-modal');
+  if (modal) modal.addEventListener('click', function (e) { if (e.target === modal) window.ukVacCloseModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') window.ukVacCloseModal(); });
 })();

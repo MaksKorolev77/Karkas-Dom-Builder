@@ -1,165 +1,215 @@
-<div class="uk-block" id="uk-vacancies-page">
+<!-- УльтраКаркас — Вакансии (Tilda Zero Block) -->
+<div class="uk" id="uk-vacancies-page">
 
-  <!-- ══ PAGE HERO ══ -->
-  <div class="uk-page-hero">
-    <div class="uk-container">
-      <p class="uk-label">Карьера</p>
-      <h1 class="uk-h1">Работайте с нами</h1>
-      <p class="uk-lead" style="margin-top:16px">Строим не только дома — строим команду. Ищем профессионалов, которым важно качество и репутация.</p>
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="uk-navbar uk-inner" id="uk-navbar-vac">
+  <div class="uk-wrap"><div class="uk-navbar__inner">
+    <a href="/" class="uk-navbar__logo"><div class="uk-navbar__badge">УК</div><span class="uk-navbar__name">УльтраКаркас</span></a>
+    <nav class="uk-navbar__nav">
+      <a href="/projects" class="uk-navbar__link">Проекты</a>
+      <a href="/#uk-packages" class="uk-navbar__link">Комплектации</a>
+      <a href="/#uk-why" class="uk-navbar__link">О нас</a>
+      <a href="/vacancies" class="uk-navbar__link" style="color:var(--uk-primary)!important">Вакансии</a>
+      <a href="/contacts" class="uk-navbar__link">Контакты</a>
+    </nav>
+    <div class="uk-navbar__right">
+      <a href="tel:+74993909789" class="uk-navbar__phone"><svg class="uk-navbar__phone-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (499) 390-97-89</a>
+      <button class="uk-btn uk-btn--primary" onclick="ukVacOpenModal()">Откликнуться</button>
+    </div>
+    <div class="uk-navbar__mobile-right">
+      <a href="tel:+74993909789" class="uk-navbar__call-btn" aria-label="Позвонить"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <button class="uk-navbar__menu-btn" aria-label="Меню" onclick="document.getElementById('uk-mobile-nav-vac').classList.toggle('uk-open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div></div>
+</header>
+
+<div class="uk-mobile-nav" id="uk-mobile-nav-vac">
+  <nav class="uk-mobile-nav__links">
+    <a href="/projects" class="uk-mobile-nav__link">Проекты</a>
+    <a href="/#uk-packages" class="uk-mobile-nav__link">Комплектации</a>
+    <a href="/#uk-why" class="uk-mobile-nav__link">О нас</a>
+    <a href="/vacancies" class="uk-mobile-nav__link" style="color:var(--uk-primary)">Вакансии</a>
+    <a href="/contacts" class="uk-mobile-nav__link">Контакты</a>
+  </nav>
+  <div class="uk-mobile-nav__bottom">
+    <a href="tel:+74993909789" class="uk-mobile-nav__phone-big"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (499) 390-97-89</a>
+    <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center" onclick="ukVacOpenModal()">Откликнуться на вакансию</button>
+  </div>
+</div>
+
+<!-- ══════════ PAGE ══════════ -->
+<div class="uk-pt-nav uk-section">
+  <div class="uk-wrap">
+    <nav class="uk-breadcrumb"><a href="/">Главная</a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span>Вакансии</span></nav>
+
+    <div class="uk-vac-header">
+      <span class="uk-eyebrow">Карьера</span>
+      <h1 class="uk-h2">Вакансии</h1>
+      <p class="uk-lead">Мы строим качественные дома и ищем специалистов, которые разделяют наши ценности — точность, ответственность и уважение к своему делу.</p>
+    </div>
+
+    <div style="max-width:56rem;margin:0 auto">
+
+      <!-- ВАКАНСИЯ 1: АРХИТЕКТОР -->
+      <div class="uk-vac-card">
+        <div class="uk-vac-card__top" style="background:#f57a00"></div>
+        <div class="uk-vac-card__body">
+          <div class="uk-vac-card__meta">
+            <div>
+              <span class="uk-vac-card__badge" style="background:rgba(245,122,0,.12);color:#f57a00">Открытая вакансия</span>
+              <h2 class="uk-vac-card__title">Архитектор / Проектировщик</h2>
+              <div class="uk-vac-card__info">
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Москва / Удалённо</span>
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Полная занятость</span>
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="uk-vac-card__salary" style="color:#f57a00">от 90 000 ₽</span></span>
+              </div>
+            </div>
+            <button class="uk-vac-apply-btn" style="background:#f57a00" onclick="ukVacOpenModal('Вакансия: Архитектор / Проектировщик')">Откликнуться <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <p class="uk-vac-card__summary">Ищем опытного архитектора для разработки проектов каркасных домов и индивидуального проектирования под запросы клиентов.</p>
+          <div class="uk-vac-3col">
+            <div>
+              <div class="uk-vac-col-title" style="color:#f57a00">Обязанности</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Разработка архитектурных и конструктивных проектов каркасных домов</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Адаптация готовых проектов под пожелания заказчиков</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Создание планировок, фасадов, 3D-визуализаций</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Подготовка рабочей документации для бригад</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Взаимодействие с клиентами на этапе проектирования</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Участие в выезде на объекты и авторский надзор</li>
+              </ul>
+            </div>
+            <div>
+              <div class="uk-vac-col-title" style="color:#f57a00">Требования</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Высшее архитектурное или строительное образование</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Опыт от 2 лет в проектировании малоэтажного жилья</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Уверенное владение AutoCAD, ArchiCAD или Revit</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Понимание каркасных технологий строительства</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Умение работать в команде и в сжатые сроки</li>
+              </ul>
+            </div>
+            <div>
+              <div class="uk-vac-col-title" style="color:#f57a00">Мы предлагаем</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Официальное трудоустройство, белая зарплата</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Гибкий график и возможность удалённой работы</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Разнообразные интересные проекты</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Дружный профессиональный коллектив</li>
+                <li><div class="uk-vac-dot" style="background:#f57a00"></div>Карьерный рост и обучение за счёт компании</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ВАКАНСИЯ 2: БРИГАДИР -->
+      <div class="uk-vac-card">
+        <div class="uk-vac-card__top" style="background:#3b82f6"></div>
+        <div class="uk-vac-card__body">
+          <div class="uk-vac-card__meta">
+            <div>
+              <span class="uk-vac-card__badge" style="background:rgba(59,130,246,.12);color:#3b82f6">Срочный набор</span>
+              <h2 class="uk-vac-card__title">Бригадир строительной бригады</h2>
+              <div class="uk-vac-card__info">
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Москва и Московская область</span>
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Полная занятость</span>
+                <span class="uk-vac-card__info-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span class="uk-vac-card__salary" style="color:#3b82f6">от 120 000 ₽</span></span>
+              </div>
+            </div>
+            <button class="uk-vac-apply-btn" style="background:#3b82f6" onclick="ukVacOpenModal('Вакансия: Бригадир строительной бригады')">Откликнуться <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <p class="uk-vac-card__summary">Ищем опытного бригадира для руководства строительством каркасных домов под ключ в Москве и Подмосковье.</p>
+          <div class="uk-vac-3col">
+            <div>
+              <div class="uk-vac-col-title" style="color:#3b82f6">Обязанности</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Руководство строительной бригадой (3–8 человек) на объекте</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Организация и контроль всех этапов строительства</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Обеспечение качества и соответствия технологическим картам</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Работа с документацией на объекте</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Взаимодействие с прорабом и заказчиком</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Контроль расхода материалов и их приёмка</li>
+              </ul>
+            </div>
+            <div>
+              <div class="uk-vac-col-title" style="color:#3b82f6">Требования</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Опыт бригадира строительства от 3 лет</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Знание каркасной технологии строительства</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Умение читать строительные чертежи и проекты</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Ответственность, организаторские способности</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Наличие собственного транспорта приветствуется</li>
+              </ul>
+            </div>
+            <div>
+              <div class="uk-vac-col-title" style="color:#3b82f6">Мы предлагаем</div>
+              <ul class="uk-vac-list">
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Официальное трудоустройство</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Стабильная высокая зарплата + премии за объекты</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Объекты в Москве и Подмосковье</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Чёткие технологические стандарты</li>
+                <li><div class="uk-vac-dot" style="background:#3b82f6"></div>Возможность карьерного роста до главного прораба</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open application block -->
+      <div class="uk-vac-open" style="max-width:100%;margin:3rem auto 0">
+        <h3>Не нашли подходящую вакансию?</h3>
+        <p>Если вы специалист в строительстве и хотите работать с нами — отправьте резюме напрямую.</p>
+        <div class="uk-vac-open__btns">
+          <a href="mailto:info@ultrakarkas.ru" class="uk-btn uk-btn--primary uk-btn--lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Отправить резюме
+          </a>
+          <a href="tel:+74993909789" class="uk-btn uk-btn--outline uk-btn--lg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +7 (499) 390-97-89
+          </a>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 
-  <!-- ══ VACANCIES ══ -->
-  <section class="uk-section">
-    <div class="uk-container">
-      <div class="uk-vacancy-list">
+<!-- Footer -->
+<footer class="uk-footer">
+  <div class="uk-wrap">
+    <div class="uk-footer__grid">
+      <div><div class="uk-footer__logo-row"><div class="uk-footer__badge">УК</div><span class="uk-footer__name">УльтраКаркас</span></div><p class="uk-footer__desc">Строительство надежных и энергоэффективных каркасных домов в Москве и Московской области.</p></div>
+      <div><div class="uk-footer__col-title">Навигация</div><ul class="uk-footer__links"><li><a href="/projects">Проекты домов</a></li><li><a href="/#uk-packages">Комплектации и цены</a></li><li><a href="/vacancies">Вакансии</a></li><li><a href="/privacy">Политика конфиденциальности</a></li></ul></div>
+      <div style="grid-column:span 2"><div class="uk-footer__col-title">Контакты</div><div class="uk-footer__contacts"><a href="tel:+74993909789" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="uk-footer__contact-title">+7 (499) 390-97-89</div><div class="uk-footer__contact-sub">Звонок бесплатный</div></div></a><a href="mailto:info@ultrakarkas.ru" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="uk-footer__contact-title">info@ultrakarkas.ru</div></div></a></div></div>
+    </div>
+    <div class="uk-footer__bottom"><div class="uk-footer__copy">© 2026 ООО «УльтраКаркас». Все права защищены.</div><a href="/privacy" class="uk-footer__privacy">Политика конфиденциальности</a></div>
+  </div>
+</footer>
 
-        <!-- Архитектор -->
-        <div class="uk-vacancy">
-          <div>
-            <div class="uk-vacancy__title">Архитектор / проектировщик каркасных домов</div>
-            <div class="uk-vacancy__salary">от 90 000 ₽ / месяц</div>
-            <ul class="uk-vacancy__list">
-              <li>Разработка и адаптация проектов каркасных домов под требования клиентов</li>
-              <li>Работа с типовыми проектами из каталога, внесение изменений по ТЗ</li>
-              <li>Подготовка рабочей документации и спецификаций</li>
-              <li>Взаимодействие с менеджерами и бригадами на этапе строительства</li>
-              <li>Опыт проектирования деревянных или каркасных конструкций — обязателен</li>
-              <li>Уверенное знание AutoCAD или ArchiCAD</li>
-            </ul>
-            <div class="uk-vacancy__tags">
-              <span class="uk-vacancy__tag">Полная занятость</span>
-              <span class="uk-vacancy__tag">Офис / гибрид</span>
-              <span class="uk-vacancy__tag">Одинцово, МО</span>
-            </div>
-          </div>
-          <div>
-            <a href="mailto:info@ultrakarkas.ru?subject=Отклик: Архитектор"
-               class="uk-btn uk-btn--primary">Откликнуться</a>
-          </div>
-        </div>
-
-        <!-- Бригадир -->
-        <div class="uk-vacancy">
-          <div>
-            <div class="uk-vacancy__title">Бригадир строительной бригады</div>
-            <div class="uk-vacancy__salary">от 120 000 ₽ / месяц</div>
-            <ul class="uk-vacancy__list">
-              <li>Организация и контроль работы бригады на объектах в Московской области</li>
-              <li>Соблюдение технологии каркасного строительства и стандартов качества</li>
-              <li>Приёмка материалов, ведение журнала работ, фотоотчёты</li>
-              <li>Взаимодействие с прорабом и менеджером проекта</li>
-              <li>Опыт руководства бригадой от 2 лет — обязателен</li>
-              <li>Опыт в каркасном строительстве — большой плюс</li>
-            </ul>
-            <div class="uk-vacancy__tags">
-              <span class="uk-vacancy__tag">Полная занятость</span>
-              <span class="uk-vacancy__tag">Вахта / разъездной</span>
-              <span class="uk-vacancy__tag">МО + Московский регион</span>
-            </div>
-          </div>
-          <div>
-            <a href="mailto:info@ultrakarkas.ru?subject=Отклик: Бригадир"
-               class="uk-btn uk-btn--primary">Откликнуться</a>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Open application -->
-      <div style="margin-top:48px;padding:40px;background:var(--uk-bg-warm);border-radius:var(--uk-radius-lg);max-width:900px">
-        <div class="uk-label" style="margin-bottom:8px">Не нашли подходящую вакансию?</div>
-        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:10px">Отправьте резюме напрямую</h3>
-        <p style="font-size:.9rem;color:var(--uk-gray-dk);max-width:520px;margin-bottom:24px">
-          Мы всегда рады профессионалам — плотникам, монтажникам, прорабам, менеджерам проектов. Напишите на почту — рассмотрим в течение 3 рабочих дней.
-        </p>
-        <a href="mailto:info@ultrakarkas.ru?subject=Резюме" class="uk-btn uk-btn--outline">
-          Отправить резюме на info@ultrakarkas.ru
-        </a>
+<!-- Modal -->
+<div id="uk-vac-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:560px;width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="ukVacCloseModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;color:#666"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.25rem">Откликнуться на вакансию</h2>
+    <p id="uk-vac-modal-subtitle" style="color:#666;margin-bottom:1.5rem;font-size:.9375rem">Оставьте заявку и мы свяжемся с вами для собеседования.</p>
+    <div id="uk-vac-form-wrap">
+      <form id="uk-vac-form" onsubmit="ukVacSubmit(event)">
+        <div class="uk-form-row"><div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div><div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div></div>
+        <div class="uk-form-field"><label class="uk-form-label">Вакансия</label><input class="uk-form-input" id="uk-vac-position" type="text" name="position" placeholder="На какую вакансию откликаетесь?"></div>
+        <div class="uk-form-field"><label class="uk-form-label">О себе</label><textarea class="uk-form-textarea" name="about" placeholder="Опыт работы, навыки, почему хотите к нам?"></textarea></div>
+        <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-vac-consent" required><label class="uk-form-consent-label" for="uk-vac-consent">Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+        <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить отклик</button>
+      </form>
+      <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-vac-success">
+        <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Отклик отправлен!</div>
+        <p style="color:#666">Мы свяжемся с вами в ближайшее время для собеседования.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ══ WHY WORK WITH US ══ -->
-  <section class="uk-section uk-section--dark">
-    <div class="uk-container">
-      <div class="uk-section-header">
-        <p class="uk-label" style="color:var(--uk-orange)">Условия</p>
-        <h2 class="uk-h2" style="color:var(--uk-white)">Почему выбирают нас</h2>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
-        <div style="padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:var(--uk-radius)">
-          <div style="font-size:1.8rem;margin-bottom:16px">💰</div>
-          <div style="font-size:1.05rem;font-weight:600;color:var(--uk-white);margin-bottom:8px">Белая зарплата</div>
-          <div style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.6">Оформление по ТК, официальная выплата два раза в месяц. Без задержек.</div>
-        </div>
-        <div style="padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:var(--uk-radius)">
-          <div style="font-size:1.8rem;margin-bottom:16px">📈</div>
-          <div style="font-size:1.05rem;font-weight:600;color:var(--uk-white);margin-bottom:8px">Рост и обучение</div>
-          <div style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.6">Делимся знаниями, отправляем на профильные обучения. Карьерный рост внутри компании.</div>
-        </div>
-        <div style="padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:var(--uk-radius)">
-          <div style="font-size:1.8rem;margin-bottom:16px">🏗️</div>
-          <div style="font-size:1.05rem;font-weight:600;color:var(--uk-white);margin-bottom:8px">Интересные проекты</div>
-          <div style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.6">170+ построенных домов, постоянный поток заказов. Скуки не будет.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ FOOTER ══ -->
-  <footer class="uk-footer uk-block">
-    <div class="uk-container">
-      <div class="uk-footer__grid">
-        <div>
-          <div class="uk-footer__logo">УльтраКаркас</div>
-          <div class="uk-footer__tagline">Каркасные дома для постоянного проживания и&nbsp;отдыха в&nbsp;Московской области</div>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Навигация</div>
-          <ul class="uk-footer__links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/#packages">Комплектации</a></li>
-            <li><a href="/#faq">Вопросы и ответы</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Компания</div>
-          <ul class="uk-footer__links">
-            <li><a href="/vacancies">Вакансии</a></li>
-            <li><a href="/privacy">Политика конфиденциальности</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Контакты</div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📞</span>
-            <div class="uk-footer__contact-text">
-              <a href="tel:+74993909789">+7 (499) 390-97-89</a><br>
-              <a href="tel:+79269935818">+7 (926) 993-58-18</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">✉️</span>
-            <div class="uk-footer__contact-text">
-              <a href="mailto:info@ultrakarkas.ru">info@ultrakarkas.ru</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📍</span>
-            <div class="uk-footer__contact-text">Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С</div>
-          </div>
-        </div>
-      </div>
-      <div class="uk-footer__bottom">
-        <div class="uk-footer__copy">© 2025 УльтраКаркас. Все права защищены.</div>
-        <div class="uk-footer__bottom-links">
-          <a href="/privacy">Политика конфиденциальности</a>
-          <a href="/vacancies">Вакансии</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </div>
+</div>
 
 </div>

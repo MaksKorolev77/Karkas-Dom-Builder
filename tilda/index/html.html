@@ -1,563 +1,647 @@
-<div class="uk-block" id="uk-home">
+<!-- УльтраКаркас — Главная (Tilda Zero Block) -->
+<!-- Подключить в настройках сайта: Google Fonts Golos Text + Playfair Display; custom.css -->
+<div class="uk" id="uk-home">
 
-  <!-- ══ HERO ══ -->
-  <section class="uk-hero" id="hero">
-    <div class="uk-hero__bg" id="uk-hero-bg"></div>
-    <div class="uk-hero__overlay"></div>
-    <div class="uk-hero__body">
-      <p class="uk-hero__eyebrow">Каркасные дома под ключ</p>
-      <h1 class="uk-hero__title">Строим дом, в котором хочется <em>жить</em></h1>
-      <p class="uk-hero__sub">Каркасные дома от 40 000 ₽/м² с фиксированной ценой. Гарантия&nbsp;5&nbsp;лет. Работаем в Московской области.</p>
-      <div class="uk-hero__actions">
-        <a href="#contacts" class="uk-btn uk-btn--primary uk-btn--lg">Рассчитать стоимость</a>
-        <a href="/projects" class="uk-btn uk-btn--outline-white uk-btn--lg">Смотреть проекты</a>
-      </div>
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="uk-navbar" id="uk-navbar">
+  <div class="uk-wrap"><div class="uk-navbar__inner">
+    <a href="/" class="uk-navbar__logo">
+      <div class="uk-navbar__badge">УК</div>
+      <span class="uk-navbar__name">УльтраКаркас</span>
+    </a>
+    <nav class="uk-navbar__nav">
+      <a href="/projects" class="uk-navbar__link">Проекты</a>
+      <a href="#uk-packages" class="uk-navbar__link" onclick="ukSmoothTo('uk-packages',event)">Комплектации</a>
+      <a href="#uk-why" class="uk-navbar__link" onclick="ukSmoothTo('uk-why',event)">О нас</a>
+      <a href="/vacancies" class="uk-navbar__link">Вакансии</a>
+      <a href="#uk-contact" class="uk-navbar__link" onclick="ukSmoothTo('uk-contact',event)">Контакты</a>
+    </nav>
+    <div class="uk-navbar__right">
+      <a href="tel:+74993909789" class="uk-navbar__phone">
+        <svg class="uk-navbar__phone-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +7 (499) 390-97-89
+      </a>
+      <button class="uk-btn uk-btn--primary" onclick="ukOpenModal()">Получить расчёт</button>
     </div>
-    <div class="uk-hero__meta">
-      <div class="uk-hero__meta-item">
-        <div class="uk-hero__meta-num">170+</div>
-        <div class="uk-hero__meta-label">домов сдано</div>
-      </div>
-      <div class="uk-hero__meta-item">
-        <div class="uk-hero__meta-num">10</div>
-        <div class="uk-hero__meta-label">лет опыта</div>
-      </div>
-      <div class="uk-hero__meta-item">
-        <div class="uk-hero__meta-num">5</div>
-        <div class="uk-hero__meta-label">лет гарантии</div>
-      </div>
+    <div class="uk-navbar__mobile-right">
+      <a href="tel:+74993909789" class="uk-navbar__call-btn" aria-label="Позвонить">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button class="uk-navbar__menu-btn" id="uk-menu-btn" aria-label="Меню" onclick="ukToggleMenu()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
-  </section>
+  </div></div>
+</header>
 
-  <!-- ══ TRUST STATS ══ -->
-  <section class="uk-section" style="padding: 0; border-bottom: 1px solid var(--uk-border)">
-    <div class="uk-container">
-      <div class="uk-stats">
-        <div class="uk-stat">
-          <div class="uk-stat__num">170+</div>
-          <div class="uk-stat__label">домов&nbsp;построено<br>с&nbsp;2015&nbsp;года</div>
-        </div>
-        <div class="uk-stat">
-          <div class="uk-stat__num">от&nbsp;40К</div>
-          <div class="uk-stat__label">₽/м² с&nbsp;фиксированной<br>ценой контракта</div>
-        </div>
-        <div class="uk-stat">
-          <div class="uk-stat__num">5&nbsp;лет</div>
-          <div class="uk-stat__label">гарантия на&nbsp;каркас<br>и&nbsp;кровлю</div>
-        </div>
-        <div class="uk-stat">
-          <div class="uk-stat__num">4–6</div>
-          <div class="uk-stat__label">месяцев&nbsp;— среднее<br>время&nbsp;строительства</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Mobile nav -->
+<div class="uk-mobile-nav" id="uk-mobile-nav">
+  <nav class="uk-mobile-nav__links">
+    <a href="/projects" class="uk-mobile-nav__link">Проекты</a>
+    <a href="#uk-packages" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-packages',event);ukCloseMenu()">Комплектации</a>
+    <a href="#uk-why" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-why',event);ukCloseMenu()">О нас</a>
+    <a href="/vacancies" class="uk-mobile-nav__link">Вакансии</a>
+    <a href="#uk-contact" class="uk-mobile-nav__link" onclick="ukSmoothTo('uk-contact',event);ukCloseMenu()">Контакты</a>
+  </nav>
+  <div class="uk-mobile-nav__bottom">
+    <a href="tel:+74993909789" class="uk-mobile-nav__phone-big">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +7 (499) 390-97-89
+    </a>
+    <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center" onclick="ukOpenModal();ukCloseMenu()">Получить расчёт</button>
+  </div>
+</div>
 
-  <!-- ══ WHY US ══ -->
-  <section class="uk-section" id="why-us">
-    <div class="uk-container">
-      <div class="uk-section-header">
-        <p class="uk-label">Почему УльтраКаркас</p>
-        <h2 class="uk-h2">Строим честно — проверяйте</h2>
-        <p class="uk-lead">Мы не обещаем чудес. Мы показываем цифры, называем сроки и держим слово.</p>
-      </div>
-      <div class="uk-features-grid">
-        <div class="uk-feature">
-          <div class="uk-feature__icon">📋</div>
-          <div class="uk-feature__title">Фиксированная цена в договоре</div>
-          <div class="uk-feature__text">Стоимость прописана в контракте до начала работ. Никаких «доплат по факту» и скрытых статей.</div>
+<!-- ══════════ HERO ══════════ -->
+<section class="uk-hero">
+  <div class="uk-hero__bg">
+    <!-- ЗАМЕНИТЕ URL на ваш загруженный hero.png в медиатеке Tilda -->
+    <img class="uk-hero__photo" src="https://static.tildacdn.com/tild3538-6463-4463-a163-633161303832/dg50.png" alt="Каркасный дом УльтраКаркас">
+    <div class="uk-hero__overlay-base"></div>
+    <div class="uk-hero__overlay-dir"></div>
+    <div class="uk-hero__overlay-top"></div>
+    <div class="uk-hero__overlay-bottom"></div>
+    <div class="uk-hero__overlay-glow"></div>
+  </div>
+  <div class="uk-hero__content">
+    <div class="uk-wrap">
+      <div class="uk-hero__inner">
+        <div class="uk-hero__eyebrow">
+          <span class="uk-hero__eyebrow-line"></span>
+          <span class="uk-hero__eyebrow-brand">УльтраКаркас</span>
+          <span class="uk-hero__eyebrow-dot">·</span>
+          <span class="uk-hero__eyebrow-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" style="opacity:.55;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Москва и МО · с 2015 года
+          </span>
         </div>
-        <div class="uk-feature">
-          <div class="uk-feature__icon">🏗️</div>
-          <div class="uk-feature__title">Собственные бригады</div>
-          <div class="uk-feature__text">Не перепродаём подряд — работают наши постоянные мастера с опытом от&nbsp;5&nbsp;лет. Контроль на каждом этапе.</div>
-        </div>
-        <div class="uk-feature">
-          <div class="uk-feature__icon">🪵</div>
-          <div class="uk-feature__title">Камерная сушка древесины</div>
-          <div class="uk-feature__text">Доска 45×145 и 45×190&nbsp;мм камерной сушки — каркас не ведёт, не трескается, служит десятилетиями.</div>
-        </div>
-        <div class="uk-feature">
-          <div class="uk-feature__icon">📸</div>
-          <div class="uk-feature__title">Фотоотчёт каждую неделю</div>
-          <div class="uk-feature__text">Вы видите прогресс в режиме реального времени через личный кабинет или мессенджер — даже из другого города.</div>
-        </div>
-        <div class="uk-feature">
-          <div class="uk-feature__icon">🛡️</div>
-          <div class="uk-feature__title">Гарантия 5 лет</div>
-          <div class="uk-feature__text">Письменная гарантия на каркас, кровлю и все конструктивные элементы. Приедем и устраним за свой счёт.</div>
-        </div>
-        <div class="uk-feature">
-          <div class="uk-feature__icon">🔥</div>
-          <div class="uk-feature__title">Тёплый контур с первого дня</div>
-          <div class="uk-feature__text">Базальтовая вата 150–250&nbsp;мм, Изоспан AM, Рехау-окна 70 мм — дом тёплый даже в&nbsp;−30°C.</div>
+        <h1 class="uk-hero__h1">Каркасные дома<br><em>под ключ</em></h1>
+        <p class="uk-hero__sub">Строим по скандинавской технологии — от фундамента до чистовой отделки. Готовые проекты или проект под ваш участок.</p>
+        <div class="uk-hero__ctas">
+          <button class="uk-btn uk-btn--primary uk-btn--lg" onclick="ukOpenModal()" style="box-shadow:0 8px 32px rgba(245,122,0,.30)">
+            Получить расчёт
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <button class="uk-btn uk-btn--ghost-white uk-btn--lg" onclick="ukSmoothTo('uk-proj-section',null)">Смотреть проекты</button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+  <div class="uk-hero__stats">
+    <div class="uk-wrap">
+      <div class="uk-hero__stats-grid">
+        <div class="uk-hero__stat"><div class="uk-hero__stat-val"><span class="uk-hero__stat-num">18</span><span class="uk-hero__stat-suf">лет</span></div><span class="uk-hero__stat-label">опыта</span></div>
+        <div class="uk-hero__stat"><div class="uk-hero__stat-val"><span class="uk-hero__stat-num">147+</span></div><span class="uk-hero__stat-label">домов сдано</span></div>
+        <div class="uk-hero__stat"><div class="uk-hero__stat-val"><span class="uk-hero__stat-num">45</span><span class="uk-hero__stat-suf">дн</span></div><span class="uk-hero__stat-label">от свай до ключей</span></div>
+        <div class="uk-hero__stat"><div class="uk-hero__stat-val"><span class="uk-hero__stat-num">10</span><span class="uk-hero__stat-suf">лет</span></div><span class="uk-hero__stat-label">гарантии</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ══ PACKAGES ══ -->
-  <section class="uk-section uk-section--warm" id="packages">
-    <div class="uk-container">
-      <div class="uk-section-header">
-        <p class="uk-label">Комплектации</p>
-        <h2 class="uk-h2">Три варианта на ваш бюджет</h2>
-        <p class="uk-lead">Все комплектации включают ж/б сваи, каркас из сухой строганной доски, кровлю Grand Line и окна Rehau&nbsp;70.</p>
+<!-- ══════════ TRUST STATS ══════════ -->
+<section class="uk-section uk-trust">
+  <div class="uk-wrap">
+    <div class="uk-trust-grid">
+      <div class="uk-trust-card">
+        <div class="uk-trust-card__icon" style="background:rgba(245,122,0,.10)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="uk-trust-card__num-row"><span class="uk-trust-card__num" style="color:#f57a00">18</span><span class="uk-trust-card__suf">лет</span></div>
+        <div class="uk-trust-card__label">опыта в строительстве</div><div class="uk-trust-card__sub">Работаем с 2015 года</div>
+        <div class="uk-trust-card__accent" style="background:#f57a00"></div>
+      </div>
+      <div class="uk-trust-card">
+        <div class="uk-trust-card__icon" style="background:rgba(16,185,129,.10)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="uk-trust-card__num-row"><span class="uk-trust-card__num" style="color:#10b981">147</span><span class="uk-trust-card__suf">+</span></div>
+        <div class="uk-trust-card__label">домов успешно сдано</div><div class="uk-trust-card__sub">По всей Московской области</div>
+        <div class="uk-trust-card__accent" style="background:#10b981"></div>
+      </div>
+      <div class="uk-trust-card">
+        <div class="uk-trust-card__icon" style="background:rgba(59,130,246,.10)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="uk-trust-card__num-row"><span class="uk-trust-card__num" style="color:#3b82f6">10</span><span class="uk-trust-card__suf">лет</span></div>
+        <div class="uk-trust-card__label">официальной гарантии</div><div class="uk-trust-card__sub">На конструктив и все узлы</div>
+        <div class="uk-trust-card__accent" style="background:#3b82f6"></div>
+      </div>
+      <div class="uk-trust-card">
+        <div class="uk-trust-card__icon" style="background:rgba(139,92,246,.10)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></div>
+        <div class="uk-trust-card__num-row"><span class="uk-trust-card__num" style="color:#8b5cf6">4</span><span class="uk-trust-card__suf">сезона</span></div>
+        <div class="uk-trust-card__label">строим круглый год</div><div class="uk-trust-card__sub">Без остановок и простоев</div>
+        <div class="uk-trust-card__accent" style="background:#8b5cf6"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY US ══════════ -->
+<section class="uk-section" id="uk-why">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <h2 class="uk-h2">Почему выбирают нас</h2>
+      <p class="uk-lead" style="margin-top:1.5rem">Строим дома, в которых хочется жить. Без компромиссов в качестве материалов и соблюдении технологий.</p>
+    </div>
+    <div class="uk-why-grid">
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="uk-why-card__title">Прочный несущий каркас</h3><p class="uk-why-card__text">Используем только сухую строганную доску камерной сушки. Каркас не ведёт и не крутит со временем.</p></div>
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 class="uk-why-card__title">Энергоэффективность</h3><p class="uk-why-card__text">Перекрестное утепление от 200 мм исключает мостики холода. Зимой тепло, летом прохладно.</p></div>
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div><h3 class="uk-why-card__title">Продуманные планировки</h3><p class="uk-why-card__text">Каждый квадратный метр используется с пользой. Никаких темных коридоров и тесных комнат.</p></div>
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><h3 class="uk-why-card__title">Строительство под ключ</h3><p class="uk-why-card__text">От фундамента до розеток. Вы получаете готовый дом, в который можно заезжать и жить.</p></div>
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3 class="uk-why-card__title">Фиксированные сроки</h3><p class="uk-why-card__text">Точный график работ прописан в договоре. Строим в среднем от 2 до 6 месяцев.</p></div>
+      <div class="uk-why-card"><div class="uk-why-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3 class="uk-why-card__title">Контроль качества</h3><p class="uk-why-card__text">Технадзор принимает каждый скрытый этап работ с фотоотчетом для заказчика.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROJECTS PREVIEW ══════════ -->
+<section class="uk-section uk-section--muted" id="uk-proj-section">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <span class="uk-eyebrow">Готовые проекты</span>
+      <h2 class="uk-h2">Выберите свой дом</h2>
+      <p class="uk-lead" style="margin-top:1.5rem">6 проверенных проектов — от компактных 79 м² до просторных 220 м²</p>
+    </div>
+    <div class="uk-proj-grid">
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild3935-6232-4064-a130-313330313561/dg120.png" alt="Проект Уют" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 4 808 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Уют»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">120 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">3</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">1</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <a href="/projects" class="uk-btn uk-btn--outline" style="height:2.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukOpenModal('Интересует проект «Уют» (120 м²).')">Рассчитать</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png" alt="Проект Комфорт" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 2 этажа</div>
+          <div class="uk-proj-card__price-badge">от 4 520 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Комфорт»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">113 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">4</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">2</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <a href="/projects" class="uk-btn uk-btn--outline" style="height:2.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukOpenModal('Интересует проект «Комфорт» (113 м²).')">Рассчитать</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild3538-6463-4463-a163-633161303832/dg50.png" alt="Проект Загородный" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 8 800 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Загородный»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">220 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">3</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">2</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <a href="/projects" class="uk-btn uk-btn--outline" style="height:2.75rem;display:flex;align-items:center;justify-content:center;gap:.5rem">Подробнее <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukOpenModal('Интересует проект «Загородный» (220 м²).')">Рассчитать</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="/projects" class="uk-btn uk-btn--outline uk-btn--lg">Весь каталог проектов →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PACKAGES ══════════ -->
+<section class="uk-section" id="uk-packages" style="background:var(--uk-muted)">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <span class="uk-eyebrow">Комплектации</span>
+      <h2 class="uk-h2">Выберите свой уровень</h2>
+      <p class="uk-lead" style="margin-top:1rem">Три варианта — от базового тёплого контура до премиального дома под ключ.</p>
+    </div>
+    <div class="uk-pkg-tabs-wrap">
+      <div class="uk-pkg-tablist" role="tablist">
+        <button class="uk-pkg-tab" role="tab" data-pkg="econom" aria-selected="false" onclick="ukSetPkg('econom',this)">Эконом</button>
+        <button class="uk-pkg-tab" role="tab" data-pkg="optimum" aria-selected="true" onclick="ukSetPkg('optimum',this)" style="background:var(--uk-primary);color:#fff;position:relative">Оптимум<span class="uk-pkg-tab__badge">ХИТ ПРОДАЖ</span></button>
+        <button class="uk-pkg-tab" role="tab" data-pkg="max" aria-selected="false" onclick="ukSetPkg('max',this)">Максимум</button>
       </div>
 
-      <div class="uk-pkg-tabs" role="tablist" aria-label="Комплектации">
-        <button class="uk-pkg-tab" role="tab" aria-selected="true" aria-controls="pkg-econom" id="tab-econom">Эконом</button>
-        <button class="uk-pkg-tab" role="tab" aria-selected="false" aria-controls="pkg-optimum" id="tab-optimum">Оптимум</button>
-        <button class="uk-pkg-tab" role="tab" aria-selected="false" aria-controls="pkg-maximum" id="tab-maximum">Максимум</button>
-      </div>
-
-      <!-- ECONOM -->
-      <div class="uk-pkg-panel" id="pkg-econom" role="tabpanel" aria-labelledby="tab-econom" aria-hidden="false">
+      <!-- ЭКОНОМ -->
+      <div class="uk-pkg-panel" id="uk-pkg-econom">
         <div class="uk-pkg-card">
-          <div>
-            <div class="uk-pkg-card__price">40&nbsp;000 ₽</div>
-            <div class="uk-pkg-card__price-sub">за м² общей площади</div>
-            <div class="uk-pkg-card__tagline">Базовый тёплый контур</div>
-            <p style="font-size:.9rem;color:var(--uk-gray-dk);line-height:1.65;margin-bottom:28px">
-              Всё необходимое для надёжного тёплого дома. Отличный выбор, если планируете отделку своими силами или хотите зайти в бюджет.
-            </p>
-            <a href="#contacts" class="uk-btn uk-btn--primary" style="margin-bottom:16px">Рассчитать под мой проект</a>
+          <div class="uk-pkg-card__header">
+            <div><h3 style="font-family:var(--uk-serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;margin-bottom:.25rem">Эконом</h3><div class="uk-pkg-card__tagline">Базовый тёплый контур</div><p class="uk-pkg-card__desc">Полностью герметичный дом с утеплением 150 мм — готов к самостоятельной финишной отделке. Экономия на старте, завершение по собственному графику.</p></div>
+            <div class="uk-pkg-card__price-block"><div class="uk-pkg-card__price-label">Стоимость</div><div class="uk-pkg-card__price">от 40 000 ₽/м²</div><div class="uk-pkg-card__price-sub">под ключ, включая все работы</div></div>
           </div>
-          <div>
-            <ul class="uk-pkg-spec-list">
-              <li class="uk-pkg-spec-list__section">Основание</li>
-              <li><span>Фундамент</span><span>Ж/б сваи 150×150×3000</span></li>
-              <li class="uk-pkg-spec-list__section">Пол</li>
-              <li><span>Утепление пола</span><span>Каменная вата 200&nbsp;мм</span></li>
-              <li><span>Покрытие</span><span>—</span></li>
-              <li class="uk-pkg-spec-list__section">Каркас</li>
-              <li><span>Каркас внешних стен</span><span>Доска 45×145&nbsp;мм</span></li>
-              <li><span>Утепление стен</span><span>Каменная вата 150&nbsp;мм</span></li>
-              <li><span>Наружная отделка</span><span>OSB 12&nbsp;мм</span></li>
-              <li><span>Внутренняя отделка</span><span>—</span></li>
-              <li class="uk-pkg-spec-list__section">Кровля</li>
-              <li><span>Покрытие кровли</span><span>Металлочерепица 0.5&nbsp;мм Grand Line</span></li>
-              <li><span>Водостоки</span><span>—</span></li>
-              <li><span>Утепление кровли</span><span>Каменная вата 200&nbsp;мм</span></li>
-              <li class="uk-pkg-spec-list__section">Прочее</li>
-              <li><span>Окна</span><span>ПВХ Rehau 70</span></li>
-              <li><span>Входная дверь</span><span>Металл. с терморазрывом 100&nbsp;мм</span></li>
-              <li><span>Вентиляция</span><span>✓</span></li>
-            </ul>
+          <div class="uk-pkg-card__body">
+            <div class="uk-pkg-card__left">
+              <div class="uk-pkg-sublabel">Пирог стены в масштабе</div>
+              <div class="uk-pkg-wall">
+                <div class="uk-pkg-wall-seg" style="width:6.6%;background:#d4b896"></div>
+                <div class="uk-pkg-wall-seg" style="width:3.3%;background:#8ab4d4"></div>
+                <div class="uk-pkg-wall-seg" style="width:82.4%;background:#f5c87a;font-size:8px;font-weight:700;color:rgba(0,0,0,.3)">150</div>
+                <div class="uk-pkg-wall-seg" style="width:2.2%;background:#60a5fa"></div>
+                <div class="uk-pkg-wall-seg" style="width:4.9%;background:#dcc898"></div>
+              </div>
+              <div class="uk-pkg-wall-meta"><span><span class="uk-pkg-wall-dot" style="background:#8ab4d4"></span>Улица</span><strong style="color:var(--uk-fg)">150 мм</strong><span>Жильё<span class="uk-pkg-wall-dot" style="background:#f5c87a"></span></span></div>
+              <div class="uk-pkg-sublabel">Материалы</div>
+              <div class="uk-pkg-materials">
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Фасад</span><span class="uk-pkg-mat__val">OSB-3 12 мм (под отделку)</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление стен</span><span class="uk-pkg-mat__val">Каменная вата 150 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление пола</span><span class="uk-pkg-mat__val">Каменная вата 200 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление кровли</span><span class="uk-pkg-mat__val">Каменная вата 200 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Интерьер</span><span class="uk-pkg-mat__val">Без отделки</span></div>
+              </div>
+            </div>
+            <div class="uk-pkg-card__right">
+              <div class="uk-pkg-sublabel">Что получаете</div>
+              <div class="uk-pkg-perks">
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="uk-pkg-perk__text">Каркас 45×145 мм — несущая конструкция дома</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg></div><span class="uk-pkg-perk__text">Ветрозащита Tyvek — без продувания снаружи</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><span class="uk-pkg-perk__text">Каменная вата 150 мм — не горит, не гниёт</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div><span class="uk-pkg-perk__text">Пароизоляция — стены не намокают изнутри</span></div>
+              </div>
+              <div class="uk-pkg-bars"><div class="uk-pkg-bars-label">Толщина утеплителя стен</div>
+                <div class="uk-pkg-bars-row">
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">150 мм</div><div class="uk-pkg-bar-fill" style="height:31px;background:#f57a00"></div><div class="uk-pkg-bar-lbl uk-active">Эконом</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">200 мм</div><div class="uk-pkg-bar-fill" style="height:41px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Оптимум</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">250 мм</div><div class="uk-pkg-bar-fill" style="height:52px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Максимум</div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- OPTIMUM -->
-      <div class="uk-pkg-panel" id="pkg-optimum" role="tabpanel" aria-labelledby="tab-optimum" aria-hidden="true">
+      <!-- ОПТИМУМ -->
+      <div class="uk-pkg-panel uk-active" id="uk-pkg-optimum">
         <div class="uk-pkg-card">
-          <div>
-            <div class="uk-pkg-card__price">50&nbsp;000 ₽</div>
-            <div class="uk-pkg-card__price-sub">за м² общей площади</div>
-            <div class="uk-pkg-card__tagline">Золотая середина цены и набора опций</div>
-            <p style="font-size:.9rem;color:var(--uk-gray-dk);line-height:1.65;margin-bottom:28px">
-              Самый популярный выбор. Усиленное утепление, наружная отделка имитацией бруса, фанера на полу — можно сразу стелить чистовое покрытие.
-            </p>
-            <a href="#contacts" class="uk-btn uk-btn--primary" style="margin-bottom:16px">Рассчитать под мой проект</a>
+          <div class="uk-pkg-card__header">
+            <div><h3 style="font-family:var(--uk-serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;margin-bottom:.25rem">Оптимум</h3><div class="uk-pkg-card__tagline">Готов к жизни сразу</div><p class="uk-pkg-card__desc">Полностью отделанный дом — заезжай и живи. Деревянный фасад, деревянный интерьер, перекрёстное утепление 200 мм. Самый популярный выбор клиентов.</p></div>
+            <div class="uk-pkg-card__price-block"><div class="uk-pkg-card__price-label">Стоимость</div><div class="uk-pkg-card__price">от 50 000 ₽/м²</div><div class="uk-pkg-card__price-sub">под ключ, включая все работы</div></div>
           </div>
-          <div>
-            <ul class="uk-pkg-spec-list">
-              <li class="uk-pkg-spec-list__section">Основание</li>
-              <li><span>Фундамент</span><span>Ж/б сваи 150×150×3000</span></li>
-              <li class="uk-pkg-spec-list__section">Пол</li>
-              <li><span>Утепление пола</span><span>Каменная вата 200&nbsp;мм</span></li>
-              <li><span>Покрытие</span><span>Фанера 18&nbsp;мм</span></li>
-              <li class="uk-pkg-spec-list__section">Каркас</li>
-              <li><span>Каркас внешних стен</span><span>Доска 45×145 + брусок 40×50&nbsp;мм</span></li>
-              <li><span>Утепление стен</span><span>Каменная вата 150+50=200&nbsp;мм</span></li>
-              <li><span>Наружная отделка</span><span>Имитация бруса (карельский профиль)</span></li>
-              <li><span>Внутренняя отделка</span><span>Имитация бруса</span></li>
-              <li class="uk-pkg-spec-list__section">Кровля</li>
-              <li><span>Покрытие кровли</span><span>Металлочерепица 0.5&nbsp;мм Grand Line</span></li>
-              <li><span>Водостоки</span><span>✓</span></li>
-              <li><span>Снегозадержатели</span><span>✓</span></li>
-              <li><span>Утепление кровли</span><span>Каменная вата 200&nbsp;мм</span></li>
-              <li class="uk-pkg-spec-list__section">Прочее</li>
-              <li><span>Окна</span><span>ПВХ Rehau 70</span></li>
-              <li><span>Входная дверь</span><span>Металл. с терморазрывом 100&nbsp;мм</span></li>
-              <li><span>Вентиляция</span><span>✓</span></li>
-            </ul>
+          <div class="uk-pkg-card__body">
+            <div class="uk-pkg-card__left">
+              <div class="uk-pkg-sublabel">Пирог стены в масштабе</div>
+              <div class="uk-pkg-wall">
+                <div class="uk-pkg-wall-seg" style="width:6.7%;background:#a0784a"></div>
+                <div class="uk-pkg-wall-seg" style="width:2.7%;background:#e8e0d4"></div>
+                <div class="uk-pkg-wall-seg" style="width:1.3%;background:#8ab4d4"></div>
+                <div class="uk-pkg-wall-seg" style="width:3%;background:#d4b896"></div>
+                <div class="uk-pkg-wall-seg" style="width:66.9%;background:#f5c87a;font-size:8px;font-weight:700;color:rgba(0,0,0,.3)">200</div>
+                <div class="uk-pkg-wall-seg" style="width:1.3%;background:#60a5fa"></div>
+                <div class="uk-pkg-wall-seg" style="width:13.4%;background:#f0ece4"></div>
+                <div class="uk-pkg-wall-seg" style="width:5%;background:#c9a876"></div>
+              </div>
+              <div class="uk-pkg-wall-meta"><span><span class="uk-pkg-wall-dot" style="background:#8ab4d4"></span>Улица</span><strong style="color:var(--uk-fg)">200 мм</strong><span>Жильё<span class="uk-pkg-wall-dot" style="background:#f5c87a"></span></span></div>
+              <div class="uk-pkg-sublabel">Материалы</div>
+              <div class="uk-pkg-materials">
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Фасад</span><span class="uk-pkg-mat__val">Имитация бруса (карельский)</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление стен</span><span class="uk-pkg-mat__val">Каменная вата 200 мм (перекрёстный)</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление пола</span><span class="uk-pkg-mat__val">Каменная вата 200 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление кровли</span><span class="uk-pkg-mat__val">Каменная вата 200 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Интерьер</span><span class="uk-pkg-mat__val">Имит. бруса + фанера 18 мм</span></div>
+              </div>
+            </div>
+            <div class="uk-pkg-card__right">
+              <div class="uk-pkg-sublabel">Что получаете</div>
+              <div class="uk-pkg-perks">
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="uk-pkg-perk__text">Имитация бруса снаружи — готовый фасад</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="uk-pkg-perk__text">Перекрёстный каркас — нет мостиков холода</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><span class="uk-pkg-perk__text">Каменная вата 200 мм — вдвое теплее Эконом</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-pkg-perk__text">Водостоки и снегозадержатели в комплекте</span></div>
+              </div>
+              <div class="uk-pkg-bars"><div class="uk-pkg-bars-label">Толщина утеплителя стен</div>
+                <div class="uk-pkg-bars-row">
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">150 мм</div><div class="uk-pkg-bar-fill" style="height:31px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Эконом</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">200 мм</div><div class="uk-pkg-bar-fill" style="height:41px;background:#f57a00"></div><div class="uk-pkg-bar-lbl uk-active">Оптимум</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">250 мм</div><div class="uk-pkg-bar-fill" style="height:52px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Максимум</div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- MAXIMUM -->
-      <div class="uk-pkg-panel" id="pkg-maximum" role="tabpanel" aria-labelledby="tab-maximum" aria-hidden="true">
+      <!-- МАКСИМУМ -->
+      <div class="uk-pkg-panel" id="uk-pkg-max">
         <div class="uk-pkg-card">
-          <div>
-            <div class="uk-pkg-card__price">60&nbsp;000 ₽</div>
-            <div class="uk-pkg-card__price-sub">за м² общей площади</div>
-            <div class="uk-pkg-card__tagline">Премиальные материалы и усиленный каркас</div>
-            <p style="font-size:.9rem;color:var(--uk-gray-dk);line-height:1.65;margin-bottom:28px">
-              Максимальная теплоэффективность, фиброцементный фасад, OSB под гипсокартон внутри — дом готов к финальной отделке сразу после сдачи.
-            </p>
-            <a href="#contacts" class="uk-btn uk-btn--primary" style="margin-bottom:16px">Рассчитать под мой проект</a>
+          <div class="uk-pkg-card__header">
+            <div><h3 style="font-family:var(--uk-serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;margin-bottom:.25rem">Максимум</h3><div class="uk-pkg-card__tagline">Премиум материалы</div><p class="uk-pkg-card__desc">Максимальное утепление 250 мм, негорючий фиброцементный фасад, усиленный каркас 45×190 мм. Минимальные теплопотери, максимальный ресурс.</p></div>
+            <div class="uk-pkg-card__price-block"><div class="uk-pkg-card__price-label">Стоимость</div><div class="uk-pkg-card__price">от 60 000 ₽/м²</div><div class="uk-pkg-card__price-sub">под ключ, включая все работы</div></div>
           </div>
-          <div>
-            <ul class="uk-pkg-spec-list">
-              <li class="uk-pkg-spec-list__section">Основание</li>
-              <li><span>Фундамент</span><span>Ж/б сваи 150×150×3000</span></li>
-              <li class="uk-pkg-spec-list__section">Пол</li>
-              <li><span>Утепление пола</span><span>Каменная вата 250&nbsp;мм</span></li>
-              <li><span>Покрытие</span><span>Фанера 18&nbsp;мм</span></li>
-              <li class="uk-pkg-spec-list__section">Каркас</li>
-              <li><span>Каркас внешних стен</span><span>Доска 45×190 + брусок 40×50&nbsp;мм</span></li>
-              <li><span>Утепление стен</span><span>Каменная вата 200+50=250&nbsp;мм</span></li>
-              <li><span>Наружная отделка</span><span>Фиброцементный сайдинг</span></li>
-              <li><span>Внутренняя отделка</span><span>OSB + Гипсокартон</span></li>
-              <li class="uk-pkg-spec-list__section">Кровля</li>
-              <li><span>Покрытие кровли</span><span>Металлочерепица 0.5&nbsp;мм Grand Line</span></li>
-              <li><span>Водостоки</span><span>✓</span></li>
-              <li><span>Снегозадержатели</span><span>✓</span></li>
-              <li><span>Утепление кровли</span><span>Каменная вата 250&nbsp;мм</span></li>
-              <li class="uk-pkg-spec-list__section">Прочее</li>
-              <li><span>Окна</span><span>ПВХ Rehau 70</span></li>
-              <li><span>Входная дверь</span><span>Металл. с терморазрывом 100&nbsp;мм</span></li>
-              <li><span>Вентиляция</span><span>✓</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PAYMENT STAGES ══ -->
-  <section class="uk-section" id="payment">
-    <div class="uk-container">
-      <div class="uk-section-header">
-        <p class="uk-label">Условия оплаты</p>
-        <h2 class="uk-h2">Платите по&nbsp;этапам — только за&nbsp;результат</h2>
-        <p class="uk-lead">Никакой стопроцентной предоплаты. Каждый транш — после того, как вы приняли работу.</p>
-      </div>
-      <div class="uk-pay-grid">
-        <div class="uk-pay-card">
-          <div class="uk-pay-card__pct">30%</div>
-          <div class="uk-pay-card__num">Этап 1</div>
-          <div class="uk-pay-card__title">Договор и старт</div>
-          <div class="uk-pay-card__text">Подписываем договор с фиксированной сметой. Закупаем материалы и выходим на площадку.</div>
-        </div>
-        <div class="uk-pay-card">
-          <div class="uk-pay-card__pct">30%</div>
-          <div class="uk-pay-card__num">Этап 2</div>
-          <div class="uk-pay-card__title">Фундамент и каркас</div>
-          <div class="uk-pay-card__text">После приёмки свайного фундамента и установки несущего каркаса дома.</div>
-        </div>
-        <div class="uk-pay-card">
-          <div class="uk-pay-card__pct">30%</div>
-          <div class="uk-pay-card__num">Этап 3</div>
-          <div class="uk-pay-card__title">Тёплый контур</div>
-          <div class="uk-pay-card__text">После монтажа кровли, окон, дверей и утепления. Дом закрыт и защищён от непогоды.</div>
-        </div>
-        <div class="uk-pay-card">
-          <div class="uk-pay-card__pct">10%</div>
-          <div class="uk-pay-card__num">Этап 4</div>
-          <div class="uk-pay-card__title">Сдача объекта</div>
-          <div class="uk-pay-card__text">Финальный платёж после полного завершения работ и подписания акта сдачи-приёмки.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ PROCESS ══ -->
-  <section class="uk-section uk-section--warm" id="process">
-    <div class="uk-container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
-        <div>
-          <div class="uk-section-header" style="margin-bottom:40px">
-            <p class="uk-label">Как мы работаем</p>
-            <h2 class="uk-h2">5 шагов от&nbsp;заявки до&nbsp;ключей</h2>
-          </div>
-          <div class="uk-process">
-            <div class="uk-process-step">
-              <div class="uk-process-step__left">
-                <div class="uk-process-step__num">01</div>
-                <div class="uk-process-step__line"></div>
+          <div class="uk-pkg-card__body">
+            <div class="uk-pkg-card__left">
+              <div class="uk-pkg-sublabel">Пирог стены в масштабе</div>
+              <div class="uk-pkg-wall">
+                <div class="uk-pkg-wall-seg" style="width:2.2%;background:#7a8898"></div>
+                <div class="uk-pkg-wall-seg" style="width:2.2%;background:#e8e0d4"></div>
+                <div class="uk-pkg-wall-seg" style="width:1.1%;background:#8ab4d4"></div>
+                <div class="uk-pkg-wall-seg" style="width:3.4%;background:#d4b896"></div>
+                <div class="uk-pkg-wall-seg" style="width:70.4%;background:#f5c87a;font-size:8px;font-weight:700;color:rgba(0,0,0,.3)">250</div>
+                <div class="uk-pkg-wall-seg" style="width:1.1%;background:#60a5fa"></div>
+                <div class="uk-pkg-wall-seg" style="width:14%;background:#f0ece4"></div>
+                <div class="uk-pkg-wall-seg" style="width:5.9%;background:#e8e8e8"></div>
               </div>
-              <div class="uk-process-step__content">
-                <div class="uk-process-step__title">Заявка и бесплатная консультация</div>
-                <div class="uk-process-step__text">Обсуждаем ваши пожелания, площадь, бюджет и сроки. Отвечаем на вопросы без давления.</div>
+              <div class="uk-pkg-wall-meta"><span><span class="uk-pkg-wall-dot" style="background:#8ab4d4"></span>Улица</span><strong style="color:var(--uk-fg)">250 мм</strong><span>Жильё<span class="uk-pkg-wall-dot" style="background:#f5c87a"></span></span></div>
+              <div class="uk-pkg-sublabel">Материалы</div>
+              <div class="uk-pkg-materials">
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Фасад</span><span class="uk-pkg-mat__val">Фиброцементный сайдинг (НГ)</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление стен</span><span class="uk-pkg-mat__val">Каменная вата 250 мм (перекрёстный)</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление пола</span><span class="uk-pkg-mat__val">Каменная вата 250 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Утепление кровли</span><span class="uk-pkg-mat__val">Каменная вата 250 мм</span></div>
+                <div class="uk-pkg-mat"><span class="uk-pkg-mat__label">Интерьер</span><span class="uk-pkg-mat__val">OSB + Гипсокартон</span></div>
               </div>
             </div>
-            <div class="uk-process-step">
-              <div class="uk-process-step__left">
-                <div class="uk-process-step__num">02</div>
-                <div class="uk-process-step__line"></div>
+            <div class="uk-pkg-card__right">
+              <div class="uk-pkg-sublabel">Что получаете</div>
+              <div class="uk-pkg-perks">
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><span class="uk-pkg-perk__text">Фиброцемент НГ — негорючий, 50+ лет службы</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><span class="uk-pkg-perk__text">Каркас 45×190 мм — усиленная конструкция</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><span class="uk-pkg-perk__text">Каменная вата 250 мм — рекордное утепление</span></div>
+                <div class="uk-pkg-perk"><div class="uk-pkg-perk__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="uk-pkg-perk__text">OSB + ГКЛ — идеально под любую отделку</span></div>
               </div>
-              <div class="uk-process-step__content">
-                <div class="uk-process-step__title">Выбор проекта и комплектации</div>
-                <div class="uk-process-step__text">Подбираем проект из каталога или адаптируем под ваш участок. Фиксируем смету до копейки.</div>
-              </div>
-            </div>
-            <div class="uk-process-step">
-              <div class="uk-process-step__left">
-                <div class="uk-process-step__num">03</div>
-                <div class="uk-process-step__line"></div>
-              </div>
-              <div class="uk-process-step__content">
-                <div class="uk-process-step__title">Договор с фиксированной ценой</div>
-                <div class="uk-process-step__text">Подписываем контракт. Первый транш 30% — только после согласования всех деталей.</div>
-              </div>
-            </div>
-            <div class="uk-process-step">
-              <div class="uk-process-step__left">
-                <div class="uk-process-step__num">04</div>
-                <div class="uk-process-step__line"></div>
-              </div>
-              <div class="uk-process-step__content">
-                <div class="uk-process-step__title">Строительство с еженедельными фото</div>
-                <div class="uk-process-step__text">Бригада работает по графику. Вы получаете фотоотчёты каждую неделю и можете приехать в любой момент.</div>
-              </div>
-            </div>
-            <div class="uk-process-step">
-              <div class="uk-process-step__left">
-                <div class="uk-process-step__num">05</div>
-              </div>
-              <div class="uk-process-step__content">
-                <div class="uk-process-step__title">Сдача и гарантия 5 лет</div>
-                <div class="uk-process-step__text">Проводим совместный осмотр, подписываем акт. Гарантийный период начинается с первого дня после сдачи.</div>
+              <div class="uk-pkg-bars"><div class="uk-pkg-bars-label">Толщина утеплителя стен</div>
+                <div class="uk-pkg-bars-row">
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">150 мм</div><div class="uk-pkg-bar-fill" style="height:31px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Эконом</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">200 мм</div><div class="uk-pkg-bar-fill" style="height:41px;background:#e2e8f0;opacity:.5"></div><div class="uk-pkg-bar-lbl">Оптимум</div></div>
+                  <div class="uk-pkg-bar-item"><div class="uk-pkg-bar-mm">250 мм</div><div class="uk-pkg-bar-fill" style="height:52px;background:#f57a00"></div><div class="uk-pkg-bar-lbl uk-active">Максимум</div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div style="position:sticky;top:100px">
-          <div style="background:var(--uk-white);border-radius:var(--uk-radius-lg);padding:40px;box-shadow:var(--uk-shadow)">
-            <p class="uk-label">Бесплатный расчёт</p>
-            <h3 style="font-size:1.5rem;font-weight:700;margin-bottom:12px;line-height:1.3">Узнайте стоимость вашего дома</h3>
-            <p style="font-size:.9rem;color:var(--uk-gray-dk);margin-bottom:28px">Оставьте заявку — менеджер перезвонит в течение 30 минут и рассчитает стоимость под ваш проект и участок.</p>
-            <a href="#contacts" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;margin-bottom:16px">Оставить заявку</a>
-            <a href="tel:+74993909789" class="uk-btn uk-btn--outline uk-btn--lg" style="width:100%">+7 (499) 390-97-89</a>
-            <p style="font-size:.78rem;color:var(--uk-gray);margin-top:16px;text-align:center">Ежедневно 10:00–18:00, без выходных</p>
-          </div>
+      </div>
+
+      <div style="text-align:center;margin-top:1.5rem">
+        <button class="uk-pkg-show-table" id="uk-show-table-btn" onclick="ukToggleTable()">
+          Показать полную таблицу сравнения
+          <svg width="16" height="16" id="uk-table-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+      <div id="uk-pkg-table" style="display:none;overflow-x:auto;margin-top:1.5rem">
+        <table class="uk-pkg-table">
+          <thead><tr><th style="width:200px;text-align:left">Характеристика</th><th style="text-align:center">Эконом</th><th style="text-align:center;background:rgba(245,122,0,.05);color:#f57a00">Оптимум</th><th style="text-align:center">Максимум</th></tr></thead>
+          <tbody>
+            <tr><td>Каркас стен</td><td style="text-align:center;font-size:.875rem">Доска 45×145 мм</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05);color:#f57a00;font-weight:500">45×145 + брусок 40×50 мм</td><td style="text-align:center;font-size:.875rem;color:#f57a00;font-weight:500">45×190 + брусок 40×50 мм</td></tr>
+            <tr><td>Утепление стен</td><td style="text-align:center;font-size:.875rem">150 мм</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05);color:#f57a00;font-weight:500">200 мм (перекрёстный)</td><td style="text-align:center;font-size:.875rem;color:#f57a00;font-weight:500">250 мм (перекрёстный)</td></tr>
+            <tr><td>Утепление пола</td><td style="text-align:center;font-size:.875rem">200 мм</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05)">200 мм</td><td style="text-align:center;font-size:.875rem;color:#f57a00;font-weight:500">250 мм</td></tr>
+            <tr><td>Наружная отделка</td><td style="text-align:center;font-size:.875rem">OSB 12 мм</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05);color:#f57a00;font-weight:500">Имитация бруса</td><td style="text-align:center;font-size:.875rem;color:#f57a00;font-weight:500">Фиброцементный сайдинг</td></tr>
+            <tr><td>Внутренняя отделка</td><td style="text-align:center;font-size:.875rem;color:#bbb">—</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05);color:#f57a00;font-weight:500">Имитация бруса</td><td style="text-align:center;font-size:.875rem">OSB + Гипсокартон</td></tr>
+            <tr><td>Покрытие пола</td><td style="text-align:center;color:#bbb">—</td><td style="text-align:center;background:rgba(245,122,0,.05);color:#f57a00;font-weight:500">Фанера 18 мм</td><td style="text-align:center">Фанера 18 мм</td></tr>
+            <tr><td>Водостоки</td><td style="text-align:center;color:#bbb">—</td><td style="text-align:center;background:rgba(245,122,0,.05)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2.5" style="display:inline;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></td><td style="text-align:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2.5" style="display:inline;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Снегозадержатели</td><td style="text-align:center;color:#bbb">—</td><td style="text-align:center;background:rgba(245,122,0,.05)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2.5" style="display:inline;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></td><td style="text-align:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2.5" style="display:inline;vertical-align:middle"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+            <tr><td>Окна</td><td style="text-align:center;font-size:.875rem">ПВХ 70 Рехау</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05)">ПВХ 70 Рехау</td><td style="text-align:center;font-size:.875rem">ПВХ 70 Рехау</td></tr>
+            <tr><td>Кровля</td><td style="text-align:center;font-size:.875rem">Металлочерепица 0.5 мм</td><td style="text-align:center;font-size:.875rem;background:rgba(245,122,0,.05)">Металлочерепица 0.5 мм</td><td style="text-align:center;font-size:.875rem">Металлочерепица 0.5 мм</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.75rem;color:var(--uk-muted-fg);text-align:center;padding:.75rem;background:rgba(0,0,0,.02);border-top:1px solid var(--uk-border);margin:0">* Разводка инженерных систем рассчитывается индивидуально.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PAYMENT STAGES ══════════ -->
+<section class="uk-section uk-pay">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <span class="uk-eyebrow">Удобная оплата</span>
+      <h2 class="uk-h2">Поэтапная оплата без риска</h2>
+      <p class="uk-lead" style="margin-top:1rem">Вы платите только за выполненный и принятый этап. Никакой предоплаты 100% — вы контролируете каждый шаг.</p>
+    </div>
+    <div class="uk-pay-bar">
+      <div class="uk-pay-bar__track">
+        <div class="uk-pay-bar__seg" style="width:30%;background:#f57a00"></div>
+        <div class="uk-pay-bar__seg" style="width:30%;background:#3b82f6"></div>
+        <div class="uk-pay-bar__seg" style="width:30%;background:#10b981"></div>
+        <div class="uk-pay-bar__seg" style="width:10%;background:#8b5cf6"></div>
+      </div>
+      <div class="uk-pay-bar__pcts">
+        <div class="uk-pay-bar__pct" style="width:30%;color:#f57a00">30%</div>
+        <div class="uk-pay-bar__pct" style="width:30%;color:#3b82f6">30%</div>
+        <div class="uk-pay-bar__pct" style="width:30%;color:#10b981">30%</div>
+        <div class="uk-pay-bar__pct" style="width:10%;color:#8b5cf6">10%</div>
+      </div>
+    </div>
+    <div class="uk-pay-grid">
+      <div class="uk-pay-card"><div class="uk-pay-card__top" style="background:#f57a00"></div><div class="uk-pay-card__body"><div class="uk-pay-card__header"><div class="uk-pay-card__icon" style="background:rgba(245,122,0,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><div><div class="uk-pay-card__pct" style="color:#f57a00">30%</div><div class="uk-pay-card__pct-sub">от суммы</div></div></div><div class="uk-pay-card__when">Этап 1 · Старт работ</div><div class="uk-pay-card__title">Договор и фундамент</div><ul class="uk-pay-card__list"><li><div class="uk-pay-card__dot" style="background:#f57a00"></div>Подписание договора с фиксированной сметой</li><li><div class="uk-pay-card__dot" style="background:#f57a00"></div>Геологические изыскания участка</li><li><div class="uk-pay-card__dot" style="background:#f57a00"></div>Забивка ж/б свай и монтаж ростверка</li><li><div class="uk-pay-card__dot" style="background:#f57a00"></div>Нижняя обвязка из бруса 150×150 мм</li></ul><div class="uk-pay-card__note" style="background:rgba(245,122,0,.07);color:#f57a00">Оплата после подписания договора — начинаем сразу</div></div></div>
+      <div class="uk-pay-card"><div class="uk-pay-card__top" style="background:#3b82f6"></div><div class="uk-pay-card__body"><div class="uk-pay-card__header"><div class="uk-pay-card__icon" style="background:rgba(59,130,246,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><div class="uk-pay-card__pct" style="color:#3b82f6">30%</div><div class="uk-pay-card__pct-sub">от суммы</div></div></div><div class="uk-pay-card__when">Этап 2 · ≈ 2–3 нед от старта</div><div class="uk-pay-card__title">Каркас и кровля</div><ul class="uk-pay-card__list"><li><div class="uk-pay-card__dot" style="background:#3b82f6"></div>Монтаж несущего каркаса из сухой доски</li><li><div class="uk-pay-card__dot" style="background:#3b82f6"></div>Стропильная система и обрешётка</li><li><div class="uk-pay-card__dot" style="background:#3b82f6"></div>Укладка кровельного покрытия</li><li><div class="uk-pay-card__dot" style="background:#3b82f6"></div>Установка окон и входной двери</li></ul><div class="uk-pay-card__note" style="background:rgba(59,130,246,.07);color:#3b82f6">Оплачивается перед началом этапа</div></div></div>
+      <div class="uk-pay-card"><div class="uk-pay-card__top" style="background:#10b981"></div><div class="uk-pay-card__body"><div class="uk-pay-card__header"><div class="uk-pay-card__icon" style="background:rgba(16,185,129,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div><div class="uk-pay-card__pct" style="color:#10b981">30%</div><div class="uk-pay-card__pct-sub">от суммы</div></div></div><div class="uk-pay-card__when">Этап 3 · ≈ 5–6 нед от старта</div><div class="uk-pay-card__title">Утепление и отделка</div><ul class="uk-pay-card__list"><li><div class="uk-pay-card__dot" style="background:#10b981"></div>Укладка каменной ваты по всем плоскостям</li><li><div class="uk-pay-card__dot" style="background:#10b981"></div>Монтаж паро- и ветрозащитных мембран</li><li><div class="uk-pay-card__dot" style="background:#10b981"></div>Наружная отделка фасада</li><li><div class="uk-pay-card__dot" style="background:#10b981"></div>Внутренняя обшивка (по комплектации)</li></ul><div class="uk-pay-card__note" style="background:rgba(16,185,129,.07);color:#10b981">Оплачивается перед началом этапа</div></div></div>
+      <div class="uk-pay-card"><div class="uk-pay-card__top" style="background:#8b5cf6"></div><div class="uk-pay-card__body"><div class="uk-pay-card__header"><div class="uk-pay-card__icon" style="background:rgba(139,92,246,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div><div><div class="uk-pay-card__pct" style="color:#8b5cf6">10%</div><div class="uk-pay-card__pct-sub">от суммы</div></div></div><div class="uk-pay-card__when">Этап 4 · ≈ 7–8 нед от старта</div><div class="uk-pay-card__title">Сдача ключей</div><ul class="uk-pay-card__list"><li><div class="uk-pay-card__dot" style="background:#8b5cf6"></div>Финальная уборка и проверка</li><li><div class="uk-pay-card__dot" style="background:#8b5cf6"></div>Передача паспортов на материалы</li><li><div class="uk-pay-card__dot" style="background:#8b5cf6"></div>Обход с приёмкой всех работ</li><li><div class="uk-pay-card__dot" style="background:#8b5cf6"></div>Подписание акта и выдача ключей</li></ul><div class="uk-pay-card__note" style="background:rgba(139,92,246,.07);color:#8b5cf6">Платите только когда полностью довольны результатом</div></div></div>
+    </div>
+    <div class="uk-pay-banner">
+      <div class="uk-pay-banner__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <div><div class="uk-pay-banner__title">Финальный платёж — только при приёмке</div><p class="uk-pay-banner__text">Последние 10% вы платите только после того, как лично обойдёте дом, проверите каждое соединение и подпишете акт приёмки. Если что-то не устраивает — устраняем за наш счёт.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="uk-section uk-section--muted">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <h2 class="uk-h2">Как мы строим</h2>
+      <p class="uk-lead" style="margin-top:1.5rem">Прозрачный процесс от первой встречи до передачи ключей. Никаких скрытых платежей и задержек.</p>
+    </div>
+    <div class="uk-process-wrap">
+      <div class="uk-process-vline"></div>
+      <div class="uk-process-step"><div class="uk-process-num">01</div><div class="uk-process-card"><div class="uk-process-card__title">Проектирование и договор</div><p class="uk-process-card__text">Согласовываем архитектуру, планировку и состав работ. Фиксируем стоимость, сроки и этапы строительства.</p></div></div>
+      <div class="uk-process-step"><div class="uk-process-num">02</div><div class="uk-process-card"><div class="uk-process-card__title">Возведение фундамента</div><p class="uk-process-card__text">Выполняем устройство фундамента с учётом типа грунта, нагрузок и особенностей участка.</p></div></div>
+      <div class="uk-process-step"><div class="uk-process-num">03</div><div class="uk-process-card"><div class="uk-process-card__title">Каркас, кровля и инженерия</div><p class="uk-process-card__text">Собираем силовой каркас, монтируем кровлю, утепляем конструкцию. Монтируем инженерные системы.</p></div></div>
+      <div class="uk-process-step"><div class="uk-process-num">04</div><div class="uk-process-card"><div class="uk-process-card__title">Отделочные работы</div><p class="uk-process-card__text">Выполняем внутреннюю и внешнюю отделку: от черновых работ до финишного покрытия и фасада.</p></div></div>
+      <div class="uk-process-step"><div class="uk-process-num">05</div><div class="uk-process-card"><div class="uk-process-card__title">Сдача готового дома</div><p class="uk-process-card__text">Проводим контроль качества, подписываем акт приёма-передачи дома и отдаём Вам ключи.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SERVICES ══════════ -->
+<section class="uk-section">
+  <div class="uk-wrap">
+    <div class="uk-section-header">
+      <span class="uk-eyebrow">Что мы делаем</span>
+      <h2 class="uk-h2">Наши услуги</h2>
+      <p class="uk-lead" style="margin-top:1rem">Берём на себя все этапы: от первого наброска на бумаге до финальной уборки перед новосельем.</p>
+    </div>
+    <div class="uk-svc-grid">
+      <div class="uk-svc-card">
+        <div class="uk-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h3 class="uk-svc-card__title">Индивидуальное проектирование</h3>
+        <ul class="uk-svc-list">
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Создание проекта с нуля под ваш образ жизни</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Адаптация и доработка типовых проектов</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Архитектурный раздел (АР)</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Реалистичная 3D-визуализация дома</span></li>
+        </ul>
+      </div>
+      <div class="uk-svc-card">
+        <div class="uk-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+        <h3 class="uk-svc-card__title">Строительство под ключ</h3>
+        <ul class="uk-svc-list">
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Монтаж надёжного фундамента</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Сборка прочного силового каркаса</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Устройство кровельной системы</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Многослойное утепление и пароизоляция</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Установка окон и дверей</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Разводка инженерных систем</span></li>
+        </ul>
+      </div>
+      <div class="uk-svc-card">
+        <div class="uk-svc-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
+        <h3 class="uk-svc-card__title">Отделочные работы</h3>
+        <ul class="uk-svc-list">
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Внутренняя черновая и чистовая отделка</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Монтаж напольных покрытий</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Поклейка обоев и покраска стен</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Внешняя отделка фасада (сайдинг, планкен)</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Натяжные и подвесные потолки</span></li>
+          <li><div class="uk-svc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span class="uk-svc-text">Установка дверей, плинтусов</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="uk-section">
+  <div class="uk-wrap">
+    <div class="uk-faq-layout">
+      <div class="uk-faq-left">
+        <h2 class="uk-h2">Частые<br>вопросы</h2>
+        <p class="uk-lead" style="margin-top:1.5rem;margin-bottom:2rem">Собрали ответы на самые популярные вопросы о строительстве каркасных домов.</p>
+      </div>
+      <div class="uk-faq-right">
+        <div class="uk-faq-item">
+          <button class="uk-faq-btn" onclick="ukToggleFaq(this)">Какой фундамент нужен для каркасного дома?<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="uk-faq-answer">В большинстве случаев подбирается свайный или свайно-ростверковый фундамент. Конкретное решение зависит от геологии участка и параметров дома.</div>
+        </div>
+        <div class="uk-faq-item">
+          <button class="uk-faq-btn" onclick="ukToggleFaq(this)">Можно ли строить зимой?<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="uk-faq-answer">Да. Каркасная технология позволяет вести большинство работ круглый год при соблюдении технологии монтажа. Отсутствие мокрых процессов делает зимнюю стройку безопасной.</div>
+        </div>
+        <div class="uk-faq-item">
+          <button class="uk-faq-btn" onclick="ukToggleFaq(this)">Сколько времени занимает строительство?<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="uk-faq-answer">Срок зависит от площади, архитектуры и комплектации. В среднем строительство занимает от 2 до 6 месяцев от забивки первой сваи до сдачи ключей.</div>
+        </div>
+        <div class="uk-faq-item">
+          <button class="uk-faq-btn" onclick="ukToggleFaq(this)">Можно ли изменить планировку под себя?<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="uk-faq-answer">Да, мы можем адаптировать любой типовой проект или разработать индивидуальное решение с нуля, учитывая ваши пожелания и особенности участка.</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══ SERVICES ══ -->
-  <section class="uk-section" id="services">
-    <div class="uk-container">
-      <div class="uk-section-header">
-        <p class="uk-label">Что мы строим</p>
-        <h2 class="uk-h2">Полный цикл загородного строительства</h2>
+<!-- ══════════ CONTACT ══════════ -->
+<section class="uk-contact-wrap" id="uk-contact">
+  <div class="uk-contact-bg"><img src="https://static.tildacdn.com/tild3538-6463-4463-a163-633161303832/dg50.png" alt=""></div>
+  <div class="uk-wrap">
+    <div class="uk-contact-card">
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <h2 class="uk-contact-card__title">Готовы обсудить ваш будущий дом?</h2>
+        <p class="uk-contact-card__sub">Оставьте заявку, и наш инженер свяжется с вами для подробной консультации и предварительного расчёта. Это бесплатно и ни к чему не обязывает.</p>
       </div>
-      <div class="uk-services-grid">
-        <div class="uk-service-card">
-          <img class="uk-service-card__img"
-               src="https://static.tildacdn.com/tild3762-6131-4638-b735-643932663339/dg70.png"
-               alt="Каркасные дома под ключ" loading="lazy">
-          <div class="uk-service-card__body">
-            <div class="uk-service-card__title">Каркасные дома под ключ</div>
-            <div class="uk-service-card__text">Строим жилые дома для постоянного проживания и дачные дома по готовым и индивидуальным проектам. Полный цикл: от фундамента до внешней отделки.</div>
-            <a href="/projects" class="uk-service-card__link">Смотреть проекты</a>
+      <div id="uk-inline-form-wrap">
+        <form id="uk-inline-form" onsubmit="ukSubmitInlineForm(event)">
+          <div class="uk-form-row">
+            <div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div>
+            <div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
           </div>
-        </div>
-        <div class="uk-service-card">
-          <img class="uk-service-card__img"
-               src="https://static.tildacdn.com/tild6261-3430-4164-a366-386361623130/80.png"
-               alt="Барнхаусы" loading="lazy">
-          <div class="uk-service-card__body">
-            <div class="uk-service-card__title">Дома в стиле барнхаус</div>
-            <div class="uk-service-card__text">Современная архитектура с высокими потолками и панорамными окнами. Двускатная кровля, открытые пространства — стиль, который не устаревает.</div>
-            <a href="/projects" class="uk-service-card__link">Смотреть проекты</a>
+          <div class="uk-form-row">
+            <div class="uk-form-field"><label class="uk-form-label">Площадь дома *</label><select class="uk-form-select" name="area" required><option value="" disabled selected>Выберите площадь</option><option>До 80 м²</option><option>80–120 м²</option><option>120–160 м²</option><option>160–200 м²</option><option>Более 200 м²</option></select></div>
+            <div class="uk-form-field"><label class="uk-form-label">Комплектация</label><select class="uk-form-select" name="package"><option value="">Не выбрана</option><option>Эконом</option><option>Оптимум</option><option>Максимум</option></select></div>
           </div>
-        </div>
-        <div class="uk-service-card">
-          <img class="uk-service-card__img"
-               src="https://static.tildacdn.com/tild6536-3665-4939-a462-623365336535/dg130.png"
-               alt="Двухэтажные дома" loading="lazy">
-          <div class="uk-service-card__body">
-            <div class="uk-service-card__title">Двухэтажные и полутораэтажные</div>
-            <div class="uk-service-card__text">Максимум жилой площади при компактном пятне застройки. Идеальное решение для небольших участков и больших семей.</div>
-            <a href="/projects" class="uk-service-card__link">Смотреть проекты</a>
-          </div>
+          <div class="uk-form-field"><label class="uk-form-label">Комментарий</label><textarea class="uk-form-textarea" name="comment" placeholder="Расскажите о вашем участке, пожеланиях..."></textarea></div>
+          <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-inline-consent" required><label class="uk-form-consent-label" for="uk-inline-consent">Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+          <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </form>
+        <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-inline-success">
+          <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Заявка отправлена!</div>
+          <p style="color:var(--uk-muted-fg)">Наш менеджер свяжется с вами в ближайшее время.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══ FAQ ══ -->
-  <section class="uk-section uk-section--warm" id="faq">
-    <div class="uk-container">
-      <div class="uk-section-header uk-section-header--center">
-        <p class="uk-label">Вопросы и ответы</p>
-        <h2 class="uk-h2">Часто спрашивают</h2>
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="uk-footer">
+  <div class="uk-wrap">
+    <div class="uk-footer__grid">
+      <div>
+        <div class="uk-footer__logo-row"><div class="uk-footer__badge">УК</div><span class="uk-footer__name">УльтраКаркас</span></div>
+        <p class="uk-footer__desc">Строительство надежных и энергоэффективных каркасных домов в Москве и Московской области.</p>
       </div>
-      <div class="uk-faq">
-        <div class="uk-faq-item" data-uk-faq>
-          <button class="uk-faq-btn" aria-expanded="false">
-            <span>Сколько стоит дом 100&nbsp;м²?</span>
-            <span class="uk-faq-btn__icon">+</span>
-          </button>
-          <div class="uk-faq-answer" hidden>
-            Дом 100&nbsp;м² в комплектации Эконом — от&nbsp;4&nbsp;000&nbsp;000&nbsp;₽, Оптимум — от&nbsp;5&nbsp;000&nbsp;000&nbsp;₽, Максимум — от&nbsp;6&nbsp;000&nbsp;000&nbsp;₽. Финальная цена зависит от проекта, этажности и сложности фундамента. Точный расчёт — бесплатно по заявке.
-          </div>
-        </div>
-        <div class="uk-faq-item" data-uk-faq>
-          <button class="uk-faq-btn" aria-expanded="false">
-            <span>Сколько времени занимает строительство?</span>
-            <span class="uk-faq-btn__icon">+</span>
-          </button>
-          <div class="uk-faq-answer" hidden>
-            В среднем 4–6 месяцев с момента подписания договора. Дом 120&nbsp;м² в Эконом-комплектации — около 4 месяцев. Двухэтажные проекты или Максимум-комплектация — 5–6 месяцев. Сроки фиксируются в договоре.
-          </div>
-        </div>
-        <div class="uk-faq-item" data-uk-faq>
-          <button class="uk-faq-btn" aria-expanded="false">
-            <span>Можно ли изменить планировку в типовом проекте?</span>
-            <span class="uk-faq-btn__icon">+</span>
-          </button>
-          <div class="uk-faq-answer" hidden>
-            Да, все типовые проекты адаптируются под ваши пожелания: перенос перегородок, добавление/удаление помещений, изменение размеров. Адаптация проекта включена в стоимость при заказе строительства.
-          </div>
-        </div>
-        <div class="uk-faq-item" data-uk-faq>
-          <button class="uk-faq-btn" aria-expanded="false">
-            <span>Нужно ли мне постоянно быть на стройке?</span>
-            <span class="uk-faq-btn__icon">+</span>
-          </button>
-          <div class="uk-faq-answer" hidden>
-            Нет. Мы работаем самостоятельно. Вы получаете фотоотчёты каждую неделю и можете приехать в любой момент без предупреждения. На ключевых этапах организуем совместный осмотр — фундамент, каркас, тёплый контур, финальная сдача.
-          </div>
+      <div>
+        <div class="uk-footer__col-title">Навигация</div>
+        <ul class="uk-footer__links">
+          <li><a href="/projects">Проекты домов</a></li>
+          <li><a href="#uk-packages" onclick="ukSmoothTo('uk-packages',event)">Комплектации и цены</a></li>
+          <li><a href="/vacancies">Вакансии</a></li>
+          <li><a href="/privacy">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div style="grid-column:span 2">
+        <div class="uk-footer__col-title">Контакты</div>
+        <div class="uk-footer__contacts">
+          <a href="tel:+74993909789" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="uk-footer__contact-title">+7 (499) 390-97-89</div><div class="uk-footer__contact-sub">Звонок бесплатный</div></div></a>
+          <a href="mailto:info@ultrakarkas.ru" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="uk-footer__contact-title">info@ultrakarkas.ru</div></div></a>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Офис продаж:</div><div class="uk-footer__contact-sub">Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С</div></div></div>
+          <div class="uk-footer__contact-item" style="cursor:default"><div class="uk-footer__contact-icon" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="uk-footer__contact-title" style="color:var(--uk-fg)">Режим работы:</div><div class="uk-footer__contact-sub">Ежедневно: 10:00 – 18:00</div></div></div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="uk-footer__bottom">
+      <div class="uk-footer__copy">© 2026 ООО «УльтраКаркас». Все права защищены. Не является публичной офертой.</div>
+      <a href="/privacy" class="uk-footer__privacy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
 
-  <!-- ══ CTA / CONTACT FORM ══ -->
-  <section class="uk-section" id="contacts">
-    <div class="uk-container">
-      <div class="uk-section-header uk-section-header--center">
-        <p class="uk-label">Бесплатный расчёт</p>
-        <h2 class="uk-h2">Рассчитайте стоимость вашего дома</h2>
-        <p class="uk-lead">Оставьте заявку — менеджер перезвонит в течение 30&nbsp;минут и рассчитает стоимость под ваш проект и участок.</p>
-      </div>
-      <div class="uk-form-wrap" id="uk-lead-form">
+<!-- ══════════ MODAL ══════════ -->
+<div id="uk-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:600px;width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="ukCloseModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;padding:.25rem;color:#666">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Оставить заявку на расчёт</h2>
+    <p style="color:#666;margin-bottom:1.5rem;font-size:.9375rem">Заполните форму — подготовим предварительный расчёт стоимости.</p>
+    <div id="uk-modal-form-wrap">
+      <form id="uk-modal-form" onsubmit="ukSubmitModal(event)">
         <div class="uk-form-row">
-          <div class="uk-form-field">
-            <label class="uk-form-label" for="uk-name">Имя *</label>
-            <input class="uk-form-input" id="uk-name" type="text" placeholder="Иван Иванов" required>
-          </div>
-          <div class="uk-form-field">
-            <label class="uk-form-label" for="uk-phone">Телефон *</label>
-            <input class="uk-form-input" id="uk-phone" type="tel" placeholder="+7 (999) 000-00-00" required>
-          </div>
+          <div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div>
+          <div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div>
         </div>
         <div class="uk-form-row">
-          <div class="uk-form-field">
-            <label class="uk-form-label" for="uk-area">Желаемая площадь *</label>
-            <select class="uk-form-select" id="uk-area" required>
-              <option value="" disabled selected>Выберите площадь</option>
-              <option value="до 100">до 100 м²</option>
-              <option value="100-150">100–150 м²</option>
-              <option value="150-200">150–200 м²</option>
-              <option value="200-250">200–250 м²</option>
-              <option value="250+">250+ м²</option>
-            </select>
-          </div>
-          <div class="uk-form-field">
-            <label class="uk-form-label" for="uk-pkg">Комплектация</label>
-            <select class="uk-form-select" id="uk-pkg">
-              <option value="" selected>Выберите комплектацию</option>
-              <option value="эконом">Эконом</option>
-              <option value="оптимум">Оптимум</option>
-              <option value="максимум">Максимум</option>
-              <option value="подскажите">Подскажите вы</option>
-            </select>
-          </div>
+          <div class="uk-form-field"><label class="uk-form-label">Площадь дома *</label><select class="uk-form-select" name="area" required><option value="" disabled selected>Выберите</option><option>До 80 м²</option><option>80–120 м²</option><option>120–160 м²</option><option>160–200 м²</option><option>Более 200 м²</option></select></div>
+          <div class="uk-form-field"><label class="uk-form-label">Комплектация</label><select class="uk-form-select" name="package"><option value="">Не выбрана</option><option>Эконом</option><option>Оптимум</option><option>Максимум</option></select></div>
         </div>
-        <div class="uk-form-field">
-          <label class="uk-form-label" for="uk-comment">Комментарий</label>
-          <textarea class="uk-form-textarea" id="uk-comment" placeholder="Опишите ваши пожелания, наличие участка, сроки…"></textarea>
-        </div>
-        <div class="uk-form-consent">
-          <input type="checkbox" id="uk-consent" checked>
-          <label class="uk-form-consent__text" for="uk-consent">
-            Отправляя форму, даю согласие на обработку моих персональных данных.
-            <a href="/privacy" target="_blank" rel="noreferrer">Политика конфиденциальности</a>
-          </label>
-        </div>
-        <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%" id="uk-form-submit">Получить расчёт</button>
-        <div class="uk-form-success uk-hidden" id="uk-form-success">
-          <div class="uk-form-success__icon">✅</div>
-          <div class="uk-form-success__title">Заявка отправлена!</div>
-          <div class="uk-form-success__text">Менеджер свяжется с вами в течение рабочего дня.</div>
-        </div>
+        <div class="uk-form-field"><label class="uk-form-label">Комментарий</label><textarea class="uk-form-textarea" id="uk-modal-comment" name="comment" placeholder="Расскажите о вашем участке, пожеланиях..."></textarea></div>
+        <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-modal-consent" required><label class="uk-form-consent-label" for="uk-modal-consent">Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+        <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить заявку <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </form>
+      <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-modal-success">
+        <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Заявка отправлена!</div>
+        <p style="color:#666">Наш менеджер свяжется с вами в ближайшее время.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ══ FOOTER ══ -->
-  <footer class="uk-footer uk-block">
-    <div class="uk-container">
-      <div class="uk-footer__grid">
-        <div>
-          <div class="uk-footer__logo">УльтраКаркас</div>
-          <div class="uk-footer__tagline">Каркасные дома для постоянного проживания и&nbsp;отдыха в&nbsp;Московской области</div>
-          <div style="display:flex;gap:12px">
-            <a href="https://wa.me/79269935818" target="_blank" rel="noreferrer"
-               style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:rgba(255,255,255,.6);transition:color .2s,border-color .2s"
-               aria-label="WhatsApp">💬</a>
-            <a href="https://t.me/+79269935818" target="_blank" rel="noreferrer"
-               style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:rgba(255,255,255,.6);transition:color .2s,border-color .2s"
-               aria-label="Telegram">✈️</a>
-          </div>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Навигация</div>
-          <ul class="uk-footer__links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/#packages">Комплектации</a></li>
-            <li><a href="/#faq">Вопросы и ответы</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Компания</div>
-          <ul class="uk-footer__links">
-            <li><a href="/vacancies">Вакансии</a></li>
-            <li><a href="/privacy">Политика конфиденциальности</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Контакты</div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📞</span>
-            <div class="uk-footer__contact-text">
-              <a href="tel:+74993909789">+7 (499) 390-97-89</a><br>
-              <a href="tel:+79269935818">+7 (926) 993-58-18</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">✉️</span>
-            <div class="uk-footer__contact-text">
-              <a href="mailto:info@ultrakarkas.ru">info@ultrakarkas.ru</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📍</span>
-            <div class="uk-footer__contact-text">
-              Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">🕐</span>
-            <div class="uk-footer__contact-text">Ежедневно 10:00–18:00</div>
-          </div>
-        </div>
-      </div>
-      <div class="uk-footer__bottom">
-        <div class="uk-footer__copy">© 2025 УльтраКаркас. Все права защищены.</div>
-        <div class="uk-footer__bottom-links">
-          <a href="/privacy">Политика конфиденциальности</a>
-          <a href="/vacancies">Вакансии</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </div>
+</div>
 
 </div>

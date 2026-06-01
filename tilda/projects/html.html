@@ -1,203 +1,218 @@
-<div class="uk-block" id="uk-projects-page">
+<!-- УльтраКаркас — Проекты (Tilda Zero Block) -->
+<div class="uk" id="uk-projects-page">
 
-  <!-- ══ PAGE HERO ══ -->
-  <div class="uk-page-hero">
-    <div class="uk-container">
-      <p class="uk-label">Каталог проектов</p>
-      <h1 class="uk-h1">Готовые проекты<br>каркасных домов</h1>
-      <p class="uk-lead" style="margin-top:16px">6 проектов площадью от 79 до 220&nbsp;м². Каждый адаптируется под ваш участок и&nbsp;бюджет.</p>
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="uk-navbar uk-inner" id="uk-navbar-proj">
+  <div class="uk-wrap"><div class="uk-navbar__inner">
+    <a href="/" class="uk-navbar__logo"><div class="uk-navbar__badge">УК</div><span class="uk-navbar__name">УльтраКаркас</span></a>
+    <nav class="uk-navbar__nav">
+      <a href="/projects" class="uk-navbar__link" style="color:var(--uk-primary)!important">Проекты</a>
+      <a href="/#uk-packages" class="uk-navbar__link">Комплектации</a>
+      <a href="/#uk-why" class="uk-navbar__link">О нас</a>
+      <a href="/vacancies" class="uk-navbar__link">Вакансии</a>
+      <a href="/contacts" class="uk-navbar__link">Контакты</a>
+    </nav>
+    <div class="uk-navbar__right">
+      <a href="tel:+74993909789" class="uk-navbar__phone"><svg class="uk-navbar__phone-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (499) 390-97-89</a>
+      <button class="uk-btn uk-btn--primary" onclick="ukProjOpenModal()">Получить расчёт</button>
+    </div>
+    <div class="uk-navbar__mobile-right">
+      <a href="tel:+74993909789" class="uk-navbar__call-btn" aria-label="Позвонить"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <button class="uk-navbar__menu-btn" aria-label="Меню" onclick="document.getElementById('uk-mobile-nav-proj').classList.toggle('uk-open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div></div>
+</header>
+
+<div class="uk-mobile-nav" id="uk-mobile-nav-proj">
+  <nav class="uk-mobile-nav__links">
+    <a href="/projects" class="uk-mobile-nav__link" style="color:var(--uk-primary)">Проекты</a>
+    <a href="/#uk-packages" class="uk-mobile-nav__link">Комплектации</a>
+    <a href="/#uk-why" class="uk-mobile-nav__link">О нас</a>
+    <a href="/vacancies" class="uk-mobile-nav__link">Вакансии</a>
+    <a href="/contacts" class="uk-mobile-nav__link">Контакты</a>
+  </nav>
+  <div class="uk-mobile-nav__bottom">
+    <a href="tel:+74993909789" class="uk-mobile-nav__phone-big"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+7 (499) 390-97-89</a>
+    <button class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center" onclick="ukProjOpenModal()">Получить расчёт</button>
+  </div>
+</div>
+
+<!-- ══════════ PAGE HEADER ══════════ -->
+<div class="uk-pt-nav uk-section">
+  <div class="uk-wrap">
+    <nav class="uk-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Главная</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      <span>Проекты домов</span>
+    </nav>
+    <div class="uk-section-header uk-text-center" style="margin-bottom:3rem">
+      <span class="uk-eyebrow">Каталог</span>
+      <h1 class="uk-h2">Проекты каркасных домов</h1>
+      <p class="uk-lead" style="margin-top:1rem">6 готовых проектов — от компактного барнхауса 79 м² до просторного дома 220 м². Каждый проект доступен в трёх комплектациях.</p>
+    </div>
+
+    <!-- ALL 6 PROJECTS -->
+    <div class="uk-proj-grid">
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild3935-6232-4064-a130-313330313561/dg120.png" alt="Уют" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 4 808 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Уют»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">120 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">3</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">1</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Уют» (120 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png" alt="Комфорт" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 2 этажа</div>
+          <div class="uk-proj-card__price-badge">от 4 520 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Комфорт»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">113 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">4</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">2</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Комфорт» (113 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild3762-6131-4638-b735-643932663339/dg70.png" alt="Семейный" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 4 328 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Семейный»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">108 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">3</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">1</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Семейный» (108 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild6536-3665-4939-a462-623365336535/dg130.png" alt="Просторный" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 2 этажа</div>
+          <div class="uk-proj-card__price-badge">от 7 756 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Просторный»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">194 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">5</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">2</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Просторный» (194 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild3538-6463-4463-a163-633161303832/dg50.png" alt="Загородный" loading="lazy">
+          <div class="uk-proj-card__style-badge">Скандинавский · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 8 800 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Загородный»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">220 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">3</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">2</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Загородный» (220 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="uk-proj-card">
+        <div class="uk-proj-card__img-wrap">
+          <img class="uk-proj-card__img" src="https://static.tildacdn.com/tild6261-3430-4164-a366-386361623130/80.png" alt="Лесной" loading="lazy">
+          <div class="uk-proj-card__style-badge">Барнхаус · 1 этаж</div>
+          <div class="uk-proj-card__price-badge">от 3 168 000 ₽</div>
+        </div>
+        <div class="uk-proj-card__body">
+          <span class="uk-proj-card__name">Проект «Лесной»</span>
+          <div class="uk-proj-card__specs">
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg><span class="uk-proj-card__spec-label">Площадь</span><span class="uk-proj-card__spec-val">79 м²</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg><span class="uk-proj-card__spec-label">Спален</span><span class="uk-proj-card__spec-val">2</span></div>
+            <div class="uk-proj-card__spec"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f57a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" y1="5" x2="8" y2="7"/><line x1="2" y1="12" x2="22" y2="12"/></svg><span class="uk-proj-card__spec-label">Санузлов</span><span class="uk-proj-card__spec-val">1</span></div>
+          </div>
+          <div class="uk-proj-card__actions">
+            <button class="uk-btn uk-btn--primary" style="height:2.75rem;width:100%;justify-content:center" onclick="ukProjOpenModal('Интересует проект «Лесной» (79 м²).')">Рассчитать стоимость</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- CTA banner -->
+    <div style="background:var(--uk-fg);border-radius:var(--uk-r-2xl);padding:2rem 3rem;text-align:center;margin-top:4rem">
+      <h2 style="font-family:var(--uk-serif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;color:#fff;margin-bottom:1rem">Не нашли подходящий проект?</h2>
+      <p style="font-size:1rem;opacity:.8;max-width:36rem;margin:0 auto 2rem;color:#fff">Разработаем индивидуальный проект под ваш участок, бюджет и образ жизни.</p>
+      <button class="uk-btn uk-btn--primary uk-btn--lg" onclick="ukProjOpenModal('Интересует индивидуальный проект.')">Обсудить индивидуальный проект</button>
     </div>
   </div>
+</div>
 
-  <!-- ══ PROJECTS GRID ══ -->
-  <section class="uk-section">
-    <div class="uk-container">
-      <div class="uk-projects-grid">
-
-        <!-- Уют -->
-        <a href="/projects/uyut" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild3935-6232-4064-a130-313330313561/dg120.png"
-                 alt="Уют" loading="lazy">
-            <span class="uk-project-card__badge">Скандинавский</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Уют</div>
-            <div class="uk-project-card__area">120.2 м² · 1 этаж</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 3 спальни</span>
-              <span class="uk-project-card__meta-item">🚿 1 санузел</span>
-            </div>
-            <div class="uk-project-card__price">от 4 808 000 ₽</div>
-          </div>
-        </a>
-
-        <!-- Комфорт -->
-        <a href="/projects/komfort" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild6466-6562-4433-a238-633761383566/dky113.png"
-                 alt="Комфорт" loading="lazy">
-            <span class="uk-project-card__badge">Скандинавский</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Комфорт</div>
-            <div class="uk-project-card__area">113 м² · 2 этажа</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 4 спальни</span>
-              <span class="uk-project-card__meta-item">🚿 2 санузла</span>
-            </div>
-            <div class="uk-project-card__price">от 4 520 000 ₽</div>
-          </div>
-        </a>
-
-        <!-- Семейный -->
-        <a href="/projects/semeynyy" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild3762-6131-4638-b735-643932663339/dg70.png"
-                 alt="Семейный" loading="lazy">
-            <span class="uk-project-card__badge">Скандинавский</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Семейный</div>
-            <div class="uk-project-card__area">108.2 м² · 1 этаж</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 3 спальни</span>
-              <span class="uk-project-card__meta-item">🚿 1 санузел</span>
-            </div>
-            <div class="uk-project-card__price">от 4 328 000 ₽</div>
-          </div>
-        </a>
-
-        <!-- Просторный -->
-        <a href="/projects/prostornyy" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild6536-3665-4939-a462-623365336535/dg130.png"
-                 alt="Просторный" loading="lazy">
-            <span class="uk-project-card__badge">Скандинавский</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Просторный</div>
-            <div class="uk-project-card__area">193.9 м² · 1.5 этажа</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 5 спален</span>
-              <span class="uk-project-card__meta-item">🚿 2 санузла</span>
-            </div>
-            <div class="uk-project-card__price">от 7 756 000 ₽</div>
-          </div>
-        </a>
-
-        <!-- Загородный -->
-        <a href="/projects/zagorodnyy" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild3538-6463-4463-a163-633161303832/dg50.png"
-                 alt="Загородный" loading="lazy">
-            <span class="uk-project-card__badge">Скандинавский</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Загородный</div>
-            <div class="uk-project-card__area">220 м² · 1 этаж</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 3 спальни</span>
-              <span class="uk-project-card__meta-item">🚿 2 санузла</span>
-            </div>
-            <div class="uk-project-card__price">от 8 800 000 ₽</div>
-          </div>
-        </a>
-
-        <!-- Лесной -->
-        <a href="/projects/lesnoy" class="uk-project-card">
-          <div class="uk-project-card__img-wrap">
-            <img class="uk-project-card__img"
-                 src="https://static.tildacdn.com/tild6261-3430-4164-a366-386361623130/80.png"
-                 alt="Лесной" loading="lazy">
-            <span class="uk-project-card__badge">Барнхаус</span>
-          </div>
-          <div class="uk-project-card__body">
-            <div class="uk-project-card__name">Лесной</div>
-            <div class="uk-project-card__area">79.2 м² · 1 этаж</div>
-            <div class="uk-project-card__meta">
-              <span class="uk-project-card__meta-item">🛏 2 спальни</span>
-              <span class="uk-project-card__meta-item">🚿 1 санузел</span>
-            </div>
-            <div class="uk-project-card__price">от 3 168 000 ₽</div>
-          </div>
-        </a>
-
-      </div>
+<!-- Footer -->
+<footer class="uk-footer">
+  <div class="uk-wrap">
+    <div class="uk-footer__grid">
+      <div><div class="uk-footer__logo-row"><div class="uk-footer__badge">УК</div><span class="uk-footer__name">УльтраКаркас</span></div><p class="uk-footer__desc">Строительство надежных и энергоэффективных каркасных домов в Москве и Московской области.</p></div>
+      <div><div class="uk-footer__col-title">Навигация</div><ul class="uk-footer__links"><li><a href="/projects">Проекты домов</a></li><li><a href="/#uk-packages">Комплектации и цены</a></li><li><a href="/vacancies">Вакансии</a></li><li><a href="/privacy">Политика конфиденциальности</a></li></ul></div>
+      <div style="grid-column:span 2"><div class="uk-footer__col-title">Контакты</div><div class="uk-footer__contacts"><a href="tel:+74993909789" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.37 2 2 0 0 1 3.59 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="uk-footer__contact-title">+7 (499) 390-97-89</div><div class="uk-footer__contact-sub">Звонок бесплатный</div></div></a><a href="mailto:info@ultrakarkas.ru" class="uk-footer__contact-item"><div class="uk-footer__contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="uk-footer__contact-title">info@ultrakarkas.ru</div></div></a></div></div>
     </div>
-  </section>
+    <div class="uk-footer__bottom"><div class="uk-footer__copy">© 2026 ООО «УльтраКаркас». Все права защищены.</div><a href="/privacy" class="uk-footer__privacy">Политика конфиденциальности</a></div>
+  </div>
+</footer>
 
-  <!-- ══ CTA BAND ══ -->
-  <div class="uk-cta-band">
-    <div class="uk-container">
-      <h2 class="uk-h2">Нужен индивидуальный проект?</h2>
-      <p class="uk-lead">Разработаем дом под ваш участок и бюджет. Расчёт — бесплатно.</p>
-      <a href="/#contacts" class="uk-btn uk-btn--outline-white uk-btn--lg">Оставить заявку</a>
+<!-- Modal -->
+<div id="uk-proj-modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;border-radius:1rem;padding:2rem;max-width:560px;width:95vw;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="ukProjCloseModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;color:#666"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Рассчитать стоимость проекта</h2>
+    <p style="color:#666;margin-bottom:1.5rem;font-size:.9375rem">Заполните форму — подготовим предварительный расчёт.</p>
+    <div id="uk-proj-form-wrap">
+      <form id="uk-proj-form" onsubmit="ukProjSubmit(event)">
+        <div class="uk-form-row"><div class="uk-form-field"><label class="uk-form-label">Имя *</label><input class="uk-form-input" type="text" name="name" placeholder="Ваше имя" required></div><div class="uk-form-field"><label class="uk-form-label">Телефон *</label><input class="uk-form-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required></div></div>
+        <div class="uk-form-field"><label class="uk-form-label">Комментарий</label><textarea class="uk-form-textarea" id="uk-proj-comment" name="comment" placeholder="Проект, площадь, пожелания..."></textarea></div>
+        <div class="uk-form-consent"><input class="uk-form-checkbox" type="checkbox" id="uk-proj-consent" required><label class="uk-form-consent-label" for="uk-proj-consent">Я согласен с <a href="/privacy">политикой конфиденциальности</a> и даю согласие на обработку персональных данных</label></div>
+        <button type="submit" class="uk-btn uk-btn--primary uk-btn--lg" style="width:100%;justify-content:center">Отправить заявку</button>
+      </form>
+      <div style="display:none;text-align:center;padding:2.5rem 0" id="uk-proj-success">
+        <div style="width:3.5rem;height:3.5rem;border-radius:50%;background:rgba(245,122,0,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.5rem;color:#f57a00">✓</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:.5rem">Заявка отправлена!</div>
+        <p style="color:#666">Наш менеджер свяжется с вами в ближайшее время.</p>
+      </div>
     </div>
   </div>
-
-  <!-- ══ FOOTER ══ -->
-  <footer class="uk-footer uk-block">
-    <div class="uk-container">
-      <div class="uk-footer__grid">
-        <div>
-          <div class="uk-footer__logo">УльтраКаркас</div>
-          <div class="uk-footer__tagline">Каркасные дома для постоянного проживания и&nbsp;отдыха в&nbsp;Московской области</div>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Навигация</div>
-          <ul class="uk-footer__links">
-            <li><a href="/">Главная</a></li>
-            <li><a href="/projects">Проекты</a></li>
-            <li><a href="/#packages">Комплектации</a></li>
-            <li><a href="/#faq">Вопросы и ответы</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Компания</div>
-          <ul class="uk-footer__links">
-            <li><a href="/vacancies">Вакансии</a></li>
-            <li><a href="/privacy">Политика конфиденциальности</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="uk-footer__col-title">Контакты</div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📞</span>
-            <div class="uk-footer__contact-text">
-              <a href="tel:+74993909789">+7 (499) 390-97-89</a><br>
-              <a href="tel:+79269935818">+7 (926) 993-58-18</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">✉️</span>
-            <div class="uk-footer__contact-text">
-              <a href="mailto:info@ultrakarkas.ru">info@ultrakarkas.ru</a>
-            </div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">📍</span>
-            <div class="uk-footer__contact-text">Московская обл., г. Одинцово,<br>р.п. Заречье, ул. Торговая, 2С</div>
-          </div>
-          <div class="uk-footer__contact-item">
-            <span class="uk-footer__contact-icon">🕐</span>
-            <div class="uk-footer__contact-text">Ежедневно 10:00–18:00</div>
-          </div>
-        </div>
-      </div>
-      <div class="uk-footer__bottom">
-        <div class="uk-footer__copy">© 2025 УльтраКаркас. Все права защищены.</div>
-        <div class="uk-footer__bottom-links">
-          <a href="/privacy">Политика конфиденциальности</a>
-          <a href="/vacancies">Вакансии</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+</div>
 
 </div>
