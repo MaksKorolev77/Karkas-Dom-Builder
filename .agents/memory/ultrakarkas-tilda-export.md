@@ -28,3 +28,17 @@ complete standalone static site at `artifacts/ultrakarkas/public/site/`, served 
 - `rewriteLinks()` maps SPA links to static `.html` (incl. `/project/<slug>` →
   `project-<slug>.html`). Contacts page reuses the index navbar (forced `uk-inner`)
   + footer + modal.
+
+## SVG defs IDs must be scoped per pre-rendered variant
+The wall/roof "пирог" sections (`.uk-lyr` in `tilda/index/html.html`) pre-render 3
+config SVGs (econom/optimum/max) stacked, toggled by `display` via inline
+`ukLyrTab`. Every `<pattern>/<linearGradient>/<filter>` id and its `url(#id)` must
+be UNIQUE per SVG block (suffix e.g. `-c1..-c6`).
+**Why:** duplicate ids across the stacked SVGs make `url(#insulation-pat)` resolve
+to the FIRST match in the DOM, which lives inside a `display:none` SVG; Chrome will
+not paint a pattern/gradient from a `display:none` subtree, so the visible diagram
+renders empty white boxes (solid `fill` colors still work — that's the tell). This
+was the "плохо сделаны пироги / переключение не работает" bug.
+**How to apply:** after regenerating these pre-rendered SVGs, re-run the per-block
+id-scoping pass (suffix all `id="X"` and `url(#X)` within each `.uk-lyr-svg-inner`
+svg), then `node tilda/build-site.js`.
