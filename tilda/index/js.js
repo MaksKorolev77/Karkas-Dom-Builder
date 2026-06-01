@@ -99,4 +99,38 @@
     if (form && success) { form.style.display = 'none'; success.style.display = 'block'; }
   };
 
+  /* ── Calculator ── */
+  var ukCalcPrices = { econom: 40000, optimum: 50000, max: 60000 };
+  var ukCalcLabels = { econom: 'Эконом', optimum: 'Оптимум', max: 'Максимум' };
+  var ukCalcState = { area: 100, pkg: 'optimum' };
+  var ukCalcFmt = new Intl.NumberFormat('ru-RU');
+
+  window.ukCalcUpdate = function () {
+    var areaEl = document.getElementById('uk-calc-area');
+    if (areaEl) ukCalcState.area = Number(areaEl.value);
+    var rate = ukCalcPrices[ukCalcState.pkg];
+    var price = ukCalcState.area * rate;
+    var areaLabel = document.getElementById('uk-calc-area-label');
+    var priceEl = document.getElementById('uk-calc-price');
+    var rateEl = document.getElementById('uk-calc-rate');
+    if (areaLabel) areaLabel.textContent = ukCalcState.area + ' м²';
+    if (priceEl) priceEl.textContent = ukCalcFmt.format(price);
+    if (rateEl) rateEl.textContent = ukCalcFmt.format(rate);
+  };
+
+  window.ukCalcSetPkg = function (pkg) {
+    ukCalcState.pkg = pkg;
+    document.querySelectorAll('.uk-calc-pkg').forEach(function (b) {
+      b.classList.toggle('uk-active', b.getAttribute('data-pkg') === pkg);
+    });
+    window.ukCalcUpdate();
+  };
+
+  window.ukCalcSubmit = function () {
+    var label = ukCalcLabels[ukCalcState.pkg];
+    window.ukOpenModal('Интересует дом площадью ' + ukCalcState.area + ' м². Комплектация «' + label + '».');
+  };
+
+  window.ukCalcUpdate();
+
 })();
