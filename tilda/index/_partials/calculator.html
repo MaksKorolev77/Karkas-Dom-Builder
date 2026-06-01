@@ -1,0 +1,42 @@
+<!-- ── Calculator ── -->
+<section class="uk-calc" id="uk-calculator">
+  <div class="uk-wrap">
+    <div class="uk-calc-card">
+
+      <div class="uk-calc-left">
+        <h2 class="uk-calc-left__h2">Калькулятор стоимости</h2>
+        <p class="uk-calc-left__p">Выберите площадь и комплектацию, чтобы узнать примерную стоимость строительства вашего будущего дома.</p>
+
+        <div>
+          <div class="uk-calc-field">
+            <label class="uk-calc-field__label">Площадь дома: <span id="uk-calc-area-label">100 м²</span></label>
+            <input type="range" min="50" max="300" step="5" value="100" id="uk-calc-area" class="uk-calc-range" oninput="ukCalcUpdate()" />
+            <div class="uk-calc-range__minmax">
+              <span>50 м²</span>
+              <span>300 м²</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="uk-calc-field__label" style="margin-bottom:1rem">Комплектация</label>
+            <div class="uk-calc-pkgs">
+              <button type="button" class="uk-calc-pkg" data-pkg="econom" onclick="ukCalcSetPkg('econom')">Эконом</button>
+              <button type="button" class="uk-calc-pkg uk-active" data-pkg="optimum" onclick="ukCalcSetPkg('optimum')">Оптимум</button>
+              <button type="button" class="uk-calc-pkg" data-pkg="max" onclick="ukCalcSetPkg('max')">Максимум</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="uk-calc-right">
+        <div class="uk-calc-right__label">Примерная стоимость:</div>
+        <div class="uk-calc-right__price">~ <span id="uk-calc-price">5 000 000</span> ₽</div>
+        <div class="uk-calc-right__rate"><span id="uk-calc-rate">50 000</span> ₽ за квадратный метр</div>
+
+        <button type="button" class="uk-btn uk-btn--primary uk-btn--lg" style="justify-content:center" onclick="ukCalcSubmit()">Получить точный расчёт</button>
+        <p class="uk-calc-right__note">Не является публичной офертой. Итоговая стоимость зависит от особенностей проекта и участка.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
